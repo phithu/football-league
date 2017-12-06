@@ -19,3 +19,11 @@ $my-app-theme: mat-light-theme($my-app-primary, $my-app-accent, $my-app-warn);
 
   @include angular-material-theme($alternate-theme);
 }
+.form-login-theme {
+  $login-primary: mat-palette($mat-red, 800);
+  $login-accent: mat-palette($mat-green, 800);
+  $login-warn: mat-palette($mat-red, 800);
+
+  $form-login-theme: mat-light-theme($login-primary, $login-accent, $login-warn);
+  @include angular-material-theme($form-login-theme)
+}

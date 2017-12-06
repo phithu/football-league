@@ -1,0 +1,13 @@
+app-login {
+  & .mat-form-field-underline {
+    background-color: #fff !important;
+  }
+  & .mat-form-field-placeholder {
+    color: #fff !important;
+  }
+  & .mat-focused {
+    & .mat-form-field-placeholder {
+      color: #c62828 !important;
+    }
+  }
+}

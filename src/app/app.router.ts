@@ -6,6 +6,10 @@ export const AppRoutes: Routes = [
     loadChildren: './admin/admin.module#AdminModule'
   },
   {
+    path: 'login',
+    loadChildren: './login/login.module#LoginModule'
+  },
+  {
     path: '',
     loadChildren: './main-layout/main-layout.module#MainLayoutModule'
   }

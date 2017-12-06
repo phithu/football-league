@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="container_images">
+    <img src="../../assets/img/1.png">
+  </div>
+  <form [formGroup]="form" (ngSubmit)="login(form.value)" class="form-login-theme">
+    <mat-form-field>
+      <input
+        formControlName="username"
+        matInput
+      >
+      <mat-placeholder>
+        <mat-icon>account_circle</mat-icon>
+        <span class="placeholder_title">Tên đăng nhập</span>
+      </mat-placeholder>
+      <mat-error *ngIf="formErrors.username">{{formErrors.username}}</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input
+        formControlName="password"
+        type="password"
+        matInput
+      >
+      <mat-placeholder>
+        <mat-icon>lock</mat-icon>
+        <span class="placeholder_title">Mật khẩu</span>
+      </mat-placeholder>
+      <mat-error *ngIf="formErrors.password">{{formErrors.password}}</mat-error>
+    </mat-form-field>
+    <p class="alert_error" *ngIf="resMessages">
+      {{resMessages}}
+    </p>
+    <button
+      mat-button
+      class="btn_submit"
+    >
+      Đăng nhập
+    </button>
+  </form>
+</div>
