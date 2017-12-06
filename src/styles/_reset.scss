@@ -1,0 +1,31 @@
+@import './utilities';
+@import './colors';
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #eaeaea;
+  font-family: 'Roboto', sans-serif;
+}
+
+app-side-nav {
+  & mat-expansion-panel {
+    user-select: none;
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+  & .mat-expansion-panel-spacing {
+    margin: 0px !important;
+  }
+  & .mat-expansion-panel-body {
+    padding: 0px !important;
+  }
+  & .mat-expansion-panel-header-title {
+    color: $textSidenav;
+  }
+  & .mat-expansion-indicator::after, .mat-expansion-panel-header-description {
+    color: $textSidenav;
+  }
+}

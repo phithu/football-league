@@ -1,0 +1,19 @@
+<mat-toolbar color="warn">
+  <span>Some text fot title</span>
+  <div class="user flex">
+    <img src="https://i.imgur.com/kmY1pwF.jpg">
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon>keyboard_arrow_down</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>
+        <mat-icon>account_circle</mat-icon>
+        <span>Trang cá nhân</span>
+      </button>
+      <button mat-menu-item>
+        <mat-icon>subdirectory_arrow_right</mat-icon>
+        <span>Đăng xuất</span>
+      </button>
+    </mat-menu>
+  </div>
+</mat-toolbar>

@@ -1,0 +1,14 @@
+mat-toolbar {
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0.5px 0.5px 3px #717171;
+  .user {
+    height: 40px;
+    align-items: center;
+    & img {
+      height: 40px;
+      width: 40px;
+      border-radius: 50%;
+    }
+  }
+}

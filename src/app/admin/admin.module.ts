@@ -5,11 +5,15 @@ import { RouterModule } from '@angular/router';
 import { AdminRoutes } from './admin.routes';
 import { HomeAdminComponent } from './pages/home-admin';
 import { AddTeamComponent } from './pages/add-team';
+import { SideNavModule } from './components/side-nav';
+import { ToolbarAdminModule } from './components/toolbar-admin';
 
 @NgModule({
   imports: [
     CommonModule,
     RouterModule.forChild(AdminRoutes),
+    SideNavModule,
+    ToolbarAdminModule
   ],
   declarations: [
     AdminComponent,
