@@ -7,13 +7,15 @@ import { HomeAdminComponent } from './pages/home-admin';
 import { AddTeamComponent } from './pages/add-team';
 import { SideNavModule } from './components/side-nav';
 import { ToolbarAdminModule } from './components/toolbar-admin';
+import { GuardModule } from './module/guard';
 
 @NgModule({
   imports: [
     CommonModule,
     RouterModule.forChild(AdminRoutes),
     SideNavModule,
-    ToolbarAdminModule
+    ToolbarAdminModule,
+    GuardModule
   ],
   declarations: [
     AdminComponent,

@@ -11,12 +11,13 @@
         </mat-panel-title>
       </mat-expansion-panel-header>
       <div>
-        <button
+        <a
           class="buttonFullWidth"
           mat-button
+          [routerLink]="['/admin', 'add-team']"
         >
           Thêm đội bóng
-        </button>
+        </a>
         <button
           class="buttonFullWidth"
           mat-button

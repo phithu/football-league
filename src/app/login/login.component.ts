@@ -7,6 +7,10 @@ import {
   FormGroup,
   Validators
 } from '@angular/forms';
+import {
+  Router
+} from '@angular/router';
+
 import { FormBaseComponent } from '../../shared/module/form-base';
 import { AuthService } from '../../shared/service/auth';
 
@@ -45,7 +49,8 @@ export class LoginComponent extends FormBaseComponent implements OnInit {
     updateOn: 'submit'
   };
 
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService,
+              private router: Router) {
     super();
   }
 
@@ -64,7 +69,15 @@ export class LoginComponent extends FormBaseComponent implements OnInit {
             } else if (response.mgs === MGS_RESPONSE.USER_NOT_FOUND) {
               this.resMessages = 'Tên tài khoản không tồn tại. Vui lòng kiểm tra lại';
             } else {
-              this.resMessages = 'Hiện tại không thể đăng nhập. Vui lòng thử lại sau';
+              if (response.token && response.user) {
+                const {username, name, images} = response.user;
+                const imagesLink = images.link ? images.link : name.charAt(0).toUpperCase();
+                const {token} = response;
+                this.authService.loginSuccess(name, username, imagesLink, token);
+                this.router.navigate(['/admin']);
+              } else {
+                this.resMessages = 'Hiện tại không thể đăng nhập. Vui lòng thử lại sau';
+              }
             }
           }
         });

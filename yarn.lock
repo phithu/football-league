@@ -191,6 +191,10 @@
     source-map "^0.5.6"
     tree-kill "^1.0.0"
 
+"@ngx-progressbar/core@^3.0.1":
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/@ngx-progressbar/core/-/core-3.0.1.tgz#e41ba80c0ad479b27b7e26983c65d955f55d8433"
+
 "@schematics/angular@~0.1.8":
   version "0.1.9"
   resolved "https://registry.yarnpkg.com/@schematics/angular/-/angular-0.1.9.tgz#f4bd5da3da0e9414db7ee2a967a4789959c47a24"

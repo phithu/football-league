@@ -13,7 +13,6 @@ import {
 
 import { FormBaseModule } from '../../shared/module/form-base';
 import { LoginRoutes } from './login.router';
-import { AuthModule } from '../../shared/service/auth';
 
 @NgModule({
   imports: [
@@ -25,7 +24,6 @@ import { AuthModule } from '../../shared/service/auth';
     MatButtonModule,
     FormBaseModule,
     MatIconModule,
-    AuthModule,
     RouterModule.forChild(LoginRoutes)
   ],
   declarations: [

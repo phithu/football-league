@@ -4,13 +4,15 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatButtonModule } from '@angular/material/button';
 
 import { SideNavComponent } from './side-nav.component';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
   imports: [
     CommonModule,
     MatExpansionModule,
-    MatButtonModule
+    MatButtonModule,
+    RouterModule
   ],
   declarations: [
     SideNavComponent
