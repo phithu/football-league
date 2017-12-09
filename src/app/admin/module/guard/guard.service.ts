@@ -22,9 +22,7 @@ export class GuardService implements CanActivate {
       .map(response => response.result)
       .do(value => {
         if (!value) {
-          this.authService.logout(() => {
-            this.router.navigate(['/login']);
-          });
+          this.router.navigate(['/login']);
         }
       });
   }

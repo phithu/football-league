@@ -1,0 +1,25 @@
+<div class="avatar__control">
+  <input (change)="onSelectImages($event)" name="image" #fileInput
+         type="file" accept="image/*" ng2FileSelect
+         [uploader]="uploader"
+  />
+
+  <button type="button" (click)="fileInput.click()"
+          color="warn" mat-raised-button>
+    <mat-icon>file_upload</mat-icon>
+    {{titleUpload}}
+  </button>
+
+  <ng-container *ngFor="let item of uploader.queue">
+    <div class="images__box">
+      <img src={{item.images}} [ngClass]="{'uploadingImages': item.isUploaded}" alt="" class="images__box__img">
+      <div *ngIf="!item.isUploaded" class="images__box__progress">
+        <span>{{item.progress}}%</span>
+        <mat-progress-bar mode="determinate" value={{item.progress}}></mat-progress-bar>
+      </div>
+      <button *ngIf="item.isUploaded" class="images__box__button" mat-icon-button (click)="deleteImages()">
+        <mat-icon>clear</mat-icon>
+      </button>
+    </div>
+  </ng-container>
+</div>

@@ -7,9 +7,7 @@ import {
   FormGroup,
   Validators
 } from '@angular/forms';
-import {
-  Router
-} from '@angular/router';
+import { Router } from '@angular/router';
 
 import { FormBaseComponent } from '../../shared/module/form-base';
 import { AuthService } from '../../shared/service/auth';
@@ -29,11 +27,11 @@ export class LoginComponent extends FormBaseComponent implements OnInit {
   public resMessages: any;
   public form: FormGroup;
   public controlConfig = {
-    username: new FormControl('', [Validators.required]),
+    userName: new FormControl('', [Validators.required]),
     password: new FormControl('', [Validators.required])
   };
   public validatorMessages = {
-    username: {
+    userName: {
       required: 'Vui lòng tên đăng nhập'
     },
     password: {
@@ -41,7 +39,7 @@ export class LoginComponent extends FormBaseComponent implements OnInit {
     }
   };
   public formErrors = {
-    username: '',
+    userName: '',
     password: ''
   };
 
@@ -59,22 +57,21 @@ export class LoginComponent extends FormBaseComponent implements OnInit {
   }
 
   public login(value) {
+    console.log(value);
     if (this.form.valid) {
-      this.authService.login(value.username, value.password)
+      this.authService.login(value.userName, value.password)
         .subscribe((response) => {
           if (response.result) {
-            // resMessages
             if (response.mgs === MGS_RESPONSE.PASSWORD_INCORRECT) {
               this.resMessages = 'Mật khẩu không đúng. Vui lòng thử lại';
             } else if (response.mgs === MGS_RESPONSE.USER_NOT_FOUND) {
               this.resMessages = 'Tên tài khoản không tồn tại. Vui lòng kiểm tra lại';
             } else {
               if (response.token && response.user) {
-                const {username, name, images} = response.user;
-                const imagesLink = images.link ? images.link : name.charAt(0).toUpperCase();
+                const {fullName, userName, imagesURL, typeUser} = response.user;
                 const {token} = response;
-                this.authService.loginSuccess(name, username, imagesLink, token);
-                this.router.navigate(['/admin']);
+                this.authService.loginSuccess(fullName, userName, imagesURL, typeUser, token);
+                this.router.navigate(['/']);
               } else {
                 this.resMessages = 'Hiện tại không thể đăng nhập. Vui lòng thử lại sau';
               }

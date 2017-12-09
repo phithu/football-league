@@ -11,18 +11,23 @@ export class AuthService {
 
   // public checkLogin = new BehaviorSubject<string>(localStorage.getItem('token'));
 
-  public login(username: string, password: string): Observable<any> {
+  public login(userName: string, password: string): Observable<any> {
     return this.http.post(`${AppConst.domain}/login`,
-      {username: username, password: password});
+      {userName: userName, password: password});
+  }
+
+  public logout(): Observable<any> {
+    return this.http.get(`${AppConst.domain}/logout`);
   }
 
   public verifyToken(): Observable<any> {
-    return this.http.get(`${AppConst.domain}/verify`);
+    return this.http.post(`${AppConst.domain}/verify`, {});
   }
 
   public register(dataUser: any): Observable<any> {
     return this.http.post(`${AppConst.domain}/register`, dataUser);
   }
+
 
   public getToken(): string {
     return localStorage.getItem('token');
@@ -33,52 +38,62 @@ export class AuthService {
     localStorage.setItem('token', token);
   }
 
-  public getUsername(): string {
-    return localStorage.getItem('username');
+  public getUserName(): string {
+    return localStorage.getItem('userName');
   }
 
-  public setUsername(username): void {
-    localStorage.setItem('username', username);
+  public setUserName(userName): void {
+    localStorage.setItem('userName', userName);
   }
 
-  public setName(name) {
-    localStorage.setItem('name', name);
+  public setFullName(fullName) {
+    localStorage.setItem('fullName', fullName);
   }
 
-  public getName(): string {
-    return localStorage.getItem('name');
+  public getFullName(): string {
+    return localStorage.getItem('fullName');
   }
 
 
-  public getImages(): string {
-    return localStorage.getItem('images');
+  public getImagesURL(): string {
+    return localStorage.getItem('imagesURL');
   }
 
-  public setImages(images): void {
-    localStorage.setItem('images', images);
+  public setImagesURL(imagesURL): void {
+    localStorage.setItem('imagesURL', imagesURL);
   }
 
-  public logout(callback?: () => void): void {
-    // this.checkLogin.next(null);
-    localStorage.clear();
-    if (callback) {
-      callback();
-    }
+  public getTypeUser(): string {
+    return localStorage.getItem('typeUser');
   }
 
-  public loginSuccess(name, userName, images, token) {
-    this.setName(name);
-    this.setImages(images);
+  public setTypeUser(typeUser): void {
+    localStorage.setItem('typeUser', typeUser);
+  }
+
+  public loginSuccess(fullName, userName, imagesURL, typeUser, token) {
     this.setToken(token);
-    this.setUsername(userName);
+    this.setFullName(fullName);
+    this.setImagesURL(imagesURL);
+    this.setTypeUser(typeUser);
+    this.setUserName(userName);
+
+    const data = {
+      fullName: this.getFullName(),
+      userName: this.getUserName(),
+      imagesURL: this.getImagesURL(),
+      typeUser: this.getTypeUser(),
+      token: this.getToken()
+    };
   }
 
   public getDataLogin() {
     return {
-      name: this.getName(),
-      userName: this.getUsername(),
-      token: this.getToken(),
-      images: this.getImages(),
+      fullName: this.getFullName(),
+      userName: this.getUserName(),
+      imagesURL: this.getImagesURL(),
+      typeUser: this.getTypeUser(),
+      token: this.getToken()
     };
   }
 

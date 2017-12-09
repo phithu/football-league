@@ -2,13 +2,24 @@ mat-toolbar {
   align-items: center;
   justify-content: space-between;
   box-shadow: 0.5px 0.5px 3px #717171;
+  background-color: #333 !important;
   .user {
     height: 40px;
     align-items: center;
-    & img {
+    & .images_box {
       height: 40px;
       width: 40px;
       border-radius: 50%;
+      box-shadow: 1px 1px 1px #333;
     }
+    & .text_center {
+      line-height: 40px;
+      text-align: center;
+
+    }
+  }
+  & .fullName_text {
+    margin-left: 12px;
+    font-size: 12pt;
   }
 }

@@ -2,17 +2,17 @@
   <div class="container_images">
     <img src="../../assets/img/1.png">
   </div>
-  <form [formGroup]="form" (ngSubmit)="login(form.value)" class="form-login-theme">
+  <form class="login_form" [formGroup]="form" (ngSubmit)="login(form.value)">
     <mat-form-field>
       <input
-        formControlName="username"
+        formControlName="userName"
         matInput
       >
       <mat-placeholder>
         <mat-icon>account_circle</mat-icon>
         <span class="placeholder_title">Tên đăng nhập</span>
       </mat-placeholder>
-      <mat-error *ngIf="formErrors.username">{{formErrors.username}}</mat-error>
+      <mat-error *ngIf="formErrors.userName">{{formErrors.userName}}</mat-error>
     </mat-form-field>
     <mat-form-field>
       <input
@@ -29,11 +29,13 @@
     <p class="alert_error" *ngIf="resMessages">
       {{resMessages}}
     </p>
-    <button
-      mat-button
-      class="btn_submit"
-    >
-      Đăng nhập
-    </button>
+    <div class="flex_col_center">
+      <button
+        mat-button
+        class="btn_submit"
+      >
+        Đăng nhập
+      </button>
+    </div>
   </form>
 </div>

@@ -1,6 +1,14 @@
 .flex {
   display: flex;
 }
+.flex_col_center {
+  display: flex;
+  justify-content: center;
+}
+.flex_row_center {
+  display: flex;
+  align-items: center;
+}
 .nonPadding {
   padding: 0;
 }

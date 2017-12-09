@@ -19,25 +19,16 @@ export class ProgressBarService {
   }
 
   public start() {
-    this._isStarted = true;
-    this._counter++;
     this.progress.start();
-    if (this._doneTimeout) {
-      clearTimeout(this._doneTimeout);
-    }
+
     this.onStart.emit(true);
   }
 
   public done() {
-    this._counter--;
-    if (this._counter <= 0) {
-      this._counter = 0;
-      this._isStarted = false;
-      this._doneTimeout = setTimeout(() => {
-        this.progress.done();
-      }, 400);
-      this.onDone.emit(true);
-    }
+    this.onDone.emit(true);
+    setTimeout(() => {
+      this.progress.done();
+    }, 400);
   }
 
 

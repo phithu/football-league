@@ -1,7 +1,16 @@
-<div class="flex">
-  <app-side-nav></app-side-nav>
-  <main>
-    <app-toolbar-admin></app-toolbar-admin>
-    <router-outlet></router-outlet>
-  </main>
-</div>
+<mat-sidenav-container>
+  <mat-sidenav #sidenav mode="side" opened="true">
+    <app-side-nav></app-side-nav>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <main>
+      <app-toolbar-admin (onMenu)="sidenav.toggle()"></app-toolbar-admin>
+      <div class="container__page">
+        <router-outlet></router-outlet>
+      </div>
+    </main>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+
+

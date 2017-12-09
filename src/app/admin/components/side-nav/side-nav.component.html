@@ -14,7 +14,7 @@
         <a
           class="buttonFullWidth"
           mat-button
-          [routerLink]="['/admin', 'add-team']"
+          [routerLink]="['add-team']"
         >
           Thêm đội bóng
         </a>
@@ -44,6 +44,28 @@
           mat-button
         >
           Chỉnh sửa thông tin cầu thủ
+        </button>
+      </div>
+    </mat-expansion-panel>
+    <mat-expansion-panel *ngIf="dataUser.typeUser === TYPE_USER.OWNER">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Quản lý người dùng
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div>
+        <a
+          class="buttonFullWidth"
+          mat-button
+          [routerLink]="['add-user']"
+        >
+          Thêm người dùng
+        </a>
+        <button
+          class="buttonFullWidth"
+          mat-button
+        >
+          Chỉnh sửa thông tin người dùng
         </button>
       </div>
     </mat-expansion-panel>

@@ -4,8 +4,8 @@ import {
 } from '@angular/core';
 
 import {
-  FormGroup,
   FormControl,
+  FormGroup,
 } from '@angular/forms';
 
 @Component({
@@ -24,6 +24,7 @@ export class FormBaseComponent implements OnInit {
 
   public ngOnInit() {
     this.form = new FormGroup(this.controlConfig, this.configForm);
+    this.validatorForm();
   }
 
   public validatorControl(field?: string, submited?: boolean) {
@@ -33,27 +34,57 @@ export class FormBaseComponent implements OnInit {
     if (this.formErrors.hasOwnProperty(field)) {
       this.formErrors[field] = ''; // <-- clear errors message previous
       const control = this.form.get(field); // <-- Get control by filed name
-      if (control && control.invalid) {
+      if (control && control.dirty && control.invalid) {
         const message = this.validatorMessages[field];
         for (const keyError in control.errors) {
           if (control.errors.hasOwnProperty(keyError)) { // <-- Check the control have had error with keyError
             this.formErrors[field] = message[keyError]; // <-- Set value form formErrors
+            break;
           }
         }
       }
     }
   }
 
-  public validatorForm(submited?: boolean) {
-    if (!this.form) { // <-- The form haven't existed yet
+  // public validatorForm(submitted?: boolean) {
+  //   if (!this.form) { // <-- The form haven't existed yet
+  //     return;
+  //   }
+  //   for (const field in this.formErrors) {
+  //     if (this.formErrors.hasOwnProperty(field)) {
+  //       if (submitted) {
+  //         this.form.markAsDirty();
+  //       }
+  //       this.validatorControl(field);
+  //     }
+  //   }
+  // }
+
+  public validatorForm(submitted?: boolean) {
+    if (!this.form) {
       return;
     }
+    const form = this.form;
     for (const field in this.formErrors) {
       if (this.formErrors.hasOwnProperty(field)) {
-        if (submited) {
-          this.form.markAsDirty();
+        // clear previous error message (if any)
+        this.formErrors[field] = '';
+        const control = form.get(field);
+        if (submitted) {
+          control.markAsDirty();
         }
-        this.validatorControl(field);
+        // self.hasError = false;
+        if (control && control.dirty && !control.valid) {
+          // self.hasError = true;
+          // console.log(self.hasError);
+          const messages = this.validatorMessages[field];
+          for (const key in control.errors) {
+            if (control.errors.hasOwnProperty(key)) {
+              this.formErrors[field] += messages[key] + ' ';
+              break;
+            }
+          }
+        }
       }
     }
   }

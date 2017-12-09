@@ -1,3 +1,4 @@
+@import 'colors';
 app-login {
   & .mat-form-field-underline {
     background-color: #fff !important;
@@ -7,7 +8,31 @@ app-login {
   }
   & .mat-focused {
     & .mat-form-field-placeholder {
-      color: #c62828 !important;
+      color: rgb(3, 155, 229) !important;
     }
   }
+}
+form {
+  & mat-form-field {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+  & input {
+    color: #fff;
+  }
+  mat-placeholder {
+    display: flex;
+    & .placeholder_title {
+      margin-left: 5px;
+    }
+  }
+  .alert_error {
+    text-align: center;
+    background-color: $warn;
+    color: #fff;
+    padding: 7px 10px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+  }
+
 }

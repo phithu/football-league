@@ -3,7 +3,7 @@
 @include mat-core();
 
 $my-app-primary: mat-palette($mat-light-blue, 600);
-$my-app-accent: mat-palette($mat-green, 800);
+$my-app-accent: mat-palette($mat-orange, 900);
 $my-app-warn: mat-palette($mat-red, 800);
 
 $my-app-theme: mat-light-theme($my-app-primary, $my-app-accent, $my-app-warn);
@@ -12,7 +12,7 @@ $my-app-theme: mat-light-theme($my-app-primary, $my-app-accent, $my-app-warn);
 
 .alternate-theme {
   $alternate-primary: mat-palette($mat-light-blue, 600);
-  $alternate-accent: mat-palette($mat-green, 600);
+  $alternate-accent: mat-palette($mat-green, A700);
   $alternate-warn: mat-palette($mat-red, 700);
 
   $alternate-theme: mat-light-theme($alternate-primary, $alternate-accent, $alternate-warn);
