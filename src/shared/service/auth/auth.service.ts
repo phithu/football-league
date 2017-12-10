@@ -17,7 +17,7 @@ export class AuthService {
   }
 
   public logout(): Observable<any> {
-    return this.http.get(`${AppConst.domain}/logout`);
+    return this.http.post(`${AppConst.domain}/logout`, {});
   }
 
   public verifyToken(): Observable<any> {

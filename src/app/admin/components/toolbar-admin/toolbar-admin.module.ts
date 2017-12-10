@@ -6,7 +6,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { ToolbarAdminComponent } from './toolbar-admin.component';
-import { RandomColorDirective } from '../../../extension/random-color.directive';
+import { AvatarModule } from '../avatar';
 
 
 @NgModule({
@@ -16,11 +16,11 @@ import { RandomColorDirective } from '../../../extension/random-color.directive'
     MatToolbarModule,
     MatMenuModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    AvatarModule,
   ],
   declarations: [
-    ToolbarAdminComponent,
-    RandomColorDirective
+    ToolbarAdminComponent
   ],
   exports: [
     ToolbarAdminComponent

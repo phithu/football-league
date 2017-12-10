@@ -8,9 +8,5 @@ export const AppRoutes: Routes = [
   {
     path: '',
     loadChildren: './admin/admin.module#AdminModule',
-  },
-  // {
-  //   path: '',
-  //   loadChildren: './main-layout/main-layout.module#MainLayoutModule'
-  // }
+  }
 ];

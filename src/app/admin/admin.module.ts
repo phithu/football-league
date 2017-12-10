@@ -13,6 +13,7 @@ import {
   FormsModule,
   ReactiveFormsModule
 } from '@angular/forms';
+
 import { AdminRoutes } from './admin.routes';
 import { HomeAdminComponent } from './pages/home-admin';
 import { AddTeamComponent } from './pages/team/add-team';
@@ -22,6 +23,9 @@ import { GuardModule } from './module/guard';
 import { AddUserComponent } from './pages/user/add-user';
 import { ImagesUploadModule } from '../../shared/module/images-upload';
 import { NotificationModule } from '../../shared/module/notification';
+import { EditUserComponent } from './pages/user/edit-user';
+import { UserModule } from '../../shared/service/user';
+import { UserItemModule } from './components/user-item';
 
 
 @NgModule({
@@ -41,13 +45,16 @@ import { NotificationModule } from '../../shared/module/notification';
     ToolbarAdminModule,
     GuardModule,
     ImagesUploadModule,
-    NotificationModule
+    NotificationModule,
+    UserModule,
+    UserItemModule
   ],
   declarations: [
     AdminComponent,
     HomeAdminComponent,
     AddTeamComponent,
     AddUserComponent,
+    EditUserComponent
   ],
 })
 export class AdminModule {

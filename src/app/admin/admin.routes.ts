@@ -4,6 +4,7 @@ import { AddTeamComponent } from './pages/team/add-team';
 import { AdminComponent } from './admin.component';
 import { GuardService } from './module/guard';
 import { AddUserComponent } from './pages/user/add-user';
+import { EditUserComponent } from './pages/user/edit-user';
 
 export const AdminRoutes: Routes = [
   {
@@ -18,6 +19,10 @@ export const AdminRoutes: Routes = [
       {
         path: 'add-user',
         component: AddUserComponent
+      },
+      {
+        path: 'edit-user',
+        component: EditUserComponent
       },
       {
         path: '',

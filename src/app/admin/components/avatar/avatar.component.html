@@ -1,0 +1,8 @@
+<ng-container *ngIf="imagesURL">
+  <ng-container *ngIf="imagesURL.length > 1; else notImages">
+    <img class="images_box" [src]="imagesURL"/>
+  </ng-container>
+  <ng-template #notImages>
+    <div randomColor class="images_box text_center">{{imagesURL}}</div>
+  </ng-template>
+</ng-container>

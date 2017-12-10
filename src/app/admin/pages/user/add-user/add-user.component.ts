@@ -95,7 +95,7 @@ export class AddUserComponent extends FormBaseComponent implements OnInit {
   }
 
   public register(value) {
-    this.uploaded = false; // disabled button register
+
     this.validatorForm(true);
     const {fullName, userName, password, typeUser} = value;
     if (this.form.valid) {
@@ -110,6 +110,7 @@ export class AddUserComponent extends FormBaseComponent implements OnInit {
         imagesURL: this.imagesURL
       }).subscribe((response) => {
         if (response.result) {
+          this.uploaded = false; // disabled button register
           if (response.mgs === 'User have been existed') {
             this.notification.onError('Tên người dùng đã tồn tại. Vui lòng lựa chọn tên khác', 'Lỗi');
           } else {

@@ -14,7 +14,7 @@
         <a
           class="buttonFullWidth"
           mat-button
-          [routerLink]="['add-team']"
+          [routerLink]="['/', 'add-team']"
         >
           Thêm đội bóng
         </a>
@@ -57,16 +57,17 @@
         <a
           class="buttonFullWidth"
           mat-button
-          [routerLink]="['add-user']"
+          [routerLink]="['/', 'add-user']"
         >
           Thêm người dùng
         </a>
-        <button
+        <a
           class="buttonFullWidth"
           mat-button
+          [routerLink]="['/', 'edit-user']"
         >
           Chỉnh sửa thông tin người dùng
-        </button>
+        </a>
       </div>
     </mat-expansion-panel>
   </mat-accordion>

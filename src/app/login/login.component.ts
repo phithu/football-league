@@ -57,7 +57,6 @@ export class LoginComponent extends FormBaseComponent implements OnInit {
   }
 
   public login(value) {
-    console.log(value);
     if (this.form.valid) {
       this.authService.login(value.userName, value.password)
         .subscribe((response) => {
