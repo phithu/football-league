@@ -23,6 +23,7 @@ import { NotificationComponent } from '../../../../../shared/module/notification
   encapsulation: ViewEncapsulation.None,
   styleUrls: ['./add-user.component.scss']
 })
+
 export class AddUserComponent extends FormBaseComponent implements OnInit {
 
   public form: FormGroup;
@@ -111,6 +112,7 @@ export class AddUserComponent extends FormBaseComponent implements OnInit {
       }).subscribe((response) => {
         if (response.result) {
           this.uploaded = false; // disabled button register
+          this.notification.clearAll();
           if (response.mgs === 'User have been existed') {
             this.notification.onError('Tên người dùng đã tồn tại. Vui lòng lựa chọn tên khác', 'Lỗi');
           } else {

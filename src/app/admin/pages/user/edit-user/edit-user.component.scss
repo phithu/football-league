@@ -1,0 +1,7 @@
+.user_container {
+  flex-wrap: wrap;
+  & .user_item {
+    width: 400px;
+    margin: 10px;
+  }
+}

@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 
-import { UserService } from './user.service';
+import { AccountService } from './account.service';
 
 @NgModule({
   imports: [
@@ -10,8 +10,8 @@ import { UserService } from './user.service';
     HttpClientModule
   ],
   providers: [
-    UserService
+    AccountService
   ]
 })
-export class UserModule {
+export class AccountModule {
 }

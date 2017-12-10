@@ -1,0 +1,19 @@
+$size: 40px;
+:host {
+  height: $size;
+  display: block;
+  width: $size;
+}
+.images_box {
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+  box-shadow: 1px 1px 1px #333;
+}
+.text_center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+

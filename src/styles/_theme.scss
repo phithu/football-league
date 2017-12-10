@@ -27,3 +27,11 @@ $my-app-theme: mat-light-theme($my-app-primary, $my-app-accent, $my-app-warn);
   $form-login-theme: mat-light-theme($login-primary, $login-accent, $login-warn);
   @include angular-material-theme($form-login-theme)
 }
+.confirm-dialog-theme {
+  $dialog-primary: mat-palette($mat-green, 600);
+  $dialog-accent: mat-palette($mat-green, A700);
+  $dialog-warn: mat-palette($mat-red, 800);
+
+  $confirm-dialog-theme: mat-light-theme($dialog-primary, $dialog-accent, $dialog-warn);
+  @include angular-material-theme($confirm-dialog-theme)
+}

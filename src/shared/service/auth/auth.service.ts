@@ -46,6 +46,14 @@ export class AuthService {
     localStorage.setItem('userName', userName);
   }
 
+  public getUserID(): string {
+    return localStorage.getItem('userID');
+  }
+
+  public setUserID(userID): void {
+    localStorage.setItem('userID', userID);
+  }
+
   public setFullName(fullName) {
     localStorage.setItem('fullName', fullName);
   }
@@ -71,24 +79,19 @@ export class AuthService {
     localStorage.setItem('typeUser', typeUser);
   }
 
-  public loginSuccess(fullName, userName, imagesURL, typeUser, token) {
-    this.setToken(token);
+  public loginSuccess(userID, fullName, userName, imagesURL, typeUser, token) {
+
+    this.setUserID(userID);
     this.setFullName(fullName);
+    this.setUserName(userName);
     this.setImagesURL(imagesURL);
     this.setTypeUser(typeUser);
-    this.setUserName(userName);
-
-    const data = {
-      fullName: this.getFullName(),
-      userName: this.getUserName(),
-      imagesURL: this.getImagesURL(),
-      typeUser: this.getTypeUser(),
-      token: this.getToken()
-    };
+    this.setToken(token);
   }
 
   public getDataLogin() {
     return {
+      userID: this.getUserID(),
       fullName: this.getFullName(),
       userName: this.getUserName(),
       imagesURL: this.getImagesURL(),

@@ -67,9 +67,9 @@ export class LoginComponent extends FormBaseComponent implements OnInit {
               this.resMessages = 'Tên tài khoản không tồn tại. Vui lòng kiểm tra lại';
             } else {
               if (response.token && response.user) {
-                const {fullName, userName, imagesURL, typeUser} = response.user;
+                const {userID, fullName, userName, imagesURL, typeUser} = response.user;
                 const {token} = response;
-                this.authService.loginSuccess(fullName, userName, imagesURL, typeUser, token);
+                this.authService.loginSuccess(userID, fullName, userName, imagesURL, typeUser, token);
                 this.router.navigate(['/']);
               } else {
                 this.resMessages = 'Hiện tại không thể đăng nhập. Vui lòng thử lại sau';

@@ -1,33 +1,79 @@
 import {
   Component,
   OnInit,
-  ViewEncapsulation
+  ViewChild,
 } from '@angular/core';
+import { MatDialog } from '@angular/material';
+import 'rxjs/add/operator/switchMap';
 
-import { UserService } from '../../../../../shared/service/user';
-
+import { AccountService } from '../../../../../shared/service/account';
+import {
+  ConfirmDialogComponent,
+  ConfirmDialogService
+} from '../../../../../shared/module/confirm-dialog';
+import { NotificationComponent } from '../../../../../shared/module/notification';
+import { AuthService } from '../../../../../shared/service/auth';
+import { ProfileDialogComponent } from '../../../../../shared/module/profile-dialog';
 
 @Component({
   selector: 'app-edit-user',
   templateUrl: './edit-user.component.html',
-  encapsulation: ViewEncapsulation.None,
   styleUrls: ['./edit-user.component.scss']
 })
 export class EditUserComponent implements OnInit {
 
   public listUser: Array<any>;
+  public userIDCurrent: string;
+  @ViewChild('notification') notification: NotificationComponent;
 
-  constructor(private userService: UserService) {
+  constructor(private accountService: AccountService,
+              private authService: AuthService,
+              private confirmDialogService: ConfirmDialogService,
+              private dialog: MatDialog) {
   }
 
   public ngOnInit() {
-    this.userService.getAllUsers()
+    this.getAllUsers();
+    this.userIDCurrent = this.authService.getUserID();
+  }
+
+  public getAllUsers() {
+    this.accountService.getAllUsers()
       .subscribe((response) => {
         if (response.result) {
           this.listUser = response.data;
-          console.log(this.listUser);
         }
       });
+  }
+
+  public deleteUser(user: any) {
+    // Open Dialog
+    const dialog = this.dialog.open(ConfirmDialogComponent, {
+      data: {
+        title: 'Xác nhận',
+        description: `Bạn có muốn xóa người dùng: ${user.fullName}`
+      }
+    });
+
+    this.confirmDialogService.OnOkay
+      .switchMap(() => this.accountService.deleteUserID(user['_id']))
+      .subscribe((response) => {
+        if (response.result) {
+          // close dialog
+          dialog.close();
+          // get all user again
+          this.getAllUsers();
+          this.notification.clearAll();
+          // push notification
+          this.notification.onSuccess(`Người dùng ${user.fullName} đã được xóa`, 'Xóa thành công');
+        }
+      });
+  }
+
+  public viewUser(user: any) {
+    this.dialog.open(ProfileDialogComponent, {
+      data: user
+    });
   }
 
 

@@ -1,0 +1,24 @@
+@import '../../../styles/colors';
+
+header {
+  background-color: $primary;
+  justify-content: space-between;
+  padding: 5px 15px;
+  & p, mat-icon {
+    color: #fff;
+  }
+  & .close_button {
+    cursor: pointer;
+    &:active {
+      opacity: 0.5;
+    }
+  }
+}
+main {
+  margin: 20px;
+  & button {
+    margin-top: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+}
