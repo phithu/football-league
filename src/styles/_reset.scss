@@ -31,4 +31,9 @@ app-side-nav {
 }
 mat-sidenav-container {
   height: 100vh;
+  background-color: #ececec !important;
 }
+.mat-dialog-container {
+  padding: 0px !important;
+}
+

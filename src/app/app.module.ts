@@ -10,6 +10,7 @@ import { JWTInterceptors } from './extension/jwtinterceptors';
 import { AuthModule } from '../shared/service/auth';
 import { ProgressBarModule } from '../shared/module/progress-bar';
 
+
 @NgModule({
   declarations: [
     AppComponent,

@@ -12,18 +12,18 @@ import {
 })
 export class NotificationComponent {
 
-  style = 'material';
-  timeout = 3000;
-  position: SnotifyPosition = SnotifyPosition.rightTop;
-  progressBar = true;
-  closeClick = true;
-  newTop = true;
-  backdrop = -1;
-  dockMax = 8;
-  blockMax = 6;
-  pauseHover = true;
-  titleMaxLength = 15;
-  bodyMaxLength = 80;
+  public style = 'material';
+  public timeout = 2000;
+  public position: SnotifyPosition = SnotifyPosition.rightTop;
+  public progressBar = false;
+  public closeClick = true;
+  public newTop = true;
+  public backdrop = -1;
+  public dockMax = 8;
+  public blockMax = 6;
+  public pauseHover = true;
+  public titleMaxLength = 15;
+  public bodyMaxLength = 80;
 
   constructor(private snotifyService: SnotifyService) {
   }
@@ -68,7 +68,7 @@ export class NotificationComponent {
     this.snotifyService.warning(body, title, this.getConfig(config));
   }
 
-  onClear() {
+  clearAll() {
     this.snotifyService.clear();
   }
 

@@ -1,3 +1,14 @@
 <ng-container *ngIf="listUser">
-  <app-user-item [user]="user" *ngFor="let user of listUser"></app-user-item>
+  <div class="flex user_container">
+    <ng-container *ngFor="let user of listUser">
+      <app-user-item
+        [user]="user"
+        (onDelete)="deleteUser(user)"
+        (onView)="viewUser(user)"
+        class="user_item"
+        *ngIf="user['_id'] !== userIDCurrent">
+      </app-user-item>
+    </ng-container>
+  </div>
 </ng-container>
+<app-notification #notification></app-notification>

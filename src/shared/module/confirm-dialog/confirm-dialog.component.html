@@ -1,0 +1,13 @@
+<header class="flex_row_center">
+  <p>{{data.title}}</p>
+  <div (click)="closeDialog()" class="close_button">
+    <mat-icon>clear</mat-icon>
+  </div>
+</header>
+<main>
+  <p>{{data.description}}</p>
+  <div class="flex_row_center flex_col_center confirm-dialog-theme">
+    <button (click)="onAgree()" mat-raised-button color="primary">Đồng hủy</button>
+    <button (click)="closeDialog()" mat-raised-button color="warn">Hủy bỏ</button>
+  </div>
+</main>

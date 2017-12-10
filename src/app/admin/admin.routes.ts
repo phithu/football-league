@@ -1,10 +1,7 @@
 import { Routes } from '@angular/router';
 import { HomeAdminComponent } from './pages/home-admin';
-import { AddTeamComponent } from './pages/team/add-team';
 import { AdminComponent } from './admin.component';
 import { GuardService } from './module/guard';
-import { AddUserComponent } from './pages/user/add-user';
-import { EditUserComponent } from './pages/user/edit-user';
 
 export const AdminRoutes: Routes = [
   {
@@ -13,17 +10,21 @@ export const AdminRoutes: Routes = [
     canActivate: [GuardService],
     children: [
       {
-        path: 'add-team',
-        component: AddTeamComponent
+        path: 'user',
+        loadChildren: './pages/user/user.module#UserModule'
       },
-      {
-        path: 'add-user',
-        component: AddUserComponent
-      },
-      {
-        path: 'edit-user',
-        component: EditUserComponent
-      },
+      // {
+      //   path: 'add-team',
+      //   component: AddTeamComponent
+      // },
+      // {
+      //   path: 'add-user',
+      //   component: AddUserComponent
+      // },
+      // {
+      //   path: 'edit-user',
+      //   component: EditUserComponent
+      // },
       {
         path: '',
         component: HomeAdminComponent,

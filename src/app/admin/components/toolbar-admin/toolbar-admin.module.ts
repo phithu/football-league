@@ -6,7 +6,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { ToolbarAdminComponent } from './toolbar-admin.component';
-import { AvatarModule } from '../avatar';
+import { AvatarModule } from '../../../../shared/module/avatar/avatar.module';
 
 
 @NgModule({

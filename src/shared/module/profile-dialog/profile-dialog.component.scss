@@ -1,0 +1,45 @@
+@import '../../../styles/colors';
+
+:host {
+  display: block;
+  width: 500px
+}
+
+header {
+  background-color: $primary;
+  justify-content: space-between;
+  padding: 5px 15px;
+  & p, mat-icon {
+    color: #fff;
+  }
+  & .close_button {
+    cursor: pointer;
+    &:active {
+      opacity: 0.5;
+    }
+  }
+}
+
+main {
+  margin: 20px;
+  & button {
+    margin-top: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  app-avatar {
+    margin: 10px auto;
+    margin-bottom: 20px;
+  }
+  & p {
+    margin: 5px 0px;
+    text-align: center;
+  }
+  & .info_item {
+    font-size: 12pt;
+    color: #8a8a8a;
+    & span {
+      margin-left: 5px;
+    }
+  }
+}
