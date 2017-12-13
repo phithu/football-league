@@ -4,7 +4,9 @@
   </mat-sidenav>
   <mat-sidenav-content>
     <main>
-      <app-toolbar-admin (onMenu)="sidenav.toggle()"></app-toolbar-admin>
+      <app-toolbar-admin
+        (onMenu)="sidenav.toggle()">
+      </app-toolbar-admin>
       <div class="container__page">
         <router-outlet></router-outlet>
       </div>

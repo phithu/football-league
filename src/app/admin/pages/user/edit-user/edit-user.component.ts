@@ -14,6 +14,7 @@ import {
 import { NotificationComponent } from '../../../../../shared/module/notification';
 import { AuthService } from '../../../../../shared/service/auth';
 import { ProfileDialogComponent } from '../../../../../shared/module/profile-dialog';
+import { TitleAppService } from '../../../../../shared/module/title-app';
 
 @Component({
   selector: 'app-edit-user',
@@ -28,6 +29,7 @@ export class EditUserComponent implements OnInit {
 
   constructor(private accountService: AccountService,
               private authService: AuthService,
+              private titleAppService: TitleAppService,
               private confirmDialogService: ConfirmDialogService,
               private dialog: MatDialog) {
   }
@@ -35,6 +37,7 @@ export class EditUserComponent implements OnInit {
   public ngOnInit() {
     this.getAllUsers();
     this.userIDCurrent = this.authService.getUserID();
+    this.titleAppService.setTitle('Chỉnh sửa người dùng');
   }
 
   public getAllUsers() {

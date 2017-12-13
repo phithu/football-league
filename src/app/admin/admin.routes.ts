@@ -13,6 +13,10 @@ export const AdminRoutes: Routes = [
         path: 'user',
         loadChildren: './pages/user/user.module#UserModule'
       },
+      {
+        path: 'profile',
+        loadChildren: './pages/profile/profile.module#ProfileModule'
+      },
       // {
       //   path: 'add-team',
       //   component: AddTeamComponent

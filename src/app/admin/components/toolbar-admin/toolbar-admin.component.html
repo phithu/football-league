@@ -1,25 +1,29 @@
 <mat-toolbar color="warn">
-  <button (click)="menuClick()" mat-icon-button>
-    <mat-icon>menu</mat-icon>
-  </button>
-  <span>Some text fot title</span>
+  <div class="flex_row_center">
+    <button (click)="menuClick()" mat-icon-button>
+      <mat-icon>menu</mat-icon>
+    </button>
+    <button (click)="toggleSearch()" mat-icon-button>
+      <mat-icon class="search_button">search</mat-icon>
+    </button>
+  </div>
+  <div class="flexGrow group_center">
+    <p>{{titleToolbar}}</p>
+    <div [@widthSearch]="state" class="search_group">
+      <input placeholder="Tìm kiếm cầu thủ..." >
+    </div>
+  </div>
   <div class="user flex">
-    <!--<ng-container *ngIf="dataUser.imagesURL.length > 1; else notImages">-->
-      <!--<img class="images_box" [src]="dataUser.imagesURL" />-->
-    <!--</ng-container>-->
-    <!--<ng-template #notImages>-->
-      <!--<div randomColor class="images_box text_center">{{dataUser.imagesURL}}</div>-->
-    <!--</ng-template>-->
     <app-avatar [imagesURL]="dataUser.imagesURL"></app-avatar>
     <span class="fullName_text">{{dataUser.fullName}}</span>
     <button mat-icon-button [matMenuTriggerFor]="menu">
       <mat-icon>keyboard_arrow_down</mat-icon>
     </button>
     <mat-menu #menu="matMenu">
-      <button mat-menu-item>
+      <a [routerLink]="['', 'profile', dataUser.userID]" mat-menu-item>
         <mat-icon>account_circle</mat-icon>
         <span>Trang cá nhân</span>
-      </button>
+      </a>
       <button (click)="logOut()" mat-menu-item>
         <mat-icon>subdirectory_arrow_right</mat-icon>
         <span>Đăng xuất</span>
