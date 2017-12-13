@@ -1,11 +1,12 @@
-app-add-user {
-  display: block;
+main {
+  margin: 20px;
+  user-select: none;
   & button {
     padding: 3px 13px;
     margin: 10px 10px !important;
-    &.btn_reset {
-      color: #333;
-    }
+  }
+  & app-avatar {
+    margin-top: 0px;
   }
   & form {
     &.register_form {
@@ -37,10 +38,7 @@ app-add-user {
       }
     }
   }
-  & app-images-upload {
-    margin-left: 40px;
+  & app-avatar {
+    margin: 0px auto;
   }
 }
-
-
-

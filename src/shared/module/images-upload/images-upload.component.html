@@ -1,25 +1,44 @@
-<div class="avatar__control">
+<div class="avatar_control">
   <input (change)="onSelectImages($event)" name="image" #fileInput
          type="file" accept="image/*" ng2FileSelect
          [uploader]="uploader"
   />
 
-  <button type="button" (click)="fileInput.click()"
-          color="warn" mat-raised-button>
+  <button type="button"
+          class="buttonUpload"
+          (click)="fileInput.click()"
+          color="warn"
+          mat-raised-button
+  >
     <mat-icon>file_upload</mat-icon>
     {{titleUpload}}
   </button>
 
   <ng-container *ngFor="let item of uploader.queue">
-    <div class="images__box">
-      <img src={{item.images}} [ngClass]="{'uploadingImages': item.isUploaded}" alt="" class="images__box__img">
-      <div *ngIf="!item.isUploaded" class="images__box__progress">
+    <div [ngStyle]="{'height.px': (size.height + 35)}" class="imagesContainer">
+      <img #images src={{item.images}}
+           [ngStyle]="{'width.px': size.width, 'height.px': size.height}"
+           [ngClass]="{
+           'startBlur': !item.isUploaded,
+           'stopBlur': item.isUploaded,
+           'avatarImg' : typeUpload,
+           'logoImg': !typeUpload}"
+      >
+      <div *ngIf="!item.isUploaded" class="progress">
         <span>{{item.progress}}%</span>
         <mat-progress-bar mode="determinate" value={{item.progress}}></mat-progress-bar>
       </div>
-      <button *ngIf="item.isUploaded" class="images__box__button" mat-icon-button (click)="deleteImages()">
+
+      <button
+        *ngIf="item.isUploaded"
+        class="removeImages"
+        mat-icon-button
+        (click)="deleteImages()"
+        [ngStyle]="{'right.px': (size.width / 2) , 'top.px': (size.width / 4)}"
+      >
         <mat-icon>clear</mat-icon>
       </button>
     </div>
   </ng-container>
+
 </div>

@@ -13,9 +13,9 @@ import {
 import { FormBaseComponent } from '../../../../../shared/module/form-base';
 import { Matcher } from '../../../../extension/matcher.validator';
 import { ImagesUploadComponent } from '../../../../../shared/module/images-upload';
-import { AuthService } from '../../../../../shared/service/auth';
 import { NotificationComponent } from '../../../../../shared/module/notification';
 import { TitleAppService } from '../../../../../shared/module/title-app';
+import { AccountService } from '../../../../../shared/service/account';
 
 
 @Component({
@@ -35,7 +35,8 @@ export class AddUserComponent extends FormBaseComponent implements OnInit {
     password: new FormControl('', [Validators.required]),
     confirmPassword: new FormControl('', [Matcher('password'), Validators.required]),
     typeUser: new FormControl('', [Validators.required]),
-    imagesURL: new FormControl('')
+    imagesURL: new FormControl(''),
+    idImages: new FormControl('')
   };
   public validatorMessages = {
     userName: {
@@ -71,7 +72,7 @@ export class AddUserComponent extends FormBaseComponent implements OnInit {
   @ViewChild('notification') notification: NotificationComponent;
 
 
-  constructor(private authService: AuthService,
+  constructor(private accountService: AccountService,
               private titleAppService: TitleAppService) {
     super();
   }
@@ -92,6 +93,7 @@ export class AddUserComponent extends FormBaseComponent implements OnInit {
     this.form.get('imagesURL').setValue(value);
   }
 
+
   public ngOnInit() {
     super.ngOnInit();
     this.form.valueChanges.subscribe(() => this.validatorForm());
@@ -99,23 +101,21 @@ export class AddUserComponent extends FormBaseComponent implements OnInit {
   }
 
   public register(value) {
-
     this.validatorForm(true);
     const {fullName, userName, password, typeUser} = value;
     if (this.form.valid) {
       if (this.imagesURL.length === 0) {
         this.imagesURL = this.fullName.charAt(0).toUpperCase();
       }
-      this.authService.register({
+      this.accountService.register({
         fullName,
         userName,
         password,
         typeUser,
-        imagesURL: this.imagesURL
+        imagesURL: this.imagesURL,
       }).subscribe((response) => {
         if (response.result) {
           this.uploaded = false; // disabled button register
-          this.notification.clearAll();
           if (response.mgs === 'User have been existed') {
             this.notification.onError('Tên người dùng đã tồn tại. Vui lòng lựa chọn tên khác', 'Lỗi');
           } else {
@@ -130,7 +130,7 @@ export class AddUserComponent extends FormBaseComponent implements OnInit {
   public getImagesUpload(imagesURL) {
     if (imagesURL) {
       this.uploaded = true;
-      this.form.patchValue({imagesURL});
+      this.form.patchValue(imagesURL);
     } else {
       this.uploaded = false;
     }

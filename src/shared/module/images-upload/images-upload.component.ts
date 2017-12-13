@@ -1,9 +1,11 @@
 import {
   Component,
+  ElementRef,
   EventEmitter,
   Input,
   OnInit,
-  Output
+  Output,
+  ViewChild
 } from '@angular/core';
 import { ImagesUploadService } from './images-upload.service';
 import { FileUploader } from 'ng2-file-upload';
@@ -15,12 +17,24 @@ import { FileUploader } from 'ng2-file-upload';
 })
 export class ImagesUploadComponent implements OnInit {
 
-  @Output('onUpload') onUpload = new EventEmitter<string>();
+  public TYPE_UPLOAD = {
+    'AVATAR_UPLOAD': true,
+    'LOGO_UPLOAD': false
+  };
+
+  @ViewChild('images') images: ElementRef;
+  @Output('onUpload') onUpload = new EventEmitter<any>();
   @Output('onDelete') onDelete = new EventEmitter<string>();
   @Input('titleUpload') titleUpload: string = 'Tải ảnh';
+  @Input('typeUpload') typeUpload: boolean = this.TYPE_UPLOAD.AVATAR_UPLOAD;
+  @Input('size') size = {
+    width: 120,
+    height: 120
+  };
+
+  public idImages: string;
 
   public uploader: FileUploader = new FileUploader(this.imagesUploadService.fileUpload);
-  public deletehash: string;
 
   constructor(private imagesUploadService: ImagesUploadService) {
   }
@@ -30,14 +44,19 @@ export class ImagesUploadComponent implements OnInit {
     this.imagesUploadService.initiationUpload(this.uploader);
     this.imagesUploadService.completeUpload(this.uploader, (response: any) => {
       if (response.success) {
-        this.deletehash = response.data.deletehash;
-        const linkImages = response.data.link;
-        this.onUpload.emit(linkImages);
+        const {id, link} = response.data;
+        this.idImages = id;
+        this.onUpload.emit(link);
       }
     });
   }
 
   public onSelectImages(event) {
+    if (this.uploader.queue.length > 1) {
+      this.imagesUploadService.deleteImages(this.idImages)
+        .subscribe();
+      this.uploader.queue.splice(0, 1);
+    }
     event.srcElement.value = '';
     this.onUpload.emit(null);
     this.imagesUploadService.upload(this.uploader);
@@ -46,7 +65,8 @@ export class ImagesUploadComponent implements OnInit {
   public deleteImages() {
     this.uploader.clearQueue();
     this.onDelete.emit();
-    this.imagesUploadService.deleteImages(this.deletehash).subscribe();
+    this.imagesUploadService.deleteImages(this.idImages)
+      .subscribe();
   }
 
 }

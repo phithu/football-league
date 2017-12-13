@@ -10,6 +10,7 @@ import { AddTeamComponent } from './pages/team/add-team';
 import { SideNavModule } from './components/side-nav';
 import { ToolbarAdminModule } from './components/toolbar-admin';
 import { GuardModule } from './module/guard';
+import { AccountModule } from '../../shared/service/account';
 
 @NgModule({
   imports: [
@@ -19,6 +20,7 @@ import { GuardModule } from './module/guard';
     SideNavModule,
     ToolbarAdminModule,
     GuardModule,
+    AccountModule,
   ],
   declarations: [
     AdminComponent,

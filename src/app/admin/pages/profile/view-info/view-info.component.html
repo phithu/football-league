@@ -1,0 +1,27 @@
+<main>
+  <app-avatar
+    [imagesURL]="dataUser.imagesURL"
+    [size]="120"
+    [fontSize]="60">
+  </app-avatar>
+  <p class="flex_row_center info_item">
+    <mat-icon>person</mat-icon>
+    <span>Tên người dùng: {{dataUser.fullName}}</span>
+  </p>
+  <p class="flex_row_center info_item">
+    <mat-icon>work</mat-icon>
+    <span>Loại người dùng: {{dataUser.tpyeUser | typeUser}}</span>
+  </p>
+  <p class="flex_row_center info_item">
+    <mat-icon>phone</mat-icon>
+    <span>Số điện thoại: 0123456789</span>
+  </p>
+  <p class="flex_row_center info_item">
+    <mat-icon>location_on</mat-icon>
+    <span>Địa chỉ: Số 60, Nguyễn Thị Minh Khai, Quận 1, TP HCM</span>
+  </p>
+  <p class="flex_row_center info_item">
+    <mat-icon>email</mat-icon>
+    <span>Thư điện tử: some@email.com.vn</span>
+  </p>
+</main>

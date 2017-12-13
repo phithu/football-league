@@ -1,0 +1,24 @@
+main {
+  margin: 20px;
+  user-select: none;
+  & button {
+    margin-top: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  app-avatar {
+    margin: 10px auto;
+    margin-bottom: 20px;
+  }
+  & p {
+    margin: 10px 0px;
+    justify-content: center;
+  }
+  & .info_item {
+    font-size: 12pt;
+    color: #8a8a8a;
+    & span {
+      margin-left: 5px;
+    }
+  }
+}
