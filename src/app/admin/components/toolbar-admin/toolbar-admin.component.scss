@@ -11,4 +11,34 @@ mat-toolbar {
     margin-left: 12px;
     font-size: 12pt;
   }
+  & .search_button {
+    transform: rotate(90deg);
+  }
+  & .group_center {
+    position: relative;
+    margin-right: 15px;
+    margin-left: 5px;
+    & p {
+      text-align: center;
+    }
+    & .search_group {
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      & input {
+        border: none;
+        background-color: #5a5a5a;
+        height: 32px;
+        width: 100%;
+        border-radius: 5px;
+        font-size: 12pt;
+        color: #fff;
+        text-indent: 10px;
+        &:focus {
+          outline: 0;
+        }
+      }
+    }
+  }
+
 }

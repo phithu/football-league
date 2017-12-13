@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  Component,
+  OnInit
+} from '@angular/core';
+import { TitleAppService } from '../../../../shared/module/title-app';
 
 @Component({
   selector: 'app-home-admin',
@@ -7,9 +11,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeAdminComponent implements OnInit {
 
-  constructor() { }
+  constructor(private titleAppService: TitleAppService) {
+  }
 
   ngOnInit() {
+    this.titleAppService.setTitle('Hệ thống quản lí giải bóng đá Vô địch Quốc Gia');
   }
 
 }

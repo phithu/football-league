@@ -15,6 +15,7 @@ import { Matcher } from '../../../../extension/matcher.validator';
 import { ImagesUploadComponent } from '../../../../../shared/module/images-upload';
 import { AuthService } from '../../../../../shared/service/auth';
 import { NotificationComponent } from '../../../../../shared/module/notification';
+import { TitleAppService } from '../../../../../shared/module/title-app';
 
 
 @Component({
@@ -70,7 +71,8 @@ export class AddUserComponent extends FormBaseComponent implements OnInit {
   @ViewChild('notification') notification: NotificationComponent;
 
 
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService,
+              private titleAppService: TitleAppService) {
     super();
   }
 
@@ -93,6 +95,7 @@ export class AddUserComponent extends FormBaseComponent implements OnInit {
   public ngOnInit() {
     super.ngOnInit();
     this.form.valueChanges.subscribe(() => this.validatorForm());
+    this.titleAppService.setTitle('Thêm mới người dùng');
   }
 
   public register(value) {

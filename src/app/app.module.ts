@@ -9,6 +9,7 @@ import { AppRoutes } from './app.router';
 import { JWTInterceptors } from './extension/jwtinterceptors';
 import { AuthModule } from '../shared/service/auth';
 import { ProgressBarModule } from '../shared/module/progress-bar';
+import { TitleAppModule } from '../shared/module/title-app';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { ProgressBarModule } from '../shared/module/progress-bar';
     BrowserAnimationsModule,
     RouterModule.forRoot(AppRoutes),
     ProgressBarModule,
-    AuthModule
+    AuthModule,
+    TitleAppModule
   ],
   providers: [
     {
