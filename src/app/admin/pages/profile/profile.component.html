@@ -1,3 +1,15 @@
-<p>
-  profile works!
-</p>
+<mat-card class="nonPadding">
+  <mat-tab-group>
+    <mat-tab label="Xem thông tin">
+      <app-view-info [dataUser]="dataUser">
+      </app-view-info>
+    </mat-tab>
+    <mat-tab label="Cập nhật thông tin">
+      <app-update-info [dataUser]="dataUser">
+      </app-update-info>
+    </mat-tab>
+    <mat-tab label="Đổi mật khẩu">
+      <app-change-password></app-change-password>
+    </mat-tab>
+  </mat-tab-group>
+</mat-card>

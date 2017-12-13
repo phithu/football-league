@@ -8,9 +8,7 @@ export class AuthService {
 
   constructor(private http: HttpClient) {
   }
-
   // public checkLogin = new BehaviorSubject<string>(localStorage.getItem('token'));
-
   public login(userName: string, password: string): Observable<any> {
     return this.http.post(`${AppConst.domain}/login`,
       {userName: userName, password: password});
@@ -23,11 +21,6 @@ export class AuthService {
   public verifyToken(): Observable<any> {
     return this.http.post(`${AppConst.domain}/verify`, {});
   }
-
-  public register(dataUser: any): Observable<any> {
-    return this.http.post(`${AppConst.domain}/register`, dataUser);
-  }
-
 
   public getToken(): string {
     return localStorage.getItem('token');
@@ -71,6 +64,14 @@ export class AuthService {
     localStorage.setItem('imagesURL', imagesURL);
   }
 
+  public setIDImages(idImages): void {
+    localStorage.setItem('idImages', idImages);
+  }
+
+  public getIDImages(): string {
+    return localStorage.getItem('idImages');
+  }
+
   public getTypeUser(): string {
     return localStorage.getItem('typeUser');
   }
@@ -79,12 +80,13 @@ export class AuthService {
     localStorage.setItem('typeUser', typeUser);
   }
 
-  public loginSuccess(userID, fullName, userName, imagesURL, typeUser, token) {
+  public loginSuccess(userID, fullName, userName, imagesURL, idImages, typeUser, token) {
 
     this.setUserID(userID);
     this.setFullName(fullName);
     this.setUserName(userName);
     this.setImagesURL(imagesURL);
+    this.setIDImages(idImages);
     this.setTypeUser(typeUser);
     this.setToken(token);
   }
@@ -95,6 +97,7 @@ export class AuthService {
       fullName: this.getFullName(),
       userName: this.getUserName(),
       imagesURL: this.getImagesURL(),
+      idImages: this.getIDImages(),
       typeUser: this.getTypeUser(),
       token: this.getToken()
     };

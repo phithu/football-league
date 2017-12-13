@@ -1,4 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  Component,
+  OnInit
+} from '@angular/core';
+
+import { ActivatedRoute } from '@angular/router';
+import { TitleAppService } from '../../../../shared/module/title-app';
 
 @Component({
   selector: 'app-profile',
@@ -7,9 +13,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor() { }
+  public dataUser: any;
 
-  ngOnInit() {
+  constructor(private activatedRoute: ActivatedRoute,
+              private titleAppService: TitleAppService) {
   }
+
+  public ngOnInit() {
+    this.titleAppService.setTitle('Thông tin người dùng');
+    this.activatedRoute.data
+      .map(value => value.data)
+      .subscribe((response) => {
+        if (response.result) {
+          this.dataUser = response.data;
+        }
+      });
+  }
+
+
 
 }

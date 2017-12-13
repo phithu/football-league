@@ -1,0 +1,44 @@
+<main>
+  <form [formGroup]="form" class="flex register_form">
+    <div class="flex_row_center">
+      <div class="wrapper">
+        <mat-form-field>
+          <input formControlName="fullName" matInput>
+          <mat-placeholder>
+            <mat-icon>person</mat-icon>
+            <span class="placeholder_title">Tên người dùng</span>
+          </mat-placeholder>
+          <mat-error *ngIf="formErrors.fullName">{{formErrors.fullName}}</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <input formControlName="userName" matInput>
+          <mat-placeholder>
+            <mat-icon>account_circle</mat-icon>
+            <span class="placeholder_title">Tên đăng nhập</span>
+          </mat-placeholder>
+          <mat-error *ngIf="formErrors.userName">{{formErrors.userName}}</mat-error>
+        </mat-form-field>
+      </div>
+      <div style="margin-left: 40px">
+        <app-images-upload #imagesUpload
+                           (onUpload)="getImagesUpload($event)"
+                           (onDelete)="deleteImages()"
+                           [titleUpload]='"Tải ảnh đại diện"'>
+        </app-images-upload>
+        <app-avatar
+          *ngIf="!isUploaded"
+          [imagesURL]="dataUser.imagesURL"
+          [size]="120"
+          [fontSize]="60">
+        </app-avatar>
+      </div>
+    </div>
+    <div class="flex_col_center">
+      <button [disabled]="!uploaded" mat-raised-button color="primary" class="btn_submit"
+              (click)="updateInfo(form.value)">
+        Cập nhập thông tin
+      </button>
+    </div>
+  </form>
+</main>
+<app-notification #notification></app-notification>

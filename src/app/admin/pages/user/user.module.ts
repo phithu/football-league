@@ -19,9 +19,9 @@ import { EditUserComponent } from './edit-user';
 import { ImagesUploadModule } from '../../../../shared/module/images-upload';
 import { NotificationModule } from '../../../../shared/module/notification';
 import { UserItemModule } from '../../components/user-item';
-import { AccountModule } from '../../../../shared/service/account';
 import { ConfirmDialogModule } from '../../../../shared/module/confirm-dialog';
 import { ProfileDialogModule } from '../../../../shared/module/profile-dialog';
+import { FormBaseModule } from '../../../../shared/module/form-base';
 
 @NgModule({
   imports: [
@@ -37,9 +37,9 @@ import { ProfileDialogModule } from '../../../../shared/module/profile-dialog';
     ImagesUploadModule,
     NotificationModule,
     UserItemModule,
-    AccountModule,
     ConfirmDialogModule,
-    ProfileDialogModule
+    ProfileDialogModule,
+    FormBaseModule
   ],
   declarations: [
     AddUserComponent,

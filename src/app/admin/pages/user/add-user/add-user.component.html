@@ -1,69 +1,72 @@
-<form [formGroup]="form" class="flex register_form">
-  <div class="flex_row_center">
-    <div class="wrapper">
-      <mat-form-field>
-        <input formControlName="fullName" matInput>
-        <mat-placeholder>
-          <mat-icon>person</mat-icon>
-          <span class="placeholder_title">Tên người dùng</span>
-        </mat-placeholder>
-        <mat-error *ngIf="formErrors.fullName">{{formErrors.fullName}}</mat-error>
-      </mat-form-field>
+<mat-card>
+  <form [formGroup]="form" class="flex register_form">
+    <div class="flex_row_center">
+      <div class="wrapper">
+        <mat-form-field>
+          <input formControlName="fullName" matInput>
+          <mat-placeholder>
+            <mat-icon>person</mat-icon>
+            <span class="placeholder_title">Tên người dùng</span>
+          </mat-placeholder>
+          <mat-error *ngIf="formErrors.fullName">{{formErrors.fullName}}</mat-error>
+        </mat-form-field>
 
-      <mat-form-field>
-        <input formControlName="userName" matInput>
-        <mat-placeholder>
-          <mat-icon>account_circle</mat-icon>
-          <span class="placeholder_title">Tên đăng nhập</span>
-        </mat-placeholder>
-        <mat-error *ngIf="formErrors.userName">{{formErrors.userName}}</mat-error>
-      </mat-form-field>
+        <mat-form-field>
+          <input formControlName="userName" matInput>
+          <mat-placeholder>
+            <mat-icon>account_circle</mat-icon>
+            <span class="placeholder_title">Tên đăng nhập</span>
+          </mat-placeholder>
+          <mat-error *ngIf="formErrors.userName">{{formErrors.userName}}</mat-error>
+        </mat-form-field>
 
-      <mat-form-field>
-        <input formControlName="password" type="password" matInput>
-        <mat-placeholder>
-          <mat-icon>lock</mat-icon>
-          <span class="placeholder_title">Mật khẩu</span>
-        </mat-placeholder>
-        <mat-error *ngIf="formErrors.password">{{formErrors.password}}</mat-error>
-      </mat-form-field>
+        <mat-form-field>
+          <input formControlName="password" type="password" matInput>
+          <mat-placeholder>
+            <mat-icon>lock</mat-icon>
+            <span class="placeholder_title">Mật khẩu</span>
+          </mat-placeholder>
+          <mat-error *ngIf="formErrors.password">{{formErrors.password}}</mat-error>
+        </mat-form-field>
 
-      <mat-form-field>
-        <input formControlName="confirmPassword" type="password" matInput>
-        <mat-placeholder>
-          <mat-icon>lock</mat-icon>
-          <span class="placeholder_title">Xác nhận mật khẩu</span>
-        </mat-placeholder>
-        <mat-error *ngIf="formErrors.confirmPassword">{{formErrors.confirmPassword}}</mat-error>
-      </mat-form-field>
+        <mat-form-field>
+          <input formControlName="confirmPassword" type="password" matInput>
+          <mat-placeholder>
+            <mat-icon>lock</mat-icon>
+            <span class="placeholder_title">Xác nhận mật khẩu</span>
+          </mat-placeholder>
+          <mat-error *ngIf="formErrors.confirmPassword">{{formErrors.confirmPassword}}</mat-error>
+        </mat-form-field>
 
-      <div class="radio_wrapper">
-        <div class="flex radio_container">
-          <label>Loại người dùng</label>
-          <mat-radio-group formControlName="typeUser" class="flex radio_group">
-            <mat-radio-button color="primary" value="admin">Quản trị viên</mat-radio-button>
-            <mat-radio-button color="primary" value="owner">Quản lí</mat-radio-button>
-          </mat-radio-group>
+        <div class="radio_wrapper">
+          <div class="flex radio_container">
+            <label>Loại người dùng</label>
+            <mat-radio-group formControlName="typeUser" class="flex radio_group">
+              <mat-radio-button color="primary" value="admin">Quản trị viên</mat-radio-button>
+              <mat-radio-button color="primary" value="owner">Quản lí</mat-radio-button>
+            </mat-radio-group>
+          </div>
+          <mat-error *ngIf="formErrors.typeUser">{{formErrors.typeUser}}</mat-error>
         </div>
-        <mat-error *ngIf="formErrors.typeUser">{{formErrors.typeUser}}</mat-error>
       </div>
+      <app-images-upload #imagesUpload
+                         (onUpload)="getImagesUpload($event)"
+                         (onDelete)="deleteImages()"
+                         [titleUpload]='"Tải ảnh đại diện"'>
+      </app-images-upload>
     </div>
-    <app-images-upload #imagesUpload
-                       (onUpload)="getImagesUpload($event)"
-                       (onDelete)="deleteImages()"
-                       [titleUpload]='"Tải ảnh đại diện"'>
-    </app-images-upload>
-  </div>
-  <div class="flex_col_center">
-    <button [disabled]="!uploaded" mat-raised-button color="primary" class="btn_submit" (click)="register(form.value)">
-      Tạo tại khoản
-    </button>
-    <button
-      [disabled]="!uploaded" mat-raised-button color="accent" class="btn_reset" (click)="resetForm()">
-      Nhập lại
-    </button>
-  </div>
-</form>
+    <div class="flex_col_center">
+      <button [disabled]="!uploaded" mat-raised-button color="primary" class="btn_submit"
+              (click)="register(form.value)">
+        Tạo tại khoản
+      </button>
+      <button
+        [disabled]="!uploaded" mat-raised-button color="accent" class="btn_reset" (click)="resetForm()">
+        Nhập lại
+      </button>
+    </div>
+  </form>
+</mat-card>
 <app-notification #notification></app-notification>
 
 

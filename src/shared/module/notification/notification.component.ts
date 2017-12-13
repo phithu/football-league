@@ -53,6 +53,7 @@ export class NotificationComponent {
   }
 
   onSuccess(body: string, title: string, config?: SnotifyToastConfig) {
+    this.clearAll();
     this.snotifyService.success(body, title, this.getConfig(config));
   }
 
@@ -61,6 +62,7 @@ export class NotificationComponent {
   }
 
   onError(body: string, title: string, config?: SnotifyToastConfig) {
+    this.clearAll();
     this.snotifyService.error(body, title, this.getConfig(config));
   }
 

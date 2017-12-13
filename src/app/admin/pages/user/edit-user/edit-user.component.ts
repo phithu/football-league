@@ -66,7 +66,6 @@ export class EditUserComponent implements OnInit {
           dialog.close();
           // get all user again
           this.getAllUsers();
-          this.notification.clearAll();
           // push notification
           this.notification.onSuccess(`Người dùng ${user.fullName} đã được xóa`, 'Xóa thành công');
         }
