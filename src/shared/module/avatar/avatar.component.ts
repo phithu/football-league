@@ -17,8 +17,12 @@ export class AvatarComponent implements OnChanges {
   @Input('imagesURL') imagesURL: string;
   @Input('size') size: number = 40;
   @Input('fontSize') fontSize: number;
+  @Input('typeImages') typeImages: string = 'avatar';
+  @Input('useDefault') useDefault: boolean = false;
 
   constructor(private element: ElementRef) {
+    // this.element.nativeElement.style.width.px = this.size;
+    // this.element.nativeElement.style.height.px = this.size;
   }
 
   ngOnChanges(changes: SimpleChanges) {

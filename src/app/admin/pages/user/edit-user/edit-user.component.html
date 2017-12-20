@@ -6,7 +6,7 @@
         (onDelete)="deleteUser(user)"
         (onView)="viewUser(user)"
         class="user_item"
-        *ngIf="user['_id'] !== userIDCurrent">
+        *ngIf="user['_id'] !== userIDCurrent && user.typeUser === 'admin'">
       </app-user-item>
     </ng-container>
   </div>

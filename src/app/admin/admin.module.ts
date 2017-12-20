@@ -6,7 +6,6 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 
 import { AdminRoutes } from './admin.routes';
 import { HomeAdminComponent } from './pages/home-admin';
-import { AddTeamComponent } from './pages/team/add-team';
 import { SideNavModule } from './components/side-nav';
 import { ToolbarAdminModule } from './components/toolbar-admin';
 import { GuardModule } from './module/guard';
@@ -25,7 +24,6 @@ import { AccountModule } from '../../shared/service/account';
   declarations: [
     AdminComponent,
     HomeAdminComponent,
-    AddTeamComponent,
   ],
 })
 export class AdminModule {

@@ -36,7 +36,6 @@ export class AddUserComponent extends FormBaseComponent implements OnInit {
     confirmPassword: new FormControl('', [Matcher('password'), Validators.required]),
     typeUser: new FormControl('', [Validators.required]),
     imagesURL: new FormControl(''),
-    idImages: new FormControl('')
   };
   public validatorMessages = {
     userName: {
@@ -130,7 +129,7 @@ export class AddUserComponent extends FormBaseComponent implements OnInit {
   public getImagesUpload(imagesURL) {
     if (imagesURL) {
       this.uploaded = true;
-      this.form.patchValue(imagesURL);
+      this.form.patchValue({imagesURL});
     } else {
       this.uploaded = false;
     }

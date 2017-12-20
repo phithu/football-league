@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
-import { TypeUserPipe } from './type-user.pipe';
 import { CommonModule } from '@angular/common';
-
+import { TypeUserPipe } from './type-user.pipe';
+import { TypePlayerPipe } from './type-player.pipe';
+import { FormatDatePipe } from './format-date.pipe';
 
 @NgModule({
   imports: [
@@ -9,9 +10,13 @@ import { CommonModule } from '@angular/common';
   ],
   declarations: [
     TypeUserPipe,
+    TypePlayerPipe,
+    FormatDatePipe
   ],
   exports: [
-    TypeUserPipe
+    TypeUserPipe,
+    TypePlayerPipe,
+    FormatDatePipe
   ]
 })
 export class SharePipesModule {

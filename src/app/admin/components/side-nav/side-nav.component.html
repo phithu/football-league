@@ -14,16 +14,17 @@
         <a
           class="buttonFullWidth"
           mat-button
-          [routerLink]="['/', 'add-team']"
+          [routerLink]="['/', 'team' , 'add-team']"
         >
           Thêm đội bóng
         </a>
-        <button
+        <a
           class="buttonFullWidth"
           mat-button
+          [routerLink]="['/', 'team' , 'edit-team']"
         >
           Chỉnh sửa thông tin đội bóng
-        </button>
+        </a>
       </div>
     </mat-expansion-panel>
     <mat-expansion-panel>

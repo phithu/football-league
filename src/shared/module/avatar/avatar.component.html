@@ -1,8 +1,32 @@
-<ng-container *ngIf="imagesURL">
+<ng-container>
   <ng-container *ngIf="imagesURL.length > 1; else notImages">
-    <img class="images_box" [src]="imagesURL"/>
+    <img
+      [ngClass]="{
+      'images_avatar': typeImages === 'avatar',
+      'images_logo': typeImages === 'logo'
+      }"
+      [src]="imagesURL"
+    />
   </ng-container>
   <ng-template #notImages>
-    <div randomColor [ngStyle]="{'font-size.px': fontSize}" class="images_box text_center">{{imagesURL}}</div>
+    <ng-container *ngIf="useDefault; else notUseDefault">
+      <img
+        [ngClass]="{
+      'images_avatar': typeImages === 'avatar',
+      'images_logo': typeImages === 'logo'
+      }"
+        src="../../../assets/img/user_default.png"
+      />
+    </ng-container>
+    <ng-template #notUseDefault>
+      <div
+        randomColor
+        [ngStyle]="{'font-size.px': fontSize}"
+        class="images_box text_center"
+      >
+        {{imagesURL}}
+      </div>
+    </ng-template>
+
   </ng-template>
 </ng-container>

@@ -9,16 +9,51 @@
   display: flex;
   align-items: center;
 }
+.flex_row {
+  flex-direction: row;
+}
+.flex_col {
+  flex-direction: column;
+}
+.flex_grow {
+  flex-grow: 1;
+}
+.flex_spaceBetween {
+  justify-content: space-between;
+}
+.flex_row_end {
+  justify-content: flex-end;
+}
 .nonPadding {
   padding: 0 !important;
 }
 .nonMargin {
   margin: 0;
 }
+.marginRight25 {
+  margin-right: 25px;
+}
+.marginLeft25{
+  margin-left: 25px;
+}
+.marginVertical10 {
+  margin: 10px 0px;
+}
 .buttonFullWidth {
   display: block;
   width: 100%;
 }
+.marginVertical5 {
+  margin: 5px 0px;
+}
+.marginHorizontal5 {
+  margin: 0px 5px;
+}
 .flexGrow {
   flex-grow: 1;
+}
+.buttonWithIcon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

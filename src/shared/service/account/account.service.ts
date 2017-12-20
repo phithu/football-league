@@ -12,6 +12,7 @@ export class AccountService {
   }
 
   public register(dataUser: any): Observable<any> {
+    console.log(dataUser);
     return this.http.post(`${AppConst.domain}/register`, dataUser);
   }
 

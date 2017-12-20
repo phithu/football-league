@@ -1,3 +1,55 @@
-<p>
-  add-team works!
-</p>
+<mat-card>
+  <mat-horizontal-stepper [linear]="true">
+    <mat-step [stepControl]="addInfoTeam.form">
+      <ng-template matStepLabel>Thông tin đội bóng</ng-template>
+      <main>
+        <app-add-info-team
+          #addInfoTeam
+          (nextStep)="nextStepOne($event)"
+        >
+        </app-add-info-team>
+      </main>
+    </mat-step>
+    <mat-step [stepControl]="addInfoListPlayer.form">
+      <ng-template matStepLabel>Thông tin cầu thủ</ng-template>
+      <main>
+        <app-add-info-list-player
+          #addInfoListPlayer
+          (nextStep)="nextStepTwo($event)"
+        >
+        </app-add-info-list-player>
+      </main>
+    </mat-step>
+
+    <mat-step>
+      <ng-template matStepLabel>Xác nhận</ng-template>
+      <main>
+        <app-info-team
+          [valueForm]="valueForm"
+        >
+        </app-info-team>
+        <div class="flex_col_center">
+          <button
+            class="marginHorizontal5 buttonWithIcon"
+            color="primary"
+            mat-raised-button
+            matStepperPrevious
+          >
+            <mat-icon>arrow_back</mat-icon>
+            <span>Quay lại</span>
+          </button>
+          <button
+            class="marginHorizontal5 buttonWithIcon"
+            color="primary"
+            (click)="onSave()"
+            mat-raised-button
+          >
+            <mat-icon>save</mat-icon>
+            <span>Lưu đội bóng</span>
+          </button>
+        </div>
+      </main>
+    </mat-step>
+  </mat-horizontal-stepper>
+</mat-card>
+<app-notification #notification></app-notification>

@@ -17,6 +17,10 @@ export const AdminRoutes: Routes = [
         path: 'profile',
         loadChildren: './pages/profile/profile.module#ProfileModule'
       },
+      {
+        path: 'team',
+        loadChildren: './pages/team/team.module#TeamModule'
+      },
       // {
       //   path: 'add-team',
       //   component: AddTeamComponent
