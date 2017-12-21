@@ -1,0 +1,13 @@
+<div *ngIf="player" class="flex flex_row_center box_player">
+  <app-avatar
+    [imagesURL]="player.imagesURL"
+    [size]="50"
+    [useDefault]="true"
+  ></app-avatar>
+  <div class="marginLeft25">
+    <p class="marginVertical5">Tên cầu thủ: {{player.namePlayer}}</p>
+    <p class="marginVertical5">Ngày sinh: {{player.birthDate | formatTime:'DD/MM/YYYY'}}</p>
+    <p class="marginVertical5">Loại cầu thủ: {{player.typePlayer | typePlayer}}</p>
+    <p class="marginVertical5">Ghi chú: {{player.notes}}</p>
+  </div>
+</div>

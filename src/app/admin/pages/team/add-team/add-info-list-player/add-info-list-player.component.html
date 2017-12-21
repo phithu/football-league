@@ -1,0 +1,52 @@
+<form [formGroup]="form">
+  <div formArrayName="player">
+    <div class="player_form_box" *ngFor="let player of form['controls'].player['controls']; let i = index">
+      <div class="flex_row_center flex_spaceBetween">
+        <span style="margin-bottom: 15px">Cầu thủ {{i + 1}}</span>
+        <button *ngIf="form.controls.player.controls.length > 14 && i > 14" mat-icon-button>
+          <mat-icon (click)="removePlayerForm(i)">clear</mat-icon>
+        </button>
+      </div>
+      <div [formGroupName]="i">
+        <app-add-info-player
+          [group]="form.controls.player.controls[i]"
+        >
+        </app-add-info-player>
+      </div>
+    </div>
+  </div>
+  <div class="flex flex_row_end">
+    <button
+      class="marginHorizontal5 buttonWithIcon"
+      color="accent"
+      type="button"
+      (click)="addPlayerForm()"
+      mat-raised-button
+    >
+      <mat-icon>person_add</mat-icon>
+      <span>Thêm cầu thủ</span>
+    </button>
+  </div>
+  <div class="flex_col_center">
+    <button
+      class="marginHorizontal5 buttonWithIcon"
+      color="primary"
+      mat-raised-button
+      matStepperPrevious
+    >
+      <mat-icon>arrow_back</mat-icon>
+      <span>Quay lại</span>
+    </button>
+    <button
+      class="marginHorizontal5 buttonWithIcon"
+      color="primary"
+      mat-raised-button
+      (click)="onNext()"
+      matStepperNext
+    >
+      <mat-icon>arrow_forward</mat-icon>
+      <span>Tiếp tục</span>
+    </button>
+  </div>
+</form>
+

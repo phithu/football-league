@@ -1,0 +1,26 @@
+<div *ngIf="valueForm">
+  <div>
+    <p class="title_header">Thông tin đội bóng</p>
+    <div class="flex flex_row_center flex_col_center flex_col">
+      <app-avatar
+        *ngIf="valueForm.team.imagesURL"
+        [imagesURL]="valueForm.team.imagesURL"
+        [typeImages]="'logo'"
+        [size]="150"
+      >
+      </app-avatar>
+      <div>
+        <p class="marginVertical5">Tên đội bóng: {{valueForm.team.nameTeam}}</p>
+        <p class="marginVertical5">Sân vận động: {{valueForm.team.stadium}}</p>
+      </div>
+    </div>
+  </div>
+  <div>
+    <p class="title_header">Thông tin cầu thủ</p>
+    <app-player-item
+      *ngFor="let player of valueForm.player"
+      [player]="player"
+    >
+    </app-player-item>
+  </div>
+</div>

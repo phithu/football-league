@@ -1,0 +1,48 @@
+<form [formGroup]="form" class="flex flex_col">
+  <div class="flex_row_center">
+    <div class="flex_grow">
+      <mat-form-field>
+        <input formControlName="nameTeam" matInput>
+        <mat-placeholder>
+          <mat-icon>location_city</mat-icon>
+          <span class="placeholder_title">Tên đội bóng</span>
+        </mat-placeholder>
+        <mat-error *ngIf="formErrors.nameTeam">{{formErrors.nameTeam}}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input formControlName="stadium" matInput>
+        <mat-placeholder>
+          <mat-icon>domain</mat-icon>
+          <span class="placeholder_title">Tên sân vận động</span>
+        </mat-placeholder>
+        <mat-error *ngIf="formErrors.stadium">{{formErrors.stadium}}</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="flex flex_col images_upload">
+      <app-images-upload #imagesUpload
+                         (onUpload)="getImagesUpload($event)"
+                         (onDelete)="deleteImages()"
+                         [titleUpload]='"Tải logo đội bóng"'
+                         [typeUpload]="false">
+      </app-images-upload>
+      <mat-error *ngIf="formErrors.imagesURL">{{formErrors.imagesURL}}</mat-error>
+    </div>
+
+  </div>
+  <div class="flex_col_center">
+    <button
+      class="marginHorizontal5 buttonWithIcon"
+      [disabled]="!uploaded"
+      color="primary"
+      mat-raised-button
+      (click)="onNext()"
+      matStepperNext
+    >
+      <mat-icon>arrow_forward</mat-icon>
+      <span>Tiếp tục</span>
+    </button>
+  </div>
+</form>
+
+

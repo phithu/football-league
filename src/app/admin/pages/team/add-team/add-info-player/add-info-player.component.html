@@ -1,0 +1,63 @@
+<div class="flex flex_col" [formGroup]="playerForm">
+  <div class="flex_row_center">
+    <div class="flex_grow">
+      <div class="form_control_group">
+        <mat-form-field>
+          <input formControlName="namePlayer" matInput>
+          <mat-placeholder>
+            <mat-icon>person</mat-icon>
+            <span class="placeholder_title">Tên người dùng</span>
+          </mat-placeholder>
+        </mat-form-field>
+        <mat-error *ngIf="formErrors.namePlayer">{{formErrors.namePlayer}}</mat-error>
+      </div>
+
+      <div class="form_control_group">
+        <mat-form-field>
+          <input
+            readonly
+            matInput
+            formControlName="birthDate"
+            [matDatepicker]="picker"
+            (click)="picker.open()"
+          >
+          <mat-placeholder>
+            <mat-icon>date_range</mat-icon>
+            <span class="placeholder_title">Ngày sinh</span>
+          </mat-placeholder>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        <mat-error *ngIf="formErrors.birthDate">{{formErrors.birthDate}}</mat-error>
+      </div>
+
+      <mat-form-field>
+        <input formControlName="notes" matInput>
+        <mat-placeholder>
+          <mat-icon>notes</mat-icon>
+          <span class="placeholder_title">Ghi chú</span>
+        </mat-placeholder>
+      </mat-form-field>
+
+      <div class="radio_wrapper">
+        <div class="flex radio_container">
+          <label>Loại cầu thủ</label>
+          <mat-radio-group formControlName="typePlayer" class="flex radio_group">
+            <mat-radio-button color="primary" value="{{TYPE_PLAYER.NATIVE}}">Trong nước</mat-radio-button>
+            <mat-radio-button color="primary" value="{{TYPE_PLAYER.FOREIGN}}">Nước ngoài</mat-radio-button>
+          </mat-radio-group>
+        </div>
+        <mat-error *ngIf="formErrors.typePlayer">{{formErrors.typePlayer}}</mat-error>
+      </div>
+    </div>
+    <div class="flex flex_col images_upload">
+      <app-images-upload #imagesUpload
+                         (onUpload)="getImagesUpload($event)"
+                         (onDelete)="deleteImages()"
+                         [titleUpload]='"Tải ảnh cầu thủ"'
+                         [typeUpload]="true">
+      </app-images-upload>
+    </div>
+  </div>
+</div>
+
+

@@ -1,0 +1,14 @@
+.images_upload {
+  margin-left: 40px;
+  justify-content: center;
+  align-items: center;
+  & mat-error {
+    font-size: 75%;
+    margin-top: -5px;
+  }
+}
+.group_button {
+  & button {
+    margin: 5px
+  }
+}
