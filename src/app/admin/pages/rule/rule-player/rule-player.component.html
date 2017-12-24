@@ -1,0 +1,71 @@
+<ng-container *ngIf="rule">
+  <app-widget [height]="245" #widget1="widget">
+    <app-front-widget>
+      <mat-card class="widget">
+        <div class="flex_row_center flex_spaceBetween widget_title">
+          <p>Quy định về cầu thủ</p>
+          <button (click)="widget1.closeFront()" mat-icon-button>
+            <mat-icon class="colorIcon">border_color</mat-icon>
+          </button>
+        </div>
+        <ul class="list_rule">
+          <li>Tuổi cầu thủ: {{rule.minOld}} - {{rule.maxOld}}</li>
+          <li>Số cầu thủ trong một đội bóng: {{rule.minPlayerTeam}} - {{rule.maxPlayerTeam}}</li>
+          <li>Số lượng cầu thủ nước ngoài: {{rule.maxForeignTeam}}</li>
+        </ul>
+      </mat-card>
+    </app-front-widget>
+    <app-back-widget>
+      <mat-card class="widget">
+        <div class="flex_row_center flex_spaceBetween widget_title">
+          <p>Chỉnh sửa quy định về cầu thủ</p>
+          <button (click)="widget1.closeBack()" mat-icon-button>
+            <mat-icon class="colorIcon">keyboard_backspace</mat-icon>
+          </button>
+        </div>
+        <div class="flex">
+          <div class="range_box">
+            <p>Tuổi cầu thủ</p>
+            <app-range-input
+              [type]="true"
+              [value]="oldPlayer"
+              (change)="onChangeOldPlayer($event)"
+            ></app-range-input>
+          </div>
+
+          <div class="range_box">
+            <p>Số cầu thủ trong một đội bóng</p>
+            <app-range-input
+              [type]="true"
+              [value]="numberPlayer"
+              (change)="onChangeNumberPlayer($event)"
+            ></app-range-input>
+          </div>
+
+          <div class="range_box">
+            <p>Số cầu thủ nước ngoài</p>
+            <app-range-input
+              [type]="false"
+              [value]="numberForeign"
+              [max]="22"
+              [min]="0"
+              (change)="onChangeNumberForeign($event)"
+              class="flex_grow"
+            ></app-range-input>
+          </div>
+        </div>
+        <div class="flex_col_center marginTop15">
+          <button
+            class="marginHorizontal5 buttonWithIcon"
+            color="primary"
+            (click)="onSaveRulePlayer()"
+            mat-raised-button
+          >
+            <mat-icon>save</mat-icon>
+            <span>Lưu đội bóng</span>
+          </button>
+        </div>
+      </mat-card>
+    </app-back-widget>
+  </app-widget>
+</ng-container>

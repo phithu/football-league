@@ -1,0 +1,13 @@
+:host {
+  display: block;
+  margin-bottom: 10px;
+}
+.form_control_group {
+  & mat-form-field {
+    margin-bottom: 0px;
+  }
+  & mat-error {
+    font-size: 75%;
+    margin-top: -10px;
+  }
+}

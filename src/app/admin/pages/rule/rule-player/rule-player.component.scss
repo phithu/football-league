@@ -1,0 +1,15 @@
+:host {
+  display: block;
+}
+app-range-input {
+  margin-top: 40px;
+}
+.range_box {
+  width: 31.33%;
+  margin: 0px 2%;
+  & p {
+    text-decoration: underline;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+}

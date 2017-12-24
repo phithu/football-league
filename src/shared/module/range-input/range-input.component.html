@@ -1,0 +1,19 @@
+<ng-container *ngIf="type; else isSingle">
+  <nouislider
+    [(ngModel)]="value"
+    [config]="config"
+    (change)="onChange($event)"
+    [tooltips]="[ true, true ]">
+  </nouislider>
+</ng-container>
+<ng-template #isSingle>
+  <nouislider
+    [disabled]="disabled"
+    [(ngModel)]="value"
+    [min]="min"
+    [step]="1"
+    [max]="max"
+    (change)="onChange($event)"
+    [tooltips]="true">
+  </nouislider>
+</ng-template>

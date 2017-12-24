@@ -1,0 +1,80 @@
+<ng-container *ngIf="rule">
+  <app-widget [height]="375" #widget1="widget">
+    <app-front-widget>
+      <mat-card style="height: auto" class="widget">
+        <div class="flex_row_center flex_spaceBetween widget_title">
+          <p>Quy định về điểm số</p>
+          <button (click)="widget1.closeFront()" mat-icon-button>
+            <mat-icon class="colorIcon">border_color</mat-icon>
+          </button>
+        </div>
+        <ul class="list_rule">
+          <li>Điểm trận thắng: {{rule.winPoint}} điểm</li>
+          <li>Điểm trận hòa: {{rule.drawPoint}} điểm</li>
+          <li>Điểm trận thua: {{rule.lostPoint}} điểm</li>
+        </ul>
+      </mat-card>
+    </app-front-widget>
+    <app-back-widget>
+      <mat-card class="widget">
+        <div class="flex_row_center flex_spaceBetween widget_title">
+          <p>Chỉnh sửa quy định về điểm số</p>
+          <button (click)="widget1.closeBack()" mat-icon-button>
+            <mat-icon class="colorIcon">keyboard_backspace</mat-icon>
+          </button>
+        </div>
+        <div class="">
+          <div class="range_box">
+            <p>Điểm trận thắng</p>
+            <app-range-input
+              [type]="false"
+              [value]="winPoint"
+              [max]="10"
+              [min]="3"
+              (change)="onChangePointWin($event)"
+              class="flex_grow"
+            >
+            </app-range-input>
+          </div>
+          <div class="range_box">
+            <p>Điểm trận hòa</p>
+            <app-range-input
+              [type]="false"
+              [value]="drawPoint"
+              [max]="(winPoint - 1)"
+              [min]="1"
+              (change)="onChangePointDraw($event)"
+              class="flex_grow"
+            >
+            </app-range-input>
+          </div>
+          <div class="range_box">
+            <p>Điểm trận thua</p>
+            <app-range-input
+              [disabled]="(drawPoint - 1) === 0 ? true: false"
+              [type]="false"
+              [value]="lostPoint"
+              [max]="(drawPoint - 1)"
+              [min]="(drawPoint - 1) === 0 ? -1 : 0"
+              (change)="onChangePointLost($event)"
+              class="flex_grow"
+            >
+            </app-range-input>
+          </div>
+
+          <div class="flex_col_center marginTop15">
+            <button
+              class="marginHorizontal5 buttonWithIcon"
+              color="primary"
+              (click)="onSaveRulePoint()"
+              mat-raised-button
+            >
+              <mat-icon>save</mat-icon>
+              <span>Lưu thông tin</span>
+            </button>
+          </div>
+        </div>
+      </mat-card>
+    </app-back-widget>
+  </app-widget>
+</ng-container>

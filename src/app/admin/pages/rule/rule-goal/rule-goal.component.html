@@ -1,0 +1,100 @@
+<ng-container *ngIf="rule">
+  <app-widget [height]="505" #widget1="widget">
+    <app-front-widget>
+      <mat-card style="height: auto" class="widget">
+        <div class="flex_row_center flex_spaceBetween widget_title">
+          <p>Quy định về bàn thắng, thời điểm ghi bàn</p>
+          <button (click)="widget1.closeFront()" mat-icon-button>
+            <mat-icon class="colorIcon">border_color</mat-icon>
+          </button>
+        </div>
+        <ol class="list_rule">
+          <li>
+            <span>Các loại bàn thắng</span>
+            <ul>
+              <li *ngFor="let typeGoal of rule.listTypeGoals">
+                {{typeGoal.goalControl}}
+              </li>
+            </ul>
+          </li>
+          <li>
+            <span>Thời điểm ghi bàn: {{rule.minTimeGoal}} - {{rule.maxTimeGoal}}</span>
+          </li>
+        </ol>
+      </mat-card>
+    </app-front-widget>
+    <app-back-widget>
+      <mat-card class="widget">
+        <div class="flex_row_center flex_spaceBetween widget_title">
+          <p>Chỉnh sửa quy định về cầu thủ</p>
+          <button (click)="widget1.closeBack()" mat-icon-button>
+            <mat-icon class="colorIcon">keyboard_backspace</mat-icon>
+          </button>
+        </div>
+        <form [formGroup]="form">
+          <div style="max-height: 220px; position: relative"
+               [perfectScrollbar]
+               formArrayName="goalForm"
+          >
+            <div *ngFor="let formItem of form['controls'].goalForm['controls']; let i = index">
+              <div class="flex_row_center" [formGroupName]="i">
+                <app-rule-goal-control
+                  class="flex_grow"
+                  [index]="i"
+                  [group]="form.controls.goalForm.controls[i]"
+                >
+                </app-rule-goal-control>
+                <div *ngIf="i < 3" style="margin-left: 54px"></div>
+                <button
+                  *ngIf="i >= 3"
+                  class="delete_button"
+                  type="button"
+                  mat-icon-button
+                  (click)="removeForm(i)"
+                >
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="flex flex_row_end marginVertical10">
+            <button
+              class="marginHorizontal5 buttonWithIcon"
+              color="accent"
+              type="button"
+              (click)="addForm()"
+              mat-raised-button
+            >
+              <mat-icon>sort</mat-icon>
+              <span>Thêm loại bàn thắng</span>
+            </button>
+          </div>
+
+          <div *ngIf="timeGoal">
+            <p class="marginBottom40">Chỉnh sửa thời điểm ghi bàn</p>
+            <app-range-input
+              [limit]="120"
+              [min]="0"
+              [max]="120"
+              [type]="true"
+              [value]="timeGoal"
+              (change)="onChangeTimeGoal($event)"
+            >
+            </app-range-input>
+          </div>
+          <div class="flex_col_center marginTop15">
+            <button
+              class="marginHorizontal5 buttonWithIcon"
+              color="primary"
+              mat-raised-button
+              (click)="onSaveRuleGoal()"
+            >
+              <mat-icon>save</mat-icon>
+              <span>Lưa thông tin</span>
+            </button>
+          </div>
+        </form>
+      </mat-card>
+    </app-back-widget>
+  </app-widget>
+</ng-container>

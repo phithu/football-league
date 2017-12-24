@@ -1,0 +1,15 @@
+<div class="form_control_group" [formGroup]="form">
+  <mat-form-field>
+    <input color="warn" formControlName="goalControl" matInput>
+    <mat-placeholder>
+      <mat-icon>sort</mat-icon>
+      <span class="placeholder_title">Loại bàn thắng {{index + 1}}</span>
+    </mat-placeholder>
+  </mat-form-field>
+  <mat-error *ngIf="formErrors.goalControl">{{formErrors.goalControl}}</mat-error>
+</div>
+
+
+
+
+
