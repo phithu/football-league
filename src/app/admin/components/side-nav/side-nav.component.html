@@ -4,6 +4,14 @@
     <p>Hệ thống quản lí giải bóng đá vô địch Quốc Gia</p>
   </div>
   <mat-accordion>
+    <a
+      class="buttonFullWidth borderBottomLink"
+      mat-button
+      [routerLink]="['/']"
+    >
+      Trang chủ
+    </a>
+
     <mat-expansion-panel>
       <mat-expansion-panel-header>
         <mat-panel-title>
@@ -27,6 +35,7 @@
         </a>
       </div>
     </mat-expansion-panel>
+
     <mat-expansion-panel>
       <mat-expansion-panel-header>
         <mat-panel-title>
@@ -48,6 +57,7 @@
         </button>
       </div>
     </mat-expansion-panel>
+
     <mat-expansion-panel>
       <mat-expansion-panel-header>
         <mat-panel-title>
@@ -69,27 +79,15 @@
         </button>
       </div>
     </mat-expansion-panel>
-    <mat-expansion-panel>
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          Quy định giải đấu
-        </mat-panel-title>
-      </mat-expansion-panel-header>
-      <div>
-        <button
-          class="buttonFullWidth"
-          mat-button
-        >
-         Xem quy định
-        </button>
-        <button
-          class="buttonFullWidth"
-          mat-button
-        >
-          Chỉnh sửa quy định
-        </button>
-      </div>
-    </mat-expansion-panel>
+
+    <a
+      class="buttonFullWidth borderBottomLink"
+      mat-button
+      [routerLink]="['/', 'rule']"
+    >
+      Quy định giải đấu
+    </a>
+
     <mat-expansion-panel *ngIf="dataUser.typeUser === TYPE_USER.OWNER">
       <mat-expansion-panel-header>
         <mat-panel-title>

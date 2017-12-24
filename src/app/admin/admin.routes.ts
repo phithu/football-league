@@ -21,18 +21,10 @@ export const AdminRoutes: Routes = [
         path: 'team',
         loadChildren: './pages/team/team.module#TeamModule'
       },
-      // {
-      //   path: 'add-team',
-      //   component: AddTeamComponent
-      // },
-      // {
-      //   path: 'add-user',
-      //   component: AddUserComponent
-      // },
-      // {
-      //   path: 'edit-user',
-      //   component: EditUserComponent
-      // },
+      {
+        path: 'rule',
+        loadChildren: './pages/rule/rule.module#RuleModule'
+      },
       {
         path: '',
         component: HomeAdminComponent,

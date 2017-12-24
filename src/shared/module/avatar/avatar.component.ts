@@ -2,8 +2,7 @@ import {
   Component,
   ElementRef,
   Input,
-  OnChanges,
-  SimpleChanges
+  OnChanges
 } from '@angular/core';
 
 
@@ -25,7 +24,7 @@ export class AvatarComponent implements OnChanges {
     // this.element.nativeElement.style.height.px = this.size;
   }
 
-  ngOnChanges(changes: SimpleChanges) {
+  ngOnChanges() {
     this.element.nativeElement.style.width = `${this.size}px`;
     this.element.nativeElement.style.height = `${this.size}px`;
   }

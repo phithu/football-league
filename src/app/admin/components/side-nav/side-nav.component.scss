@@ -1,5 +1,12 @@
 @import '../../../../styles/colors';
 
+.borderSideNav {
+  border-bottom: 1px solid #444444;
+  &:first-child {
+    border-top: 1px solid #444444;;
+  }
+}
+
 .sidenav_container {
   height: 100vh;
   background-color: $sidenavBackground;
@@ -25,10 +32,10 @@
     padding-left: 24px;
     color: $textSidenav;
   }
+  & .borderBottomLink {
+    @extend .borderSideNav;
+  }
   & mat-expansion-panel {
-    border-bottom: 1px solid #444444;
-    &:first-child {
-      border-top: 1px solid #444444;;
-    }
+    @extend .borderSideNav;
   }
 }

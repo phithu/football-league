@@ -1,6 +1,8 @@
 <form [formGroup]="form">
   <div formArrayName="player">
-    <div class="player_form_box" *ngFor="let player of form['controls'].player['controls']; let i = index">
+    <div class="player_form_box"
+         *ngFor="let player of form['controls'].player['controls']; let i = index"
+    >
       <div class="flex_row_center flex_spaceBetween">
         <span style="margin-bottom: 15px">Cầu thủ {{i + 1}}</span>
         <button *ngIf="form.controls.player.controls.length > 14 && i > 14" mat-icon-button>

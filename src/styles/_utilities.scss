@@ -1,6 +1,9 @@
 .flex {
   display: flex;
 }
+.flex_wrap {
+  flex-wrap: wrap;
+}
 .flex_col_center {
   display: flex;
   justify-content: center;
@@ -27,6 +30,9 @@
 .nonPadding {
   padding: 0 !important;
 }
+.padding15 {
+  padding: 15px;
+}
 .nonMargin {
   margin: 0;
 }
@@ -48,6 +54,12 @@
 }
 .marginHorizontal5 {
   margin: 0px 5px;
+}
+.marginBottom40 {
+  margin-bottom: 40px;
+}
+.marginTop15 {
+  margin-top: 15px;
 }
 .flexGrow {
   flex-grow: 1;
