@@ -1,4 +1,4 @@
-<form [formGroup]="form">
+<form *ngIf="rule" [formGroup]="form">
   <div formArrayName="player">
     <div class="player_form_box"
          *ngFor="let player of form['controls'].player['controls']; let i = index"
@@ -11,7 +11,13 @@
       </div>
       <div [formGroupName]="i">
         <app-add-info-player
+          [indexRadio]="i"
+          [maxForeignTeam]="rule.maxForeignTeam"
+          [list]="listCheck"
+          [maxDate]="maxDate"
+          [minDate]="minDate"
           [group]="form.controls.player.controls[i]"
+          (onRadioChange)="onRadioChange($event, i)"
         >
         </app-add-info-player>
       </div>
@@ -19,7 +25,9 @@
   </div>
   <div class="flex flex_row_end">
     <button
+
       class="marginHorizontal5 buttonWithIcon"
+      [disabled]="rule. maxPlayerTeam <= lengthPlayerForm"
       color="accent"
       type="button"
       (click)="addPlayerForm()"

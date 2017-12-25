@@ -25,6 +25,8 @@ import { AddInfoTeamComponent } from './add-team/add-info-team';
 import { AddInfoPlayerComponent } from './add-team/add-info-player';
 import { AddInfoListPlayerComponent } from './add-team/add-info-list-player';
 import { InfoTeamModule } from '../../components/info-team';
+import { RuleApiModule } from '../../../../shared/service/rule-api';
+import { CommunicationModule } from '../../../../shared/service/communication';
 
 @NgModule({
   imports: [
@@ -42,7 +44,9 @@ import { InfoTeamModule } from '../../components/info-team';
     MatNativeDateModule,
     ImagesUploadModule,
     NotificationModule,
-    InfoTeamModule
+    InfoTeamModule,
+    RuleApiModule,
+    CommunicationModule
   ],
   declarations: [
     AddTeamComponent,

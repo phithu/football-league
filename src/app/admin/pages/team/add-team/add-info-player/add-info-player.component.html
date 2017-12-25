@@ -17,6 +17,8 @@
           <input
             readonly
             matInput
+            [max]="minDate"
+            [min]="maxDate"
             formControlName="birthDate"
             [matDatepicker]="picker"
             (click)="picker.open()"
@@ -25,7 +27,10 @@
             <mat-icon>date_range</mat-icon>
             <span class="placeholder_title">Ngày sinh</span>
           </mat-placeholder>
-          <mat-datepicker #picker></mat-datepicker>
+          <mat-datepicker
+            touchUi="true"
+            #picker>
+          </mat-datepicker>
         </mat-form-field>
         <mat-error *ngIf="formErrors.birthDate">{{formErrors.birthDate}}</mat-error>
       </div>
@@ -41,9 +46,23 @@
       <div class="radio_wrapper">
         <div class="flex radio_container">
           <label>Loại cầu thủ</label>
-          <mat-radio-group formControlName="typePlayer" class="flex radio_group">
-            <mat-radio-button color="primary" value="{{TYPE_PLAYER.NATIVE}}">Trong nước</mat-radio-button>
-            <mat-radio-button color="primary" value="{{TYPE_PLAYER.FOREIGN}}">Nước ngoài</mat-radio-button>
+          <mat-radio-group
+            formControlName="typePlayer"
+            class="flex radio_group"
+            (change)="onChange($event.value)"
+          >
+            <mat-radio-button
+              [checked]="radioCheck"
+              color="primary"
+              value="{{TYPE_PLAYER.NATIVE}}"
+            >Trong nước
+            </mat-radio-button>
+            <mat-radio-button
+              [disabled]="radioCheck"
+              color="primary"
+              value="{{TYPE_PLAYER.FOREIGN}}"
+            >Nước ngoài
+            </mat-radio-button>
           </mat-radio-group>
         </div>
         <mat-error *ngIf="formErrors.typePlayer">{{formErrors.typePlayer}}</mat-error>

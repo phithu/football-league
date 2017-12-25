@@ -1,18 +1,32 @@
 import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
   Component,
+  DoCheck,
+  EventEmitter,
   Input,
-  OnInit
+  OnChanges,
+  OnInit,
+  Output,
+  SimpleChanges
 } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-add-info-player',
   templateUrl: './add-info-player.component.html',
-  styleUrls: ['./add-info-player.component.scss']
+  styleUrls: ['./add-info-player.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AddInfoPlayerComponent implements OnInit {
+export class AddInfoPlayerComponent implements DoCheck, OnChanges, OnInit {
 
   @Input('group') public playerForm: FormGroup;
+  @Input('indexRadio') indexRadio: Number;
+  @Input('minDate') minDate: any;
+  @Input('maxDate') maxDate: any;
+  @Input('list') list: any;
+  @Input('maxForeignTeam') maxForeignTeam: Number;
+  @Output('onRadioChange') onRadioChange = new EventEmitter();
 
   public validatorMessages = {
     namePlayer: {
@@ -22,7 +36,8 @@ export class AddInfoPlayerComponent implements OnInit {
       required: 'Vui lòng lựa chọn loại cầu thủ'
     },
     birthDate: {
-      required: 'Vui lòng nhập ngày sinh cầu thủ'
+      required: 'Vui lòng nhập ngày sinh cầu thủ',
+      Old: 'Tuổi cầu thủ...'
     }
   };
   public formErrors = {
@@ -36,6 +51,8 @@ export class AddInfoPlayerComponent implements OnInit {
     NATIVE: 'native',
   };
 
+  public radioCheck = false;
+
   public get imagesURL() {
     return this.playerForm.get('imagesURL').value;
   }
@@ -44,7 +61,20 @@ export class AddInfoPlayerComponent implements OnInit {
     this.playerForm.get('imagesURL').setValue(value);
   }
 
-  constructor() {
+  constructor(private changeDetectorRef: ChangeDetectorRef) {
+  }
+
+  public ngDoCheck() {
+    this.changeDetectorRef.markForCheck();
+    if (this.list.length === this.maxForeignTeam) {
+      this.radioCheck = this.list.indexOf(this.indexRadio) < 0;
+    }
+    if (this.list.length < this.maxForeignTeam) {
+      this.radioCheck = false;
+    }
+  }
+
+  public ngOnChanges(simplesChange: SimpleChanges) {
   }
 
   public ngOnInit() {
@@ -61,6 +91,10 @@ export class AddInfoPlayerComponent implements OnInit {
   public deleteImages() {
     // reset value when click delete images
     this.imagesURL = '';
+  }
+
+  public onChange(value) {
+    this.onRadioChange.emit(value);
   }
 
   public validatorForm(submitted?: boolean) {

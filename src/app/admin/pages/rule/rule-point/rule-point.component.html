@@ -51,7 +51,7 @@
           <div class="range_box">
             <p>Điểm trận thua</p>
             <app-range-input
-              [disabled]="(drawPoint - 1) === 0 ? true: false"
+              [disabled]="(drawPoint - 1) === 0"
               [type]="false"
               [value]="lostPoint"
               [max]="(drawPoint - 1)"
