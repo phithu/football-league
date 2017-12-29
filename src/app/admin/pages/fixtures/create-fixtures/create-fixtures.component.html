@@ -1,0 +1,56 @@
+<mat-card>
+  <form (ngSubmit)="onSave(form)" [formGroup]="form">
+    <mat-form-field>
+      <input color="warn" formControlName="week" matInput>
+      <mat-placeholder>
+        <mat-icon>sort</mat-icon>
+        <span class="placeholder_title">Vòng đấu</span>
+      </mat-placeholder>
+      <mat-error *ngIf="formErrors.week">{{formErrors.week}}</mat-error>
+    </mat-form-field>
+
+    <div formArrayName="match"
+    >
+      <div *ngFor="let formItem of form['controls'].match['controls']; let i = index">
+        <div class="flex_row_center" [formGroupName]="i">
+          <app-form-fixtures
+            class="flex_grow"
+            [index]="i"
+            [group]="form['controls'].match.controls[i]"
+          >
+          </app-form-fixtures>
+        </div>
+      </div>
+    </div>
+    <!--<div class="flex flex_row_end marginVertical10">-->
+    <!--<button-->
+    <!--class="marginHorizontal5 buttonWithIcon"-->
+    <!--color="accent"-->
+    <!--type="button"-->
+    <!--(click)="addForm()"-->
+    <!--mat-raised-button-->
+    <!--&gt;-->
+    <!--<mat-icon>sort</mat-icon>-->
+    <!--<span>Thêm loại bàn thắng</span>-->
+    <!--</button>-->
+    <!--</div>-->
+
+    <div class="flex_col_center marginTop15">
+      <!--<button-->
+      <!--class="marginHorizontal5 buttonWithIcon"-->
+      <!--color="primary"-->
+      <!--mat-raised-button-->
+      <!--(click)="onSave()"-->
+      <!--&gt;-->
+      <!--<mat-icon>save</mat-icon>-->
+      <!--<span>Lưa thông tin</span>-->
+      <!--</button>-->
+      <app-button-submit
+        [disabled]="submitted"
+        [title]="'Lưu thông tin'">
+
+      </app-button-submit>
+    </div>
+  </form>
+</mat-card>
+<app-notification #notification></app-notification>

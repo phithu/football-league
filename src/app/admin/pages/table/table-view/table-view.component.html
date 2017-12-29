@@ -1,0 +1,69 @@
+<!--<mat-card>-->
+<!--<table class="table">-->
+<!--<thead>-->
+<!--<tr>-->
+<!--<th class="width_90">Vị trí</th>-->
+<!--<th>Đội bóng</th>-->
+<!--<th class="width_90">Số trận</th>-->
+<!--<th class="width_100">Trận thắng</th>-->
+<!--<th class="width_100">Trận hòa</th>-->
+<!--<th class="width_100">Trận thua</th>-->
+<!--<th class="width_90">Hiệu số</th>-->
+<!--<th class="width_90">Điểm</th>-->
+<!--</tr>-->
+<!--</thead>-->
+<!--<tbody>-->
+<!--<ng-container *ngFor="let item of listTable; let i = index">-->
+<!--<tr [ngClass]="{'firstBackground': i == 0, 'secondBackground': i == 1, 'thirdBackground': i == 2}">-->
+<!--<td class="width_90">{{i}}</td>-->
+<!--<td class="name_club flex_col_center">-->
+<!--<img class="images" src={{item.imagesURL}}>-->
+<!--<p>{{item.name}}</p>-->
+<!--</td>-->
+<!--<td class="width_90">{{item.match}}</td>-->
+<!--<td class="width_100">{{item.win}}</td>-->
+<!--<td class="width_100">{{item.draw}}</td>-->
+<!--<td class="width_100">{{item.lost}}</td>-->
+<!--<td class="width_90">{{item.goldDifference}}</td>-->
+<!--<td class="width_90">{{item.point}}</td>-->
+<!--</tr>-->
+<!--</ng-container>-->
+
+<!--</tbody>-->
+<!--</table>-->
+<!--</mat-card>-->
+<mat-card>
+  <table class="table">
+    <thead>
+    <tr>
+      <th>Vị trí</th>
+      <th>Đội bóng</th>
+      <th>Số trận</th>
+      <th>Trận thắng</th>
+      <th>Trận hòa</th>
+      <th>Trận thua</th>
+      <th>Hiệu số</th>
+      <th>Điểm</th>
+    </tr>
+    </thead>
+    <tbody>
+    <ng-container *ngFor="let item of listTable; let i = index">
+      <tr [ngClass]="{'firstBackground': i == 0, 'secondBackground': i == 1, 'thirdBackground': i == 2}">
+        <td>{{i}}</td>
+        <td class="name_club flex_col_center">
+          <img class="images" src={{item.imagesURL}}>
+          <p>{{item.name}}</p>
+        </td>
+        <td>{{item.match}}</td>
+        <td>{{item.win}}</td>
+        <td>{{item.draw}}</td>
+        <td>{{item.lost}}</td>
+        <td>{{item.goldDifference}}</td>
+        <td>{{item.point}}</td>
+      </tr>
+    </ng-container>
+
+    </tbody>
+  </table>
+</mat-card>
+

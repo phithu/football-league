@@ -1,0 +1,41 @@
+.table {
+  //min-width: 900px;
+  //margin: 0px auto;
+  width: 100%;
+  border-spacing: 0px;
+  & tr {
+    & th {
+      color: #8a8a8a;
+      font-weight: normal;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #bbb9b9;
+    }
+    & td {
+      text-align: center;
+      padding: 5px 0px;
+    }
+    & .name_club {
+      justify-content: space-evenly;
+      & p {
+        line-height: 40px;
+      }
+      & .images {
+        width: 40px;
+        height: 40px;
+        display: block;
+      }
+    }
+  }
+}
+
+.firstBackground {
+  background-color: #d4d4d4;
+}
+
+.secondBackground {
+  background-color: #e4e4e4;
+}
+
+.thirdBackground {
+  background-color: #f4f4f4;
+}

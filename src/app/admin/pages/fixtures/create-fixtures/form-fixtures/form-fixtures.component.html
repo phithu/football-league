@@ -1,0 +1,52 @@
+<div class="form_control_group" [formGroup]="form">
+  <p>Trận đấu thứ {{index + 1}}</p>
+  <mat-form-field>
+    <input color="warn" formControlName="home" matInput>
+    <mat-placeholder>
+      <mat-icon>location_city</mat-icon>
+      <span class="placeholder_title">Chủ nhà</span>
+    </mat-placeholder>
+  </mat-form-field>
+  <mat-error *ngIf="formErrors.home">{{formErrors.home}}</mat-error>
+
+  <mat-form-field>
+    <input color="warn" formControlName="away" matInput>
+    <mat-placeholder>
+      <mat-icon>location_city</mat-icon>
+      <span class="placeholder_title">Đội khách</span>
+    </mat-placeholder>
+  </mat-form-field>
+  <mat-error *ngIf="formErrors.away">{{formErrors.away}}</mat-error>
+
+  <mat-form-field>
+    <input color="warn" formControlName="stadium" matInput>
+    <mat-placeholder>
+      <mat-icon>domain</mat-icon>
+      <span class="placeholder_title">Sân vận động</span>
+    </mat-placeholder>
+  </mat-form-field>
+  <mat-error *ngIf="formErrors.stadium">{{formErrors.stadium}}</mat-error>
+
+  <md2-datepicker
+    formControlName="dateTime"
+    [format]="'dd/MM/y H:mm'"
+    [openOnFocus]="true"
+    [type]="'datetime'"
+    [min]="minDate"
+  >
+  </md2-datepicker>
+  <mat-error *ngIf="formErrors.dateTime">{{formErrors.dateTime}}</mat-error>
+
+  <mat-form-field>
+    <input color="warn" formControlName="note" matInput>
+    <mat-placeholder>
+      <mat-icon>note</mat-icon>
+      <span class="placeholder_title">Ghi chú</span>
+    </mat-placeholder>
+  </mat-form-field>
+</div>
+
+
+
+
+

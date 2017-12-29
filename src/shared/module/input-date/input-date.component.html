@@ -1,0 +1,22 @@
+<mat-form-field>
+  <input
+    #inputDate
+    readonly
+    [value]="data"
+    matInput
+    [max]="minDate"
+    [min]="maxDate"
+    [matDatepicker]="picker"
+    (click)="picker.open()"
+  >
+  <mat-placeholder>
+    <mat-icon>date_range</mat-icon>
+    <span class="placeholder_title">{{placeholder}}</span>
+  </mat-placeholder>
+  <mat-datepicker
+    (closed)="onClose(inputDate.value)"
+    touchUi="true"
+    #picker>
+  </mat-datepicker>
+</mat-form-field>
+<mat-error *ngIf="validatorMessage">{{validatorMessage}}</mat-error>

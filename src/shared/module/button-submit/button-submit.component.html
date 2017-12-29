@@ -1,0 +1,15 @@
+<button
+  [disabled]="disabled"
+  class="marginHorizontal5 buttonWithIcon loading"
+  [color]="color"
+  (click)="onSave()"
+  mat-raised-button
+>
+  <mat-icon *ngIf="!disabled">save</mat-icon>
+  <mat-spinner
+    *ngIf="disabled"
+    diameter="20"
+  >
+  </mat-spinner>
+  <span>{{title}}</span>
+</button>

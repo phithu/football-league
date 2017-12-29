@@ -1,0 +1,25 @@
+<mat-card>
+  <div class="flex_row_center">
+    <app-avatar
+      [imagesURL]="images"
+      [typeImages]="typeImages"
+      [useDefault]="useDefault"
+      [size]="size"
+    >
+    </app-avatar>
+    <div class="user_info">
+      <p>{{row1}}</p>
+      <p>{{row2}}</p>
+    </div>
+  </div>
+  <div class="flex_row_center action_group">
+    <button (click)="view()" mat-button>
+      <mat-icon>{{iconView ? iconView : 'recent_actors'}}</mat-icon>
+      <span>{{titleView ? titleView : 'Chi tiết'}}</span>
+    </button>
+    <button (click)="delete()" mat-button>
+      <mat-icon>{{iconDelete ? iconDelete : 'delete'}}</mat-icon>
+      <span>{{titleDelete ? titleDelete : 'Xóa'}}</span>
+    </button>
+  </div>
+</mat-card>

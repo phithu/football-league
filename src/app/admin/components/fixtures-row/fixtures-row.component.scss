@@ -1,0 +1,26 @@
+
+mat-card {
+  padding: 15px 20px;
+  margin-bottom: 20px;
+  & .team {
+    & img {
+      display: block;
+      width: 50px;
+      height: 50px;
+    }
+    & p {
+      margin-left: 15px;
+    }
+  }
+  & .info_match {
+    p {
+      text-align: center;
+      margin-bottom: 5px;
+      font-size: 13pt;
+    }
+    & .time_match {
+      font-weight: 500;
+      color: red;
+    }
+  }
+}
