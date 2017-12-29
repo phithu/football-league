@@ -1,13 +1,19 @@
 <ng-container *ngIf="listUser">
   <div class="flex user_container">
     <ng-container *ngFor="let user of listUser">
-      <app-user-item
-        [user]="user"
+      <app-card-item
+        [typeImages]="'avatar'"
+        [useDefault]="false"
+        [titleDelete]="'Xóa người dùng'"
+        [titleView]="'Xem thông tin'"
+        [images]="user.imagesURL"
+        [row1]="'Tên người dùng: ' + user.fullName"
+        [row2]="'Loại người dùng: ' + (user.typeUser | typeUser)"
         (onDelete)="deleteUser(user)"
         (onView)="viewUser(user)"
         class="user_item"
         *ngIf="user['_id'] !== userIDCurrent && user.typeUser === 'admin'">
-      </app-user-item>
+      </app-card-item>
     </ng-container>
   </div>
 </ng-container>

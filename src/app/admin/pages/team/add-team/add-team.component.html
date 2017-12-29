@@ -39,15 +39,12 @@
             <mat-icon>arrow_back</mat-icon>
             <span>Quay lại</span>
           </button>
-          <button
-            class="marginHorizontal5 buttonWithIcon"
-            color="primary"
+          <app-button-submit
             (click)="onSave()"
-            mat-raised-button
+            [title]="'Lưu đội bóng'"
+            [disabled]="submitted"
           >
-            <mat-icon>save</mat-icon>
-            <span>Lưu đội bóng</span>
-          </button>
+          </app-button-submit>
         </div>
       </main>
     </mat-step>

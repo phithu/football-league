@@ -43,18 +43,20 @@
         </mat-panel-title>
       </mat-expansion-panel-header>
       <div>
-        <button
+        <a
+          [routerLink]="['/', 'fixtures' , 'view']"
           class="buttonFullWidth"
           mat-button
         >
           Xem lịch thi đấu
-        </button>
-        <button
+        </a>
+        <a
+          [routerLink]="['/', 'fixtures' , 'create']"
           class="buttonFullWidth"
           mat-button
         >
-          Chỉnh sửa lịch thi đấu
-        </button>
+          Tạo lịch thi đấu
+        </a>
       </div>
     </mat-expansion-panel>
 
@@ -65,22 +67,25 @@
         </mat-panel-title>
       </mat-expansion-panel-header>
       <div>
-        <button
+        <a
+          [routerLink]="['/', 'table' , 'view']"
           class="buttonFullWidth"
           mat-button
         >
           Xem bảng xếp hạng
-        </button>
-        <button
+        </a>
+        <a
+          [routerLink]="['/', 'table' , 'edit']"
           class="buttonFullWidth"
           mat-button
         >
           Chỉnh sửa bảng xếp hạng
-        </button>
+        </a>
       </div>
     </mat-expansion-panel>
 
     <a
+      *ngIf="dataUser.typeUser === TYPE_USER.OWNER"
       class="buttonFullWidth borderBottomLink"
       mat-button
       [routerLink]="['/', 'rule']"

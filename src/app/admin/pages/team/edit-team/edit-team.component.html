@@ -1,0 +1,19 @@
+<ng-container *ngIf="listTeam">
+  <div class="flex team_container">
+    <ng-container *ngFor="let team of listTeam">
+      <app-card-item
+        (onDelete)="deleteTeam(team)"
+        class="team_item"
+        [typeImages]="'logo'"
+        [useDefault]="true"
+        [titleDelete]="'Xóa đội bóng'"
+        [titleView]="'Xem thông tin'"
+        [images]="team.imagesURL"
+        [row1]="'Tên đội bóng: ' + team.nameTeam"
+        [row2]="'Sân vận đông: ' + team.stadium"
+      >
+      </app-card-item>
+    </ng-container>
+  </div>
+</ng-container>
+<app-notification #notification></app-notification>

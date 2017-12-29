@@ -13,7 +13,7 @@ import {
   MatInputModule,
   MatNativeDateModule,
   MatRadioModule,
-  MatStepperModule
+  MatStepperModule,
 } from '@angular/material';
 
 import { AddTeamComponent } from './add-team';
@@ -26,7 +26,10 @@ import { AddInfoPlayerComponent } from './add-team/add-info-player';
 import { AddInfoListPlayerComponent } from './add-team/add-info-list-player';
 import { InfoTeamModule } from '../../components/info-team';
 import { RuleApiModule } from '../../../../shared/service/rule-api';
-import { CommunicationModule } from '../../../../shared/service/communication';
+import { TeamApiModule } from '../../../../shared/service/team-api';
+import { CardItemModule } from '../../components/card-item';
+import { ConfirmDialogModule } from '../../../../shared/module/confirm-dialog';
+import { ButtonSubmitModule } from '../../../../shared/module/button-submit';
 
 @NgModule({
   imports: [
@@ -46,7 +49,10 @@ import { CommunicationModule } from '../../../../shared/service/communication';
     NotificationModule,
     InfoTeamModule,
     RuleApiModule,
-    CommunicationModule
+    TeamApiModule,
+    CardItemModule,
+    ConfirmDialogModule,
+    ButtonSubmitModule
   ],
   declarations: [
     AddTeamComponent,

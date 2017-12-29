@@ -1,0 +1,7 @@
+.team_container {
+  flex-wrap: wrap;
+  & .team_item {
+    width: 400px;
+    margin: 10px;
+  }
+}

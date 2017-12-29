@@ -14,10 +14,10 @@ import {
 export class AvatarComponent implements OnChanges {
 
   @Input('imagesURL') imagesURL: string;
-  @Input('size') size: number = 40;
+  @Input('size') size = 40;
   @Input('fontSize') fontSize: number;
-  @Input('typeImages') typeImages: string = 'avatar';
-  @Input('useDefault') useDefault: boolean = false;
+  @Input('typeImages') typeImages = 'avatar';
+  @Input('useDefault') useDefault = false;
 
   constructor(private element: ElementRef) {
     // this.element.nativeElement.style.width.px = this.size;
@@ -27,6 +27,11 @@ export class AvatarComponent implements OnChanges {
   ngOnChanges() {
     this.element.nativeElement.style.width = `${this.size}px`;
     this.element.nativeElement.style.height = `${this.size}px`;
+  }
+
+  public checkURL(url: string) {
+    const regExp = /^((https?|ftp|file):\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/;
+    return regExp.test(url);
   }
 
 }

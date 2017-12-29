@@ -59,7 +59,4 @@ export class RuleGoalControlComponent implements OnInit {
       }
     }
   }
-
-
-
 }

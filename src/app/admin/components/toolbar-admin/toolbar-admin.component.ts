@@ -1,8 +1,11 @@
 import {
+  AfterViewInit,
   Component,
+  ElementRef,
   EventEmitter,
   OnInit,
   Output,
+  ViewChild,
   ViewEncapsulation
 } from '@angular/core';
 import {
@@ -13,8 +16,13 @@ import {
   trigger
 } from '@angular/animations';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/fromEvent';
+import 'rxjs/add/operator/debounceTime';
+
 import { AuthService } from '../../../../shared/service/auth';
 import { TitleAppService } from '../../../../shared/module/title-app';
+
 
 @Component({
   selector: 'app-toolbar-admin',
@@ -34,11 +42,13 @@ import { TitleAppService } from '../../../../shared/module/title-app';
     ])
   ]
 })
-export class ToolbarAdminComponent implements OnInit {
+export class ToolbarAdminComponent implements OnInit, AfterViewInit {
 
-
+  public isLoading = false;
   public titleToolbar: string;
+  public toggleContainer = true;
   @Output('onMenu') onMenu = new EventEmitter();
+  @ViewChild('inputSearch') public inputSearch: ElementRef;
 
   public dataUser: any;
   public state = 'inactive';
@@ -51,7 +61,14 @@ export class ToolbarAdminComponent implements OnInit {
   public ngOnInit() {
     this.dataUser = this.authService.getDataLogin();
     this.titleAppService.getTitle
-      .subscribe(title => this.titleToolbar = title);
+      .subscribe(title => {
+        this.titleToolbar = title;
+        console.log('title: ', title);
+      });
+  }
+
+  public ngAfterViewInit() {
+    this.onSearch();
   }
 
   public menuClick() {
@@ -68,4 +85,16 @@ export class ToolbarAdminComponent implements OnInit {
   public toggleSearch() {
     this.state = this.state === 'inactive' ? 'active' : 'inactive';
   }
+
+  public onSearch() {
+    Observable.fromEvent(this.inputSearch.nativeElement, 'keyup')
+      .do(() => this.isLoading = true)
+      .map((event: any) => event.target.value)
+      .debounceTime(300)
+      .subscribe((value) => {
+        this.isLoading = false;
+      });
+  }
+
+
 }

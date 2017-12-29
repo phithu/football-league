@@ -35,3 +35,11 @@ $my-app-theme: mat-light-theme($my-app-primary, $my-app-accent, $my-app-warn);
   $confirm-dialog-theme: mat-light-theme($dialog-primary, $dialog-accent, $dialog-warn);
   @include angular-material-theme($confirm-dialog-theme)
 }
+
+.search-loading-theme {
+  $search-loading-primary: mat-palette($mat-grey, 100);
+  $search-loading-accent: mat-palette($mat-green, A700);
+  $search-loading-warn: mat-palette($mat-red, 800);
+  $search-loading-theme: mat-light-theme($search-loading-primary, $search-loading-accent, $search-loading-warn);
+  @include angular-material-theme($search-loading-theme)
+}

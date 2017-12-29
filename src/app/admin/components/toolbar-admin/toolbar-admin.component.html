@@ -9,8 +9,9 @@
   </div>
   <div class="flexGrow group_center">
     <p>{{titleToolbar}}</p>
-    <div [@widthSearch]="state" class="search_group">
-      <input placeholder="Tìm kiếm cầu thủ..." >
+    <div [@widthSearch]="state" class="search_group search-loading-theme">
+      <input #inputSearch placeholder="Tìm kiếm cầu thủ...">
+      <mat-spinner *ngIf="isLoading" diameter="20"></mat-spinner>
     </div>
   </div>
   <div class="user flex">

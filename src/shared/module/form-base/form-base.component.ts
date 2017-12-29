@@ -27,35 +27,21 @@ export class FormBaseComponent implements OnInit {
     this.validatorForm();
   }
 
-  public validatorControl(field?: string, submited?: boolean) {
-    if (!field) {
-      return;
-    }
-    if (this.formErrors.hasOwnProperty(field)) {
-      this.formErrors[field] = ''; // <-- clear errors message previous
-      const control = this.form.get(field); // <-- Get control by filed name
-      if (control && control.dirty && control.invalid) {
-        const message = this.validatorMessages[field];
-        for (const keyError in control.errors) {
-          if (control.errors.hasOwnProperty(keyError)) { // <-- Check the control have had error with keyError
-            this.formErrors[field] = message[keyError]; // <-- Set value form formErrors
-            break;
-          }
-        }
-      }
-    }
-  }
-
-  // public validatorForm(submitted?: boolean) {
-  //   if (!this.form) { // <-- The form haven't existed yet
+  // public validatorControl(field?: string, submited?: boolean) {
+  //   if (!field) {
   //     return;
   //   }
-  //   for (const field in this.formErrors) {
-  //     if (this.formErrors.hasOwnProperty(field)) {
-  //       if (submitted) {
-  //         this.form.markAsDirty();
+  //   if (this.formErrors.hasOwnProperty(field)) {
+  //     this.formErrors[field] = ''; // <-- clear errors message previous
+  //     const control = this.form.get(field); // <-- Get control by filed name
+  //     if (control && control.dirty && control.invalid) {
+  //       const message = this.validatorMessages[field];
+  //       for (const keyError in control.errors) {
+  //         if (control.errors.hasOwnProperty(keyError)) { // <-- Check the control have had error with keyError
+  //           this.formErrors[field] = message[keyError]; // <-- Set value form formErrors
+  //           break;
+  //         }
   //       }
-  //       this.validatorControl(field);
   //     }
   //   }
   // }

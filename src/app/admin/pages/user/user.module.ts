@@ -18,10 +18,12 @@ import { AddUserComponent } from './add-user';
 import { EditUserComponent } from './edit-user';
 import { ImagesUploadModule } from '../../../../shared/module/images-upload';
 import { NotificationModule } from '../../../../shared/module/notification';
-import { UserItemModule } from '../../components/user-item';
+import { CardItemModule } from '../../components/card-item';
 import { ConfirmDialogModule } from '../../../../shared/module/confirm-dialog';
 import { ProfileDialogModule } from '../../../../shared/module/profile-dialog';
 import { FormBaseModule } from '../../../../shared/module/form-base';
+import { SharePipesModule } from '../../../../shared/pipes';
+import { ButtonSubmitModule } from '../../../../shared/module/button-submit';
 
 @NgModule({
   imports: [
@@ -36,10 +38,12 @@ import { FormBaseModule } from '../../../../shared/module/form-base';
     MatCardModule,
     ImagesUploadModule,
     NotificationModule,
-    UserItemModule,
+    CardItemModule,
     ConfirmDialogModule,
     ProfileDialogModule,
-    FormBaseModule
+    FormBaseModule,
+    SharePipesModule,
+    ButtonSubmitModule
   ],
   declarations: [
     AddUserComponent,

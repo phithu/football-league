@@ -39,3 +39,13 @@ mat-sidenav-container {
 mat-datepicker-content {
   margin: 0px !important;
 }
+
+.loading {
+  .mat-progress-spinner {
+    display: inline-block !important;
+  }
+}
+
+mat-sidenav {
+  background-color: #333 !important;
+}

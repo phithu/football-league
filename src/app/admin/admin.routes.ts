@@ -26,6 +26,14 @@ export const AdminRoutes: Routes = [
         loadChildren: './pages/rule/rule.module#RuleModule'
       },
       {
+        path: 'table',
+        loadChildren: './pages/table/table.module#TableModule'
+      },
+      {
+        path: 'fixtures',
+        loadChildren: './pages/fixtures/fixtures.module#FixturesModule'
+      },
+      {
         path: '',
         component: HomeAdminComponent,
       }

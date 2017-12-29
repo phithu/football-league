@@ -61,13 +61,22 @@ export class AddInfoPlayerComponent implements DoCheck, OnChanges, OnInit {
     this.playerForm.get('imagesURL').setValue(value);
   }
 
+  public set typePlayer(value) {
+    this.playerForm.get('typePlayer').setValue(value);
+  }
+
   constructor(private changeDetectorRef: ChangeDetectorRef) {
   }
+
 
   public ngDoCheck() {
     this.changeDetectorRef.markForCheck();
     if (this.list.length === this.maxForeignTeam) {
       this.radioCheck = this.list.indexOf(this.indexRadio) < 0;
+      if (this.radioCheck) {
+        // SET VALUE FOR TYPE PLAYER IS NATIVE
+        this.typePlayer = this.TYPE_PLAYER.NATIVE;
+      }
     }
     if (this.list.length < this.maxForeignTeam) {
       this.radioCheck = false;

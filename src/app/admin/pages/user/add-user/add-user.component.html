@@ -1,5 +1,5 @@
 <mat-card>
-  <form [formGroup]="form" class="flex register_form">
+  <form (ngSubmit)="register(form.value)" [formGroup]="form" class="flex register_form">
     <div class="flex_row_center">
       <div class="wrapper">
         <mat-form-field>
@@ -56,14 +56,10 @@
       </app-images-upload>
     </div>
     <div class="flex_col_center">
-      <button [disabled]="!uploaded" mat-raised-button color="primary" class="btn_submit"
-              (click)="register(form.value)">
-        Tạo tại khoản
-      </button>
-      <button
-        [disabled]="!uploaded" mat-raised-button color="accent" class="btn_reset" (click)="resetForm()">
-        Nhập lại
-      </button>
+      <app-button-submit
+        [disabled]="!uploaded"
+        [title]="'Tạo tài khoản'"
+      ></app-button-submit>
     </div>
   </form>
 </mat-card>

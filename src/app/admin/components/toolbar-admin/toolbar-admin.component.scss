@@ -1,45 +1,52 @@
-mat-toolbar {
-  align-items: center;
-  justify-content: space-between;
-  box-shadow: 0.5px 0.5px 3px #717171;
-  background-color: #333 !important;
-  .user {
-    height: 40px;
+app-toolbar-admin {
+  & mat-toolbar {
     align-items: center;
-  }
-  & .fullName_text {
-    margin-left: 12px;
-    font-size: 12pt;
-  }
-  & .search_button {
-    transform: rotate(90deg);
-  }
-  & .group_center {
-    position: relative;
-    margin-right: 15px;
-    margin-left: 5px;
-    height: 35px;
-    & p {
-      text-align: center;
+    justify-content: space-between;
+    box-shadow: 0.5px 0.5px 3px #717171;
+    background-color: #333 !important;
+    .user {
+      height: 40px;
+      align-items: center;
     }
-    & .search_group {
-      position: absolute;
-      top: 0px;
-      left: 0px;
-      & input {
-        border: none;
-        background-color: #5a5a5a;
-        height: 32px;
-        width: 100%;
-        border-radius: 5px;
-        font-size: 12pt;
-        color: #fff;
-        text-indent: 10px;
-        &:focus {
-          outline: 0;
+    & .fullName_text {
+      margin-left: 12px;
+      font-size: 12pt;
+    }
+    & .search_button {
+      transform: rotate(90deg);
+    }
+    & .group_center {
+      position: relative;
+      margin-right: 15px;
+      margin-left: 5px;
+      height: 35px;
+      & mat-spinner {
+        position: absolute;
+        right: 10px;
+        top: 8px;
+      }
+      & p {
+        text-align: center;
+      }
+      & .search_group {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        & input {
+          border: none;
+          background-color: #5a5a5a;
+          height: 32px;
+          width: 100%;
+          border-radius: 5px;
+          font-size: 12pt;
+          color: #fff;
+          text-indent: 10px;
+          &:focus {
+            outline: 0;
+          }
         }
       }
     }
   }
-
 }
+
