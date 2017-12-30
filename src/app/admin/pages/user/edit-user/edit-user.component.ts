@@ -25,6 +25,7 @@ export class EditUserComponent implements OnInit {
 
   public listUser: Array<any>;
   public userIDCurrent: string;
+  public isCallAPI: boolean;
   @ViewChild('notification') notification: NotificationComponent;
 
   constructor(private accountService: AccountService,
@@ -45,6 +46,7 @@ export class EditUserComponent implements OnInit {
       .subscribe((response) => {
         if (response.result) {
           this.listUser = response.data;
+          this.isCallAPI = true;
         }
       });
   }

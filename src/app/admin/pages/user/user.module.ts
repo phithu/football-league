@@ -24,6 +24,7 @@ import { ProfileDialogModule } from '../../../../shared/module/profile-dialog';
 import { FormBaseModule } from '../../../../shared/module/form-base';
 import { SharePipesModule } from '../../../../shared/pipes';
 import { ButtonSubmitModule } from '../../../../shared/module/button-submit';
+import { LoadingAppModule } from '../../../../shared/module/loading-app';
 
 @NgModule({
   imports: [
@@ -43,7 +44,8 @@ import { ButtonSubmitModule } from '../../../../shared/module/button-submit';
     ProfileDialogModule,
     FormBaseModule,
     SharePipesModule,
-    ButtonSubmitModule
+    ButtonSubmitModule,
+    LoadingAppModule
   ],
   declarations: [
     AddUserComponent,

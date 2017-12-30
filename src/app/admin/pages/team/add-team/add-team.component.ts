@@ -27,8 +27,8 @@ export class AddTeamComponent implements OnInit, AfterViewInit {
   public submitted = false;
   public valueForm;
   public rulePlayer;
-  private idTeam: string;
-
+  public isRenderChild: boolean;
+  public isCallAPI: boolean; // CHECK WHETHER CALLED API
   constructor(private titleAppService: TitleAppService,
               private ruleApiService: RuleApiService,
               private teamApiService: TeamApiService,
@@ -37,13 +37,32 @@ export class AddTeamComponent implements OnInit, AfterViewInit {
 
   public ngOnInit() {
     this.titleAppService.setTitle('Thêm đội bóng');
-    this.getRule();
+    this.getAllTeam();
   }
 
   public ngAfterViewInit() {
-    if (this.addInfoTeam.form && this.addInfoListPlayer.form) {
+    if (this.addInfoTeam && this.addInfoTeam.form &&
+      this.addInfoListPlayer &&
+      this.addInfoListPlayer.form) {
       this.changeDetectorRef.detectChanges();
     }
+  }
+
+  public getAllTeam() {
+    this.teamApiService.getAllTeam()
+      .subscribe((response) => {
+        this.isCallAPI = true;
+        const {result, data} = response;
+        if (result) {
+          if (data.length <= 10) {
+            this.isRenderChild = true;
+            this.getRule();
+          } else {
+            this.isRenderChild = false;
+          }
+          this.changeDetectorRef.detectChanges();
+        }
+      });
   }
 
   public getRule() {
@@ -57,18 +76,6 @@ export class AddTeamComponent implements OnInit, AfterViewInit {
   }
 
   public nextStepOne(value) {
-    if (this.idTeam) {
-      this.teamApiService.deleteTeam(this.idTeam)
-        .subscribe((response) => console.log('delete', response));
-    }
-    this.teamApiService.insertTeam(value)
-      .subscribe((response) => {
-        if (response.result) {
-          console.log('add', response);
-          const {idTeam} = response.data[0];
-          this.idTeam = idTeam;
-        }
-      });
     this.valueForm = Object.assign({}, {team: value});
   }
 
@@ -78,34 +85,33 @@ export class AddTeamComponent implements OnInit, AfterViewInit {
 
   public onSave() {
     this.submitted = true;
-    const {team, player} = this.valueForm;
+    this.checkTeamExist();
+  }
 
-    console.log('id team', this.idTeam);
+  private checkTeamExist() {
+    const {team} = this.valueForm;
+    this.teamApiService.checkTeam(team.nameTeam)
+      .subscribe((response) => {
+        if (response.result) {
+          if (response.msg === 'team_exist') {
+            this.submitted = false;
+            this.notification.onError('Đội bóng đã tồn tại', 'Lỗi');
+          } else {
+            this.insertTeam();
+          }
+        }
+      });
+  }
 
-    // const {team, player} = this.valueForm;
-    //
-    // setTimeout(() => {
-    //   this.submitted = false;
-    // }, 3000);
-    // const newObj = {
-    //   nameTeam: team.nameTeam,
-    //   stadium: team.stadium,
-    //   imagesURL: team.imagesURL
-    // };
-    // this.teamApiService.insertTeam(team).subscribe((response) => {
-    //   if (response.result) {
-    //     const {idTeam} = response.data[0];
-    //     const newListPlayer = [];
-    //     player.forEach(item => {
-    //       newListPlayer.push(Object.assign({idTeam}, item));
-    //     });
-    //     this.teamApiService.insertListPlayer(newListPlayer)
-    //       .subscribe((newResponse) => {
-    //         this.submitted = false;
-    //         this.notification.onSuccess('Đội bóng đã được tạo thành công', 'Thành công');
-    //       });
-    //   }
-    // });
+  private insertTeam() {
+    const {team} = this.valueForm;
+    this.teamApiService.insertTeam(this.valueForm)
+      .subscribe((response) => {
+        if (response.result) {
+          this.submitted = false;
+          this.notification.onSuccess(`Đội bóng ${team.nameTeam} đã được tạo thành công`, 'Thành công');
+        }
+      });
   }
 
 }

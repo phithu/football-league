@@ -18,24 +18,19 @@ export class TeamApiService {
   }
 
   public insertTeam(team): Observable<any> {
-    return this.http.post(`${AppConst.java}/team/add`, team, {
-      headers: newHeaders
-    });
+    return this.http.post(`${AppConst.domain}/insert-team`, team);
   }
 
   public getAllTeam(): Observable<any> {
-    return this.http.get(`${AppConst.java}/team`);
+    return this.http.post(`${AppConst.domain}/get-teams`, {});
   }
 
-  public deleteTeam(idTeam: string): Observable<any> {
-    return this.http.post(`${AppConst.java}/team/delete`, {idTeam}, {
-      headers: newHeaders
-    });
+  public deleteTeam(idTeam): Observable<any> {
+    return this.http.post(`${AppConst.domain}/delete-team`, {idTeam});
   }
 
-  public insertListPlayer(listPlayer): Observable<any> {
-    return this.http.post(`${AppConst.java}/player/add`, listPlayer, {
-      headers: newHeaders
-    });
+  public checkTeam(nameTeam): Observable<any> {
+    return this.http.post(`${AppConst.domain}/check-team`, {nameTeam});
   }
+
 }

@@ -65,7 +65,7 @@ export class FormFixturesComponent implements OnInit {
           const messages = this.validatorMessages[field];
           for (const key in control.errors) {
             if (control.errors.hasOwnProperty(key)) {
-              this.formErrors[field] += messages[key] + ' ';
+              this.formErrors[field] += messages[key] + '';
               break;
             }
           }

@@ -1,4 +1,4 @@
-<mat-card>
+<mat-card *ngIf="isCallAPI && isRenderChild">
   <mat-horizontal-stepper [linear]="true">
     <mat-step [stepControl]="addInfoTeam.form">
       <ng-template matStepLabel>Thông tin đội bóng</ng-template>
@@ -50,4 +50,9 @@
     </mat-step>
   </mat-horizontal-stepper>
 </mat-card>
+<p *ngIf="isCallAPI && !isRenderChild"
+   class="alert_title">
+  Đã quá số lượng đội bóng tối đa: 10. Hãy xóa và thử lại</p>
+
+<app-loading-app *ngIf="!isCallAPI"></app-loading-app>
 <app-notification #notification></app-notification>

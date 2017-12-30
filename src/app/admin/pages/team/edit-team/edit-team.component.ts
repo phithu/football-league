@@ -23,6 +23,7 @@ import { NotificationComponent } from '../../../../../shared/module/notification
 export class EditTeamComponent implements OnInit {
 
   public listTeam: Array<any>;
+  public isCallAPI: boolean;
   @ViewChild('notification') notification: NotificationComponent;
 
   constructor(private titleAppService: TitleAppService,
@@ -42,14 +43,13 @@ export class EditTeamComponent implements OnInit {
         const {result, data} = response;
         if (result) {
           this.listTeam = data;
-          console.log('list team', this.listTeam);
+          this.isCallAPI = true;
         }
       });
   }
 
   public deleteTeam(team: any) {
-
-    const {idTeam, nameTeam} = team;
+    const {_id, nameTeam} = team;
     // Open Dialog
     const dialog = this.dialog.open(ConfirmDialogComponent, {
       data: {
@@ -59,7 +59,7 @@ export class EditTeamComponent implements OnInit {
     });
 
     this.confirmDialogService.OnOkay
-      .switchMap(() => this.teamApiService.deleteTeam(idTeam))
+      .switchMap(() => this.teamApiService.deleteTeam(_id))
       .subscribe((response) => {
         if (response.result) {
           // close dialog
@@ -71,18 +71,6 @@ export class EditTeamComponent implements OnInit {
         }
       });
 
-    // this.confirmDialogService.OnOkay.subscribe(() => {
-    //   this.teamApiService.deleteTeam(idTeam).subscribe((response) => {
-    //     if (response.result) {
-    //       // close dialog
-    //       dialog.close();
-    //       // get all user again
-    //       this.getAllTeam();
-    //       // push notification
-    //       this.notification.onSuccess(`Người dùng ${nameTeam} đã được xóa`, 'Xóa thành công');
-    //     }
-    //   });
-    // });
   }
 
 }

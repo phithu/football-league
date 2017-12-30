@@ -30,6 +30,7 @@ import { TeamApiModule } from '../../../../shared/service/team-api';
 import { CardItemModule } from '../../components/card-item';
 import { ConfirmDialogModule } from '../../../../shared/module/confirm-dialog';
 import { ButtonSubmitModule } from '../../../../shared/module/button-submit';
+import { LoadingAppModule } from '../../../../shared/module/loading-app';
 
 @NgModule({
   imports: [
@@ -52,7 +53,8 @@ import { ButtonSubmitModule } from '../../../../shared/module/button-submit';
     TeamApiModule,
     CardItemModule,
     ConfirmDialogModule,
-    ButtonSubmitModule
+    ButtonSubmitModule,
+    LoadingAppModule
   ],
   declarations: [
     AddTeamComponent,

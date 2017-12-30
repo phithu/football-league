@@ -17,7 +17,8 @@ export class ButtonSubmitComponent {
   @Input('title') public title: string;
   @Input('color') public color = 'primary';
 
-  public onSave() {
+  public onSave(e) {
+    e.stopPropagation();
     this.click.emit();
   }
 }

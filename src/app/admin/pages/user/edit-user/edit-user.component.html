@@ -1,4 +1,4 @@
-<ng-container *ngIf="listUser">
+<ng-container *ngIf="isCallAPI && listUser">
   <div class="flex user_container">
     <ng-container *ngFor="let user of listUser">
       <app-card-item
@@ -18,3 +18,5 @@
   </div>
 </ng-container>
 <app-notification #notification></app-notification>
+
+<app-loading-app *ngIf="!isCallAPI"></app-loading-app>

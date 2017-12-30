@@ -1,4 +1,4 @@
-<ng-container *ngIf="listTeam">
+<ng-container *ngIf="isCallAPI && listTeam">
   <div class="flex team_container">
     <ng-container *ngFor="let team of listTeam">
       <app-card-item
@@ -16,4 +16,5 @@
     </ng-container>
   </div>
 </ng-container>
+<app-loading-app *ngIf="!isCallAPI"></app-loading-app>
 <app-notification #notification></app-notification>
