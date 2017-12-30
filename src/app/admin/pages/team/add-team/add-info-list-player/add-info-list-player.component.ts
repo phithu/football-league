@@ -52,14 +52,14 @@ export class AddInfoListPlayerComponent implements OnChanges, OnInit {
     const {currentValue} = simpleChanges.rule;
     if (currentValue) {
       const {minOld, maxOld, minPlayerTeam, maxPlayerTeam, maxForeignTeam} = currentValue;
-      // this.updateNumberForm(minPlayerTeam);
+      this.updateNumberForm(minPlayerTeam);
       this.minDate = moment().startOf('year').subtract(minOld, 'year').toDate();
       this.maxDate = moment().startOf('year').subtract(maxOld, 'year').toDate();
     }
   }
 
   public ngOnInit() {
-    this.createForm(2);
+    this.createForm(3);
   }
 
   public updateNumberForm(minPlayerTeam) {

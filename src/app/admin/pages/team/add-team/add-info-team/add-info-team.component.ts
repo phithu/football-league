@@ -27,8 +27,8 @@ export class AddInfoTeamComponent extends FormBaseComponent implements OnInit {
   public controlConfig = {
     nameTeam: new FormControl('', [Validators.required]),
     stadium: new FormControl('', [Validators.required]),
-    imagesURL: new FormControl(''),
-    // imagesURL: new FormControl('', [Validators.required]),
+    // imagesURL: new FormControl(''),
+    imagesURL: new FormControl('', [Validators.required]),
   };
   public validatorMessages = {
     nameTeam: {
