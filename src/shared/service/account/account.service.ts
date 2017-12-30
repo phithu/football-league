@@ -11,6 +11,12 @@ export class AccountService {
   constructor(private http: HttpClient) {
   }
 
+  private afterUpdate(fullName, userName, imagesURL) {
+    localStorage.setItem('fullName', fullName);
+    localStorage.setItem('userName', userName);
+    localStorage.setItem('imagesURL', imagesURL);
+  }
+
   public register(dataUser: any): Observable<any> {
     console.log(dataUser);
     return this.http.post(`${AppConst.domain}/register`, dataUser);
@@ -38,12 +44,12 @@ export class AccountService {
       fullName,
       userName,
       imagesURL
-    }).do(() => this.alterUpdate(fullName, userName, imagesURL));
+    }).do(() => this.afterUpdate(fullName, userName, imagesURL));
   }
 
-  public alterUpdate(fullName, userName, imagesURL) {
-    localStorage.setItem('fullName', fullName);
-    localStorage.setItem('userName', userName);
-    localStorage.setItem('imagesURL', imagesURL);
+  public checkUserExist(userName): Observable<any> {
+    return this.http.post(`${AppConst.domain}/check-user`, {
+      userName
+    });
   }
 }

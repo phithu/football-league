@@ -1,5 +1,5 @@
 <main>
-  <form [formGroup]="form" class="flex register_form">
+  <form (ngSubmit)="submitFormUpdate(form)" [formGroup]="form" class="flex register_form">
     <div class="flex_row_center">
       <div class="wrapper">
         <mat-form-field>
@@ -26,7 +26,7 @@
                            [titleUpload]='"Tải ảnh đại diện"'>
         </app-images-upload>
         <app-avatar
-          *ngIf="!isUploaded"
+          *ngIf="!isUploadNewAvatar"
           [imagesURL]="dataUser.imagesURL"
           [size]="120"
           [fontSize]="60">
@@ -34,10 +34,11 @@
       </div>
     </div>
     <div class="flex_col_center">
-      <button [disabled]="!uploaded" mat-raised-button color="primary" class="btn_submit"
-              (click)="updateInfo(form.value)">
-        Cập nhập thông tin
-      </button>
+      <app-button-submit
+        [title]="'Cập nhập thông tin'"
+        [disabled]="disabledButton"
+      >
+      </app-button-submit>
     </div>
   </form>
 </main>

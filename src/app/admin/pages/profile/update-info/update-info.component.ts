@@ -23,8 +23,8 @@ export class UpdateInfoComponent extends FormBaseComponent implements OnInit {
 
   @Input('dataUser') dataUser: any;
   public form: FormGroup;
-  public uploaded = true;
-  public isUploaded: boolean = false;
+  public disabledButton = false; // Check whether or not disabled button submit
+  public isUploadNewAvatar = false; // Check whether or not upload new avatar
   public controlConfig = {
     fullName: new FormControl('', [Validators.required]),
     userName: new FormControl('', [Validators.required]),
@@ -75,33 +75,58 @@ export class UpdateInfoComponent extends FormBaseComponent implements OnInit {
     this.form.get('imagesURL').setValue(value);
   }
 
-  public updateInfo(value: any) {
-    this.validatorForm(true);
-    const {fullName, userName} = value;
-    if (this.form.valid) {
+  public submitFormUpdate(form) {
+    const {valid, value} = form;
+    if (valid) {
+      this.disabledButton = true;
+      const {fullName, userName} = value;
+
       if (this.imagesURL.length === 0) {
         this.imagesURL = this.fullName.charAt(0).toUpperCase();
       }
-      this.accountService.updateUserByID(
-        this.dataUser['_id'],
-        fullName,
-        userName,
-        this.imagesURL
-      ).subscribe((response) => {
-        if (response.result && response.mgs === 'user have been update') {
-          this.notification.onSuccess('Thông tin đã được cập nhập', 'Thành công');
-        }
-      });
+      this.checkUserExist(fullName, userName);
+    } else {
+      this.validatorForm(true);
     }
   }
 
+  public checkUserExist(fullName, userName) {
+    this.accountService.checkUserExist(userName)
+      .subscribe((response) => {
+        if (response.result) {
+          if (response.mgs === 'User have been existed') {
+            this.disabledButton = false;
+            this.notification.onError('Tên người dùng đã tồn tại',
+              'Lỗi cập nhật');
+          } else {
+            this.updateProfileUser(fullName, userName);
+          }
+        }
+      });
+  }
+
+  public updateProfileUser(fullName, userName) {
+    this.accountService.updateUserByID(
+      this.dataUser['_id'],
+      fullName,
+      userName,
+      this.imagesURL
+    ).subscribe((response) => {
+      this.disabledButton = false;
+      if (response.result && response.mgs === 'user have been update') {
+        this.notification.onSuccess('Thông tin đã được cập nhập',
+          'Thành công');
+      }
+    });
+  }
+
   public getImagesUpload(imagesURL) {
-    this.isUploaded = true;
+    this.isUploadNewAvatar = true;
     if (imagesURL) {
-      this.uploaded = true;
+      this.disabledButton = false;
       this.form.patchValue({imagesURL});
     } else {
-      this.uploaded = false;
+      this.disabledButton = true;
     }
   }
 

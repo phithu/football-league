@@ -25,7 +25,7 @@ export class ImagesUploadComponent implements OnInit {
   @ViewChild('images') images: ElementRef;
   @Output('onUpload') onUpload = new EventEmitter<any>();
   @Output('onDelete') onDelete = new EventEmitter<string>();
-  @Input('titleUpload') titleUpload: string = 'Tải ảnh';
+  @Input('titleUpload') titleUpload = 'Tải ảnh';
   @Input('typeUpload') typeUpload: boolean = this.TYPE_UPLOAD.AVATAR_UPLOAD;
   @Input('size') size = {
     width: 120,

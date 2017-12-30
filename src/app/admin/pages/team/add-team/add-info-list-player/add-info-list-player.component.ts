@@ -59,7 +59,7 @@ export class AddInfoListPlayerComponent implements OnChanges, OnInit {
   }
 
   public ngOnInit() {
-    this.createForm(3);
+    this.createForm(2);
   }
 
   public updateNumberForm(minPlayerTeam) {
