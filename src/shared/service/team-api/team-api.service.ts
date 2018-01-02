@@ -59,6 +59,10 @@ export class TeamApiService {
     });
   }
 
-
-
+  public deletePlayer(idTeam, idPlayer): Observable<any> {
+    return this.http.post(`${AppConst.domain}/delete-player`, {
+      idTeam,
+      idPlayer,
+    });
+  }
 }
