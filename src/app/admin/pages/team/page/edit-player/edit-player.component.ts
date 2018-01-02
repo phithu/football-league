@@ -85,28 +85,4 @@ export class EditPlayerComponent extends FormBaseComponent implements OnInit {
         }
       });
   }
-
-  // public getTeamById() {
-  //   this.activatedRoute.data
-  //     .map(value => value.data)
-  //     .subscribe((response) => {
-  //       if (response.result) {
-  //         const {player, _id} = response.data;
-  //         this.valuePlayer = {
-  //           player,
-  //           _id
-  //         };
-  //       }
-  //     });
-  // }
-
-  // public addPlayerSubmit(value) {
-  //   // console.log(value);
-  //   const {_id} = this.valuePlayer;
-  //   this.teamApiService.updateTeam(_id, value)
-  //     .subscribe((response) => {
-  //       console.log('response', response)
-  //     })
-  // }
-
 }

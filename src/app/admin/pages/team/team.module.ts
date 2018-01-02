@@ -22,7 +22,7 @@ import { AddInfoListPlayerComponent } from './component/add-info-list-player';
 import { AddTeamComponent } from './page/add-team';
 import { ViewTeamComponent } from './page/view-team';
 import { EditTeamComponent } from './page/edit-team';
-import { DetailTeamComponent, } from './page/detail-team';
+// import { DetailTeamComponent, } from './page/detail-team';
 import { EditPlayerComponent } from './page/edit-player';
 import { TeamRoutes } from './team.router';
 import { GetTeamResolve } from './get-team.resolve';
@@ -36,7 +36,7 @@ import { ConfirmDialogModule } from '../../../../shared/module/confirm-dialog';
 import { ButtonSubmitModule } from '../../../../shared/module/button-submit';
 import { LoadingAppModule } from '../../../../shared/module/loading-app';
 import { AvatarModule } from '../../../../shared/module/avatar';
-import { PlayerItemModule } from "../../components/player-item/player-item.module";
+import { PlayerItemModule } from '../../components/player-item/player-item.module';
 
 
 @NgModule({
@@ -71,7 +71,6 @@ import { PlayerItemModule } from "../../components/player-item/player-item.modul
     AddInfoTeamComponent,
     AddInfoPlayerComponent,
     AddInfoListPlayerComponent,
-    DetailTeamComponent,
     EditTeamComponent,
     EditPlayerComponent
   ],

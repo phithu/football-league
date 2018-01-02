@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 import { AddTeamComponent } from './page/add-team';
 import { ViewTeamComponent } from './page/view-team';
-import { DetailTeamComponent, } from './page/detail-team';
+// import { DetailTeamComponent, } from './page/detail-team';
 import { EditTeamComponent } from './page/edit-team';
 import { EditPlayerComponent } from './page/edit-player';
 import { GetTeamResolve } from './get-team.resolve';
@@ -52,23 +52,23 @@ export const TeamRoutes: Routes = [
           }
         ]
       },
-      {
-        path: 'detail',
-        children: [
-          {
-            path: ':id',
-            component: DetailTeamComponent,
-            resolve: {
-              data: GetTeamResolve
-            }
-          },
-          {
-            path: '',
-            redirectTo: '/',
-            pathMatch: 'full'
-          }
-        ]
-      },
+      // {
+      //   path: 'detail',
+      //   children: [
+      //     {
+      //       path: ':id',
+      //       component: DetailTeamComponent,
+      //       resolve: {
+      //         data: GetTeamResolve
+      //       }
+      //     },
+      //     {
+      //       path: '',
+      //       redirectTo: '/',
+      //       pathMatch: 'full'
+      //     }
+      //   ]
+      // },
       {
         path: '',
         redirectTo: '/',
