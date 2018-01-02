@@ -22,7 +22,7 @@ import { AddInfoListPlayerComponent } from './component/add-info-list-player';
 import { AddTeamComponent } from './page/add-team';
 import { ViewTeamComponent } from './page/view-team';
 import { EditTeamComponent } from './page/edit-team';
-// import { DetailTeamComponent, } from './page/detail-team';
+import { DetailTeamComponent, } from './page/detail-team';
 import { EditPlayerComponent } from './page/edit-player';
 import { TeamRoutes } from './team.router';
 import { GetTeamResolve } from './get-team.resolve';
@@ -72,7 +72,8 @@ import { PlayerItemModule } from '../../components/player-item/player-item.modul
     AddInfoPlayerComponent,
     AddInfoListPlayerComponent,
     EditTeamComponent,
-    EditPlayerComponent
+    EditPlayerComponent,
+    DetailTeamComponent
   ],
   providers: [
     GetTeamResolve

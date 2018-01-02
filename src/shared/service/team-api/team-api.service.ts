@@ -44,5 +44,12 @@ export class TeamApiService {
     });
   }
 
+  public getPlayer(idTeam, idPlayer): Observable<any> {
+    return this.http.post(`${AppConst.domain}/get-player`, {
+      idTeam,
+      idPlayer
+    });
+  }
+
 
 }

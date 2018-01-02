@@ -1,9 +1,94 @@
-<!--<mat-card [ngClass]="{'show': rulePlayer, 'hide': !rulePlayer}">-->
-  <!--<app-add-info-list-player-->
-    <!--[type]="'edit'"-->
-    <!--(addPlayerSubmit)="addPlayerSubmit($event)"-->
-    <!--[player]="valuePlayer.player"-->
-    <!--[rule]="rulePlayer">-->
-  <!--</app-add-info-list-player>-->
-<!--</mat-card>-->
-<!--<app-loading-app *ngIf="!rulePlayer"></app-loading-app>-->
+<mat-card>
+  <form class="flex flex_col" [formGroup]="form">
+    <div class="flex_row_center">
+      <div class="flex_grow">
+        <div class="form_control_group">
+          <mat-form-field>
+            <input formControlName="namePlayer" matInput>
+            <mat-placeholder>
+              <mat-icon>person</mat-icon>
+              <span class="placeholder_title">Tên cầu thủ</span>
+            </mat-placeholder>
+          </mat-form-field>
+          <mat-error *ngIf="formErrors.namePlayer">{{formErrors.namePlayer}}</mat-error>
+        </div>
+
+        <div class="form_control_group">
+          <mat-form-field>
+            <input
+              readonly
+              matInput
+              formControlName="birthDate"
+              [matDatepicker]="picker"
+              (click)="picker.open()"
+            >
+            <mat-placeholder>
+              <mat-icon>date_range</mat-icon>
+              <span class="placeholder_title">Ngày sinh</span>
+            </mat-placeholder>
+            <mat-datepicker
+              touchUi="true"
+              #picker>
+            </mat-datepicker>
+          </mat-form-field>
+          <mat-error *ngIf="formErrors.birthDate">{{formErrors.birthDate}}</mat-error>
+        </div>
+
+        <mat-form-field>
+          <input formControlName="notes" matInput>
+          <mat-placeholder>
+            <mat-icon>notes</mat-icon>
+            <span class="placeholder_title">Ghi chú</span>
+          </mat-placeholder>
+        </mat-form-field>
+
+        <div class="radio_wrapper">
+          <div class="flex radio_container">
+            <label>Loại cầu thủ</label>
+            <mat-radio-group
+              formControlName="typePlayer"
+              class="flex radio_group"
+              (change)="onChange($event.value)"
+            >
+              <mat-radio-button
+                color="primary"
+                value="{{TYPE_PLAYER.NATIVE}}"
+              >Trong nước
+              </mat-radio-button>
+              <mat-radio-button
+                color="primary"
+                value="{{TYPE_PLAYER.FOREIGN}}"
+              >Nước ngoài
+              </mat-radio-button>
+            </mat-radio-group>
+          </div>
+          <mat-error *ngIf="formErrors.typePlayer">{{formErrors.typePlayer}}</mat-error>
+        </div>
+      </div>
+      <div class="flex_col flex_row_center images_upload">
+        <app-images-upload #imagesUpload
+                           (onUpload)="getImagesUpload($event)"
+                           (onDelete)="deleteImages()"
+                           [titleUpload]='"Tải cầu thủ"'
+                           [typeImages]="'avatar'">
+        </app-images-upload>
+        <app-avatar
+          *ngIf="!isUploadNewAvatar && imagesURL"
+          [typeImages]="'avatar'"
+          [imagesURL]="imagesURL"
+          [size]="120"
+        >
+        </app-avatar>
+        <mat-error *ngIf="formErrors.imagesURL">{{formErrors.imagesURL}}</mat-error>
+      </div>
+    </div>
+    <div class="flex_col_center">
+      <app-button-submit
+        [type]="'submit'"
+        [title]="'Cập nhập'"
+        [disabled]="submitted"
+      >
+      </app-button-submit>
+    </div>
+  </form>
+</mat-card>
