@@ -38,20 +38,6 @@ export const TeamRoutes: Routes = [
       {
         path: 'edit-player',
         component: EditPlayerComponent,
-        // children: [
-        //   {
-        //     path: ':id',
-        //     component: EditPlayerComponent,
-        //     resolve: {
-        //       data: GetTeamResolve
-        //     }
-        //   },
-        //   {
-        //     path: '',
-        //     redirectTo: '/',
-        //     pathMatch: 'full'
-        //   }
-        // ]
       },
       {
         path: 'detail',

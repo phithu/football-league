@@ -1,16 +1,23 @@
 import {
   Component,
-  OnInit
+  OnInit,
+  ViewChild
 } from '@angular/core';
 import {
   ActivatedRoute,
   NavigationExtras,
   Router
 } from '@angular/router';
+import { MatDialog } from '@angular/material';
 
 import { TitleAppService } from '../../../../../../shared/module/title-app';
 import { TeamApiService } from '../../../../../../shared/service/team-api';
 import { RuleApiService } from '../../../../../../shared/service/rule-api';
+import {
+  ConfirmDialogComponent,
+  ConfirmDialogService
+} from '../../../../../../shared/module/confirm-dialog';
+import { NotificationComponent } from '../../../../../../shared/module/notification';
 
 
 @Component({
@@ -20,6 +27,8 @@ import { RuleApiService } from '../../../../../../shared/service/rule-api';
 })
 export class DetailTeamComponent implements OnInit {
 
+  @ViewChild('notification') notification: NotificationComponent;
+
   public valueTeam: any;
   public rulePlayer: any;
 
@@ -27,6 +36,8 @@ export class DetailTeamComponent implements OnInit {
   constructor(private ruleApiService: RuleApiService,
               private teamApiService: TeamApiService,
               private router: Router,
+              private confirmDialogService: ConfirmDialogService,
+              private dialog: MatDialog,
               private titleAppService: TitleAppService,
               private activatedRoute: ActivatedRoute) {
   }
@@ -42,6 +53,24 @@ export class DetailTeamComponent implements OnInit {
         if (response.result) {
           const {player} = response.data[0];
           this.rulePlayer = player;
+        }
+      });
+  }
+
+  public getTeam(IdTeam) {
+    this.teamApiService.getTeamId(IdTeam)
+      .subscribe(response => {
+        if (response.result) {
+          const {nameTeam, imagesURL, stadium, _id, player} = response.data;
+          this.valueTeam = {
+            team: {
+              nameTeam,
+              imagesURL,
+              stadium,
+              _id
+            },
+            player
+          };
         }
       });
   }
@@ -85,7 +114,27 @@ export class DetailTeamComponent implements OnInit {
   }
 
   public deletePlayer(player: any) {
+    const idTeam = this.valueTeam.team._id;
+    const {_id, namePlayer} = player;
+    // Open Dialog
+    const dialog = this.dialog.open(ConfirmDialogComponent, {
+      data: {
+        title: 'Xác nhận',
+        description: `Bạn có muốn xóa cầu thủ: ${namePlayer}`
+      }
+    });
 
+    this.confirmDialogService.OnOkay
+      .switchMap(() => this.teamApiService.deletePlayer(idTeam, _id))
+      .subscribe((response) => {
+        if (response.result) {
+          // close dialog
+          dialog.close();
+          this.getTeam(idTeam);
+          // push notification
+          this.notification.onSuccess(`Cầu thủ ${namePlayer} đã được xóa`, 'Xóa thành công');
+        }
+      });
   }
 
 
