@@ -1,5 +1,5 @@
-<mat-card>
-  <form class="flex flex_col" [formGroup]="form">
+<mat-card *ngIf="isCallAPI">
+  <form (ngSubmit)="updatePlayer(form)" class="flex flex_col" [formGroup]="form">
     <div class="flex_row_center">
       <div class="flex_grow">
         <div class="form_control_group">
@@ -92,3 +92,5 @@
     </div>
   </form>
 </mat-card>
+<app-notification #notification></app-notification>
+<app-loading-app *ngIf="!isCallAPI"></app-loading-app>

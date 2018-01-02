@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/take';
 import {
   ActivatedRouteSnapshot,
   Resolve,
   Router
 } from '@angular/router';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/take';
+
 import { TeamApiService } from '../../../../shared/service/team-api';
 
 
@@ -16,10 +17,27 @@ export class GetPlayerResolve implements Resolve<any> {
   }
 
   resolve(route: ActivatedRouteSnapshot): Observable<any> {
-    const idPlayer = route.paramMap.get('id');
-    return this.teamApiService.getTeamId(idPlayer)
+    const idPlayer = route.queryParamMap.get('idPlayer');
+    const idTeam = route.queryParamMap.get('idTeam');
+
+    console.log('zkxjklxzjxkxz');
+    // if (idTeam && idPlayer) {
+    //   return this.teamApiService.getPlayer(idTeam, idPlayer)
+    //     .map(response => {
+    //       if (response.result) {
+    //         console.log('response', response);
+    //         return response;
+    //       }
+    //       this.router.navigate(['/']);
+    //       return null;
+    //     });
+    // }
+    // return null;
+    return this.teamApiService.getPlayer(idTeam, idPlayer)
       .map(response => {
+        console.log('response', response);
         if (response.result) {
+          // console.log('response', response);
           return response;
         }
         this.router.navigate(['/']);

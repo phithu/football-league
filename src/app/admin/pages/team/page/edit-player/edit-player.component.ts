@@ -29,6 +29,8 @@ export class EditPlayerComponent extends FormBaseComponent implements OnInit {
   public isCallAPI: boolean;
   public isUploadNewAvatar = false;
   public form: FormGroup;
+  public valuePlayer: any;
+  public submitted = false;
   public controlConfig = {
     namePlayer: new FormControl('', Validators.required),
     birthDate: new FormControl('', Validators.required),
@@ -63,6 +65,8 @@ export class EditPlayerComponent extends FormBaseComponent implements OnInit {
     NATIVE: 'native',
   };
 
+  private responseAPI: any;
+
   public get imagesURL() {
     return this.form.get('imagesURL').value;
   }
@@ -85,7 +89,21 @@ export class EditPlayerComponent extends FormBaseComponent implements OnInit {
   public ngOnInit() {
     super.ngOnInit();
     this.titleAppService.setTitle('Chỉnh sửa cầu thủ');
-    this.getRule();
+    this.getPlayerById();
+  }
+
+  public getPlayerById() {
+    this.activatedRoute.queryParams
+      .switchMap((params) => this.teamApiService.getPlayer(params.idTeam, params.idPlayer))
+      .subscribe((response) => {
+        if (response.result) {
+          const {data} = response;
+          this.responseAPI = data;
+          this.valuePlayer = data.player[0];
+          this.form.patchValue(this.valuePlayer);
+          this.getRule();
+        }
+      });
   }
 
   public getRule() {
@@ -109,5 +127,22 @@ export class EditPlayerComponent extends FormBaseComponent implements OnInit {
   public deleteImages() {
     // reset value when click delete images
     this.imagesURL = '';
+  }
+
+  public updatePlayer(form) {
+    const {valid, value} = form;
+    if (valid) {
+      this.submitted = true;
+      const {_id, player} = this.responseAPI;
+      this.teamApiService.updatePlayer(_id, player[0]._id, value)
+        .subscribe((response) => {
+          if (response.result) {
+            this.notification.onSuccess('Thông tin cầu thủ đã được cập nhật', 'Thành công');
+            this.submitted = false;
+          }
+        });
+    } else {
+      this.validatorForm(true);
+    }
   }
 }
