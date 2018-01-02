@@ -1,0 +1,22 @@
+<mat-card *ngIf="valueTeam && rulePlayer">
+  <app-info-team
+    [valueForm]="valueTeam"
+    [showEdit]="true"
+    (onEdit)="editTeam()"
+  >
+  </app-info-team>
+  <div *ngIf="valueTeam">
+    <p class="title_header">Thông tin cầu thủ</p>
+    <p *ngIf="valueTeam.player">Tổng số cầu thủ: {{valueTeam.player.length}}</p>
+    <app-player-item
+      *ngFor="let player of valueTeam.player; let i = index"
+      [player]="player"
+      (onEdit)="editPlayer(player)"
+      (onDelete)="deletePlayer(player)"
+      [showEdit]="true"
+      [showDelete]="(i+ 1) > rulePlayer.minPlayerTeam"
+    >
+    </app-player-item>
+  </div>
+</mat-card>
+<app-loading-app *ngIf="!valueTeam || !rulePlayer"></app-loading-app>

@@ -1,6 +1,8 @@
 import {
   Component,
-  Input
+  EventEmitter,
+  Input,
+  Output
 } from '@angular/core';
 
 @Component({
@@ -9,5 +11,18 @@ import {
   styleUrls: ['./player-item.component.scss']
 })
 export class PlayerItemComponent {
-  @Input('player') player: any;
+
+  @Input('player') public player: any;
+  @Input('showEdit') public showEdit: boolean;
+  @Input('showDelete') public showDelete: boolean;
+  @Output('onEdit') public onEdit = new EventEmitter();
+  @Output('onDelete') public onDelete = new EventEmitter();
+
+  public onEditClick() {
+    this.onEdit.emit();
+  }
+
+  public onDeleteClick() {
+    this.onDelete.emit();
+  }
 }

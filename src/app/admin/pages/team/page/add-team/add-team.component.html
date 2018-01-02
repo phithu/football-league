@@ -1,5 +1,5 @@
 <mat-card *ngIf="isCallAPI && isRenderChild">
-  <mat-horizontal-stepper [linear]="true">
+  <mat-horizontal-stepper [linear]="false">
     <mat-step [stepControl]="addInfoTeam.form">
       <ng-template matStepLabel>Thông tin đội bóng</ng-template>
       <main>
@@ -29,6 +29,15 @@
           [valueForm]="valueForm"
         >
         </app-info-team>
+        <div *ngIf="valueForm">
+          <p class="title_header">Thông tin cầu thủ</p>
+          <p *ngIf="valueForm.player">Tổng số cầu thủ: {{valueForm.player.length}}</p>
+          <app-player-item
+            *ngFor="let player of valueForm.player"
+            [player]="player"
+          >
+          </app-player-item>
+        </div>
         <div class="flex_col_center">
           <button
             class="marginHorizontal5 buttonWithIcon"
@@ -53,6 +62,5 @@
 <p *ngIf="isCallAPI && !isRenderChild"
    class="alert_title">
   Đã quá số lượng đội bóng tối đa: 10. Hãy xóa và thử lại</p>
-
 <app-loading-app *ngIf="!isCallAPI"></app-loading-app>
 <app-notification #notification></app-notification>

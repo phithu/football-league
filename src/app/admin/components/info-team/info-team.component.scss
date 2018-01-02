@@ -5,3 +5,11 @@
 .content_box {
   margin: 10px 20px;
 }
+.info_team {
+  & p {
+    text-align: center;
+  }
+}
+.colorIcon {
+  color: #8a8a8a;
+}

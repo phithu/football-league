@@ -30,6 +30,7 @@ import { RuleApiModule } from '../../../../shared/service/rule-api';
 import { NotificationModule } from '../../../../shared/module/notification';
 import { FormBaseModule } from '../../../../shared/module/form-base';
 import { RuleGoalControlComponent } from './rule-goal/rule-goal-control';
+import { LoadingAppModule } from '../../../../shared/module/loading-app';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
@@ -52,6 +53,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     RuleApiModule,
     NotificationModule,
     FormBaseModule,
+    LoadingAppModule
   ],
   declarations: [
     RuleComponent,

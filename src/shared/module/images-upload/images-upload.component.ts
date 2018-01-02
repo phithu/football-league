@@ -17,16 +17,16 @@ import { FileUploader } from 'ng2-file-upload';
 })
 export class ImagesUploadComponent implements OnInit {
 
-  public TYPE_UPLOAD = {
-    'AVATAR_UPLOAD': true,
-    'LOGO_UPLOAD': false
+  public TYPE_IMAGES = {
+    AVATAR: 'avatar',
+    LOGO: 'logo'
   };
 
   @ViewChild('images') images: ElementRef;
   @Output('onUpload') onUpload = new EventEmitter<any>();
   @Output('onDelete') onDelete = new EventEmitter<string>();
   @Input('titleUpload') titleUpload = 'Tải ảnh';
-  @Input('typeUpload') typeUpload: boolean = this.TYPE_UPLOAD.AVATAR_UPLOAD;
+  @Input('typeImages') typeImages = this.TYPE_IMAGES.AVATAR;
   @Input('size') size = {
     width: 120,
     height: 120

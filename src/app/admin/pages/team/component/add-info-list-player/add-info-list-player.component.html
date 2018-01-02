@@ -5,7 +5,8 @@
     >
       <div class="flex_row_center flex_spaceBetween">
         <span style="margin-bottom: 15px">Cầu thủ {{i + 1}}</span>
-        <button *ngIf="form.controls.player.controls.length > 14 && i > 14" mat-icon-button>
+        <button *ngIf="form.controls.player.controls.length > rule.minPlayerTeam && i > rule.minPlayerTeam"
+                mat-icon-button>
           <mat-icon (click)="removePlayerForm(i)">clear</mat-icon>
         </button>
       </div>
@@ -59,4 +60,3 @@
     </button>
   </div>
 </form>
-

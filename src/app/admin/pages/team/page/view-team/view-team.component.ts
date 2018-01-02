@@ -4,29 +4,31 @@ import {
   ViewChild
 } from '@angular/core';
 import { MatDialog } from '@angular/material';
+import { Router } from '@angular/router';
 import 'rxjs/add/operator/switchMap';
 
-import { TitleAppService } from '../../../../../shared/module/title-app';
-import { TeamApiService } from '../../../../../shared/service/team-api';
+import { TitleAppService } from '../../../../../../shared/module/title-app';
+import { TeamApiService } from '../../../../../../shared/service/team-api';
 import {
   ConfirmDialogComponent,
   ConfirmDialogService
-} from '../../../../../shared/module/confirm-dialog';
-import { NotificationComponent } from '../../../../../shared/module/notification';
+} from '../../../../../../shared/module/confirm-dialog';
+import { NotificationComponent } from '../../../../../../shared/module/notification';
 
 
 @Component({
-  selector: 'app-edit-team',
-  templateUrl: './edit-team.component.html',
-  styleUrls: ['./edit-team.component.scss']
+  selector: 'app-view-team',
+  templateUrl: './view-team.component.html',
+  styleUrls: ['./view-team.component.scss']
 })
-export class EditTeamComponent implements OnInit {
+export class ViewTeamComponent implements OnInit {
 
   public listTeam: Array<any>;
   public isCallAPI: boolean;
   @ViewChild('notification') notification: NotificationComponent;
 
-  constructor(private titleAppService: TitleAppService,
+  constructor(private router: Router,
+              private titleAppService: TitleAppService,
               private teamApiService: TeamApiService,
               private confirmDialogService: ConfirmDialogService,
               private dialog: MatDialog) {
@@ -71,6 +73,10 @@ export class EditTeamComponent implements OnInit {
         }
       });
 
+  }
+
+  public navigateDetail(team) {
+    this.router.navigate(['', 'team', 'detail', team['_id']]);
   }
 
 }

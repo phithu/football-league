@@ -21,8 +21,8 @@
            [ngClass]="{
            'startBlur': !item.isUploaded,
            'stopBlur': item.isUploaded,
-           'avatarImg' : typeUpload,
-           'logoImg': !typeUpload}"
+           'avatarImg' : typeImages == 'avatar',
+           'logoImg': typeImages == 'logo'}"
       >
       <div *ngIf="!item.isUploaded" class="progress">
         <span>{{item.progress}}%</span>

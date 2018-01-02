@@ -63,7 +63,6 @@ export class ToolbarAdminComponent implements OnInit, AfterViewInit {
     this.titleAppService.getTitle
       .subscribe(title => {
         this.titleToolbar = title;
-        console.log('title: ', title);
       });
   }
 

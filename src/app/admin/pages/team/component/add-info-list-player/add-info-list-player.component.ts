@@ -44,6 +44,7 @@ export class AddInfoListPlayerComponent implements OnChanges, OnInit {
   public listCheck = [];
   public minDate;
   public maxDate;
+
   constructor(private formBuilder: FormBuilder) {
 
   }
@@ -136,6 +137,3 @@ export class AddInfoListPlayerComponent implements OnChanges, OnInit {
     }
   }
 }
-
-
-
