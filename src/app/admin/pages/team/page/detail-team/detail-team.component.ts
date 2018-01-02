@@ -4,6 +4,7 @@ import {
 } from '@angular/core';
 import {
   ActivatedRoute,
+  NavigationExtras,
   Router
 } from '@angular/router';
 
@@ -71,8 +72,16 @@ export class DetailTeamComponent implements OnInit {
   }
 
   public editPlayer(player: any) {
-    const {_id} = player;
-    this.router.navigate(['', 'team', 'edit-player', _id]);
+    const idPlayer = player._id;
+    const idTeam = this.valueTeam.team._id;
+    const navigationExtras: NavigationExtras = {
+      queryParams: {
+        idTeam,
+        idPlayer
+      },
+    };
+
+    this.router.navigate(['', 'team', 'edit-player'], navigationExtras);
   }
 
   public deletePlayer(player: any) {

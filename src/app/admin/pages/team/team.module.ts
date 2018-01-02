@@ -76,7 +76,7 @@ import { PlayerItemModule } from '../../components/player-item/player-item.modul
     DetailTeamComponent
   ],
   providers: [
-    GetTeamResolve
+    GetTeamResolve,
   ]
 })
 export class TeamModule {
