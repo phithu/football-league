@@ -16,6 +16,7 @@ export class ButtonSubmitComponent {
   @Input('disabled') public disabled = false;
   @Input('title') public title: string;
   @Input('color') public color = 'primary';
+  @Input('type') public type = 'button';
 
   public onSave(e) {
     e.stopPropagation();

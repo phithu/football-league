@@ -1,7 +1,17 @@
 <div *ngIf="valueForm">
   <div>
-    <p class="title_header">Thông tin đội bóng</p>
-    <div class="flex flex_row_center flex_col_center flex_col">
+    <div class="flex_row_center flex_spaceBetween">
+      <p class="title_header">Thông tin đội bóng</p>
+      <div class="flex_row_center">
+        <button (click)="onEditClick()" *ngIf="showEdit" mat-icon-button>
+          <mat-icon class="colorIcon">border_color</mat-icon>
+        </button>
+        <button (click)="onAddPlayerClick()" *ngIf="showAddPlayer" mat-icon-button>
+          <mat-icon class="colorIcon">person_add</mat-icon>
+        </button>
+      </div>
+    </div>
+    <div class=" flex_row_center flex_col_center flex_col">
       <app-avatar
         *ngIf="valueForm.team.imagesURL"
         [imagesURL]="valueForm.team.imagesURL"
@@ -9,18 +19,19 @@
         [size]="150"
       >
       </app-avatar>
-      <div>
+      <div class="info_team">
         <p class="marginVertical5">Tên đội bóng: {{valueForm.team.nameTeam}}</p>
         <p class="marginVertical5">Sân vận động: {{valueForm.team.stadium}}</p>
       </div>
     </div>
   </div>
-  <div>
-    <p class="title_header">Thông tin cầu thủ</p>
-    <app-player-item
-      *ngFor="let player of valueForm.player"
-      [player]="player"
-    >
-    </app-player-item>
-  </div>
+  <!--<div>-->
+    <!--<p class="title_header">Thông tin cầu thủ</p>-->
+    <!--<p *ngIf="valueForm.player">Tổng số cầu thủ: {{valueForm.player.length}}</p>-->
+    <!--<app-player-item-->
+      <!--*ngFor="let player of valueForm.player"-->
+      <!--[player]="player"-->
+    <!--&gt;-->
+    <!--</app-player-item>-->
+  <!--</div>-->
 </div>

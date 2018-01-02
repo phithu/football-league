@@ -3,6 +3,7 @@
     <ng-container *ngFor="let team of listTeam">
       <app-card-item
         (onDelete)="deleteTeam(team)"
+        (onView)="navigateDetail(team)"
         class="team_item"
         [typeImages]="'logo'"
         [useDefault]="true"

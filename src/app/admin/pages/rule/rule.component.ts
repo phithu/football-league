@@ -71,7 +71,6 @@ export class RuleComponent implements OnInit {
           this.rulePlayer = player;
           this.ruleGoals = goals;
           this.rulePoint = point;
-          console.log(response);
         }
       });
   }

@@ -1,0 +1,33 @@
+.marginHorizontal5 {
+  margin: 0px 5px;
+}
+
+.player_form_box {
+  border: 2px solid #9e9e9e;
+  padding: 20px;
+  padding-top: 10px;
+  border-radius: 20px;
+  margin-bottom: 40px;
+  &:last-child {
+    margin-bottom: 20px;
+  }
+}
+.hide {
+  display: none;
+}
+.placeholder_title {
+  width: 400px;
+  font-size: 24pt;
+  margin: 0px auto;
+  display: block;
+  color: #bdbdbd;
+  & mat-icon {
+    margin: 0px auto;
+    display: block;
+    height: 50px;
+    font-size: 45pt;
+    width: 60px;
+    color: #bdbdbd;
+    margin-bottom: 20px;
+  }
+}

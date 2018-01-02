@@ -84,7 +84,11 @@ export class UpdateInfoComponent extends FormBaseComponent implements OnInit {
       if (this.imagesURL.length === 0) {
         this.imagesURL = this.fullName.charAt(0).toUpperCase();
       }
-      this.checkUserExist(fullName, userName);
+      if (localStorage.getItem('userName') === userName) {
+        this.updateProfileUser(fullName, userName);
+      } else {
+        this.checkUserExist(fullName, userName);
+      }
     } else {
       this.validatorForm(true);
     }

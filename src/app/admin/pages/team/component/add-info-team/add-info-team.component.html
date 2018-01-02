@@ -24,7 +24,7 @@
                          (onUpload)="getImagesUpload($event)"
                          (onDelete)="deleteImages()"
                          [titleUpload]='"Tải logo đội bóng"'
-                         [typeUpload]="false">
+                         [typeImages]="'avatar'">
       </app-images-upload>
       <mat-error *ngIf="formErrors.imagesURL">{{formErrors.imagesURL}}</mat-error>
     </div>

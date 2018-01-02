@@ -117,6 +117,7 @@ export class AddInfoPlayerComponent implements DoCheck, OnChanges, OnInit {
         this.formErrors[field] = '';
         const control = form.get(field);
         if (submitted) {
+          control.markAsTouched();
           control.markAsDirty();
         }
         // self.hasError = false;

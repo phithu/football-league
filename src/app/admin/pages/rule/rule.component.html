@@ -1,22 +1,21 @@
-<div>
-  <app-rule-player
-    class="col_12"
-    [rule]="rulePlayer"
-    (onSaveRule)="onSavePlayer($event)"
-  >
-  </app-rule-player>
+<app-rule-player
+  class="col_12"
+  [rule]="rulePlayer"
+  (onSaveRule)="onSavePlayer($event)"
+>
+</app-rule-player>
 
-  <div class="flex flex_wrap">
-    <app-rule-goal
-      [rule]="ruleGoals"
-      (onSaveRule)="onSaveGoal($event)"
-      class="col_6">
-    </app-rule-goal>
-    <app-rule-point
-      class="col_6"
-      [rule]="rulePoint"
-      (onSaveRule)="onSavePoint($event)"
-    ></app-rule-point>
-  </div>
+<div class="flex flex_wrap">
+  <app-rule-goal
+    [rule]="ruleGoals"
+    (onSaveRule)="onSaveGoal($event)"
+    class="col_6">
+  </app-rule-goal>
+  <app-rule-point
+    class="col_6"
+    [rule]="rulePoint"
+    (onSaveRule)="onSavePoint($event)"
+  ></app-rule-point>
 </div>
+<app-loading-app *ngIf="!rulePoint || !ruleGoals || !rulePlayer"></app-loading-app>
 <app-notification #notification></app-notification>

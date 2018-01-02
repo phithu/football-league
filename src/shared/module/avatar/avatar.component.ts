@@ -13,10 +13,15 @@ import {
 })
 export class AvatarComponent implements OnChanges {
 
+  public TYPE_IMAGES = {
+    AVATAR: 'avatar',
+    LOGO: 'logo'
+  };
+
   @Input('imagesURL') imagesURL: string;
   @Input('size') size = 40;
   @Input('fontSize') fontSize: number;
-  @Input('typeImages') typeImages = 'avatar';
+  @Input('typeImages') typeImages = this.TYPE_IMAGES.AVATAR;
   @Input('useDefault') useDefault = false;
 
   constructor(private element: ElementRef) {
