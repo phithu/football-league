@@ -1,21 +1,40 @@
 <div class="form_control_group" [formGroup]="form">
   <p>Trận đấu thứ {{index}}</p>
   <mat-form-field>
-    <input color="warn" formControlName="home" matInput>
+    <input color="warn"
+           formControlName="home"
+           [matAutocomplete]="autoHome"
+           matInput
+    >
     <mat-placeholder>
       <mat-icon>location_city</mat-icon>
       <span class="placeholder_title">Chủ nhà</span>
     </mat-placeholder>
   </mat-form-field>
+  <mat-autocomplete #autoHome="matAutocomplete">
+    <mat-option *ngFor="let item of listTeam" [value]="item.nameTeam">
+      {{ item.nameTeam }}
+    </mat-option>
+  </mat-autocomplete>
   <mat-error *ngIf="formErrors.home">{{formErrors.home}}</mat-error>
 
   <mat-form-field>
-    <input color="warn" formControlName="away" matInput>
+    <input
+      color="warn"
+      formControlName="away"
+      [matAutocomplete]="autoAway"
+      matInput
+    >
     <mat-placeholder>
       <mat-icon>location_city</mat-icon>
       <span class="placeholder_title">Đội khách</span>
     </mat-placeholder>
   </mat-form-field>
+  <mat-autocomplete #autoAway="matAutocomplete">
+    <mat-option *ngFor="let item of listTeam" [value]="item.nameTeam">
+      {{ item.nameTeam }}
+    </mat-option>
+  </mat-autocomplete>
   <mat-error *ngIf="formErrors.away">{{formErrors.away}}</mat-error>
 
   <mat-form-field>

@@ -2,10 +2,12 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import {
+  MatAutocompleteModule,
   MatButtonModule,
   MatCardModule,
   MatIconModule,
   MatInputModule,
+  MatSelectModule
 } from '@angular/material';
 import {
   FormsModule,
@@ -24,6 +26,8 @@ import { ButtonSubmitModule } from '../../../../shared/module/button-submit';
 import { FixturesApiModule } from '../../../../shared/service/fixtures-api';
 import { NotificationModule } from '../../../../shared/module/notification';
 import { FixturesRowModule } from '../../components/fixtures-row';
+import { TeamApiModule } from '../../../../shared/service/team-api';
+import { LoadingAppModule } from '../../../../shared/module/loading-app';
 
 
 @NgModule({
@@ -34,14 +38,18 @@ import { FixturesRowModule } from '../../components/fixtures-row';
     RouterModule.forChild(FixturesRoutes),
     FormsModule,
     ReactiveFormsModule,
+    MatAutocompleteModule,
     MatButtonModule,
     MatIconModule,
     MatInputModule,
     MatCardModule,
+    MatSelectModule,
     ButtonSubmitModule,
     FixturesApiModule,
     NotificationModule,
-    FixturesRowModule
+    FixturesRowModule,
+    TeamApiModule,
+    LoadingAppModule,
   ],
   declarations: [
     ViewFixturesComponent,

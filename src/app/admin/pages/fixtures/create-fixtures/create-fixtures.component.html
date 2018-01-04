@@ -1,4 +1,4 @@
-<mat-card>
+<mat-card *ngIf="isCallAPI">
   <form (ngSubmit)="onSave(form)" [formGroup]="form">
     <mat-form-field>
       <input color="warn" formControlName="week" matInput>
@@ -14,6 +14,7 @@
       <div *ngFor="let formItem of form['controls'].match['controls']; let i = index">
         <div class="flex_row_center" [formGroupName]="i">
           <app-form-fixtures
+            [listTeam]="listTeam"
             class="flex_grow"
             [index]="i+1"
             [group]="form['controls'].match.controls[i]"
@@ -46,6 +47,7 @@
       <!--<span>Lưa thông tin</span>-->
       <!--</button>-->
       <app-button-submit
+        [type]="'submit'"
         [disabled]="submitted"
         [title]="'Lưu thông tin'">
 
@@ -53,4 +55,5 @@
     </div>
   </form>
 </mat-card>
+<app-loading-app *ngIf="!isCallAPI"></app-loading-app>
 <app-notification #notification></app-notification>

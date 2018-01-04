@@ -71,4 +71,16 @@ export class TeamApiService {
       namePlayer
     });
   }
+
+  public getStadium(nameTeam): Observable<any> {
+    return this.http.post(`${AppConst.domain}/get-stadium`, {
+      nameTeam
+    });
+  }
+
+  public getLogoTeam(nameTeam): Observable<any> {
+    return this.http.post(`${AppConst.domain}/get-team-logo`, {
+      nameTeam
+    });
+  }
 }

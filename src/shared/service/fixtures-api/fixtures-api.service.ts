@@ -12,7 +12,7 @@ export class FixturesApiService {
   }
 
   public getAllFixtures(): Observable<any> {
-    return null;
+    return this.http.post(`${AppConst.domain}/get-fixtures`, {});
   }
 
   public insertFixtures(data): Observable<any> {

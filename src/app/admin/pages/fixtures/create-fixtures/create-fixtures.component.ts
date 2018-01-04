@@ -17,6 +17,7 @@ import { TitleAppService } from '../../../../../shared/module/title-app';
 import { RangeValueValidator } from '../../../../extension/range-value.validator';
 import { FixturesApiService } from '../../../../../shared/service/fixtures-api';
 import { NotificationComponent } from '../../../../../shared/module/notification';
+import { TeamApiService } from '../../../../../shared/service/team-api';
 
 @Component({
   selector: 'app-create-fixtures',
@@ -28,6 +29,8 @@ export class CreateFixturesComponent implements OnInit {
   @ViewChildren(FormFixturesComponent) formFixtures: QueryList<FormFixturesComponent>;
   @ViewChild('notification') notification: NotificationComponent;
 
+  public listTeam: Array<any>;
+  public isCallAPI: boolean;
   public form: FormGroup;
   public submitted = false;
   public validatorMessages = {
@@ -43,14 +46,26 @@ export class CreateFixturesComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
               private titleAppService: TitleAppService,
+              private teamApiService: TeamApiService,
               private fixturesAPIService: FixturesApiService) {
   }
 
   public ngOnInit() {
     this.titleAppService.setTitle('Tạo lịch thi đấu');
-    this.createForm(5);
-
+    this.createForm(4);
+    this.getAllTeam();
     this.form.valueChanges.subscribe(() => this.validatorForm());
+  }
+
+  public getAllTeam() {
+    this.teamApiService.getAllTeam()
+      .subscribe((response) => {
+        const {result, data} = response;
+        if (result) {
+          this.listTeam = data;
+          this.isCallAPI = true;
+        }
+      });
   }
 
   public generateForm(number) {
@@ -76,7 +91,9 @@ export class CreateFixturesComponent implements OnInit {
     // initialize our address
     return this.formBuilder.group({
       home: ['', Validators.required],
+      homeImages: [''],
       away: ['', Validators.required],
+      awayImages: [''],
       stadium: ['', Validators.required],
       dateTime: ['', Validators.required],
       note: [''],
