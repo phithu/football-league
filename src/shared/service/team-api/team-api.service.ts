@@ -65,4 +65,10 @@ export class TeamApiService {
       idPlayer,
     });
   }
+
+  public searchPlayer(namePlayer): Observable<any> {
+    return this.http.post(`${AppConst.domain}/search-player`, {
+      namePlayer
+    });
+  }
 }

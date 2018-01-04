@@ -45,6 +45,27 @@ app-toolbar-admin {
             outline: 0;
           }
         }
+        & .result_search {
+          background-color: #333;
+          margin: 0px;
+          padding-top: 10px;
+          border-radius: 10px;
+          list-style: none;
+          & li {
+            padding: 0px 10px;
+            border-bottom: 1px solid #4c4b4b;
+            &:last-child {
+              border-bottom: none;
+            }
+            & p {
+              text-align: left;
+              font-size: 11pt;
+            }
+            & .title_club {
+              font-style: italic;
+            }
+          }
+        }
       }
     }
   }

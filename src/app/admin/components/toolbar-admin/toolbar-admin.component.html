@@ -12,6 +12,14 @@
     <div [@widthSearch]="state" class="search_group search-loading-theme">
       <input #inputSearch placeholder="Tìm kiếm cầu thủ...">
       <mat-spinner *ngIf="isLoading" diameter="20"></mat-spinner>
+      <ng-container *ngIf="showResultSearch">
+        <ul class="result_search">
+          <li class="flex_row_center flex_spaceBetween" *ngFor="let item of listPlayerSearch">
+            <p>{{item.player[0].namePlayer}}</p>
+            <p class="title_club">{{item.nameTeam}}</p>
+          </li>
+        </ul>
+      </ng-container>
     </div>
   </div>
   <div class="user flex">

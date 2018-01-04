@@ -10,6 +10,7 @@ import {
 } from '@angular/material';
 import { ToolbarAdminComponent } from './toolbar-admin.component';
 import { AvatarModule } from '../../../../shared/module/avatar/avatar.module';
+import { TeamApiModule } from '../../../../shared/service/team-api';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { AvatarModule } from '../../../../shared/module/avatar/avatar.module';
     MatButtonModule,
     MatProgressSpinnerModule,
     AvatarModule,
+    TeamApiModule
   ],
   declarations: [
     ToolbarAdminComponent
