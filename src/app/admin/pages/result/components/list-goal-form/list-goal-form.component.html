@@ -1,0 +1,60 @@
+<div class="form_control_group" [formGroup]="form">
+  <mat-form-field>
+    <input
+      color="warn"
+      formControlName="namePlayer"
+      matInput
+    >
+    <mat-placeholder>
+      <mat-icon>person</mat-icon>
+      <span class="placeholder_title">Tên cầu thủ</span>
+    </mat-placeholder>
+  </mat-form-field>
+  <mat-error *ngIf="formErrors.namePlayer">{{formErrors.namePlayer}}</mat-error>
+
+  <mat-form-field>
+    <input
+      color="warn"
+      formControlName="teamPlayer"
+      matInput
+    >
+    <mat-placeholder>
+      <mat-icon>location_city</mat-icon>
+      <span class="placeholder_title">Đội bóng</span>
+    </mat-placeholder>
+  </mat-form-field>
+  <mat-error *ngIf="formErrors.teamPlayer">{{formErrors.teamPlayer}}</mat-error>
+
+  <mat-form-field>
+    <mat-select formControlName="typeGoals">
+      <mat-option *ngFor="let item of ruleGoals.listTypeGoals" [value]="item._id">
+        {{ item.goalControl }}
+      </mat-option>
+    </mat-select>
+    <mat-placeholder>
+      <mat-icon>sort</mat-icon>
+      <span class="placeholder_title">Loại bàn thắng</span>
+    </mat-placeholder>
+  </mat-form-field>
+  <mat-error *ngIf="formErrors.typeGoals">{{formErrors.typeGoals}}</mat-error>
+
+  <mat-form-field>
+    <input
+      color="warn"
+      formControlName="timeGoal"
+      matInput
+      [imask]="{mask: '000'}"
+      [unmask]="true"
+    >
+    <mat-placeholder>
+      <mat-icon>access_time</mat-icon>
+      <span class="placeholder_title">Thời điểm ghi bàn</span>
+    </mat-placeholder>
+  </mat-form-field>
+  <mat-error *ngIf="formErrors.timeGoal">{{formErrors.timeGoal}}</mat-error>
+</div>
+
+
+
+
+
