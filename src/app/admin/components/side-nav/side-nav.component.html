@@ -63,6 +63,30 @@
     <mat-expansion-panel>
       <mat-expansion-panel-header>
         <mat-panel-title>
+          Kết quả
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div>
+        <a
+          [routerLink]="['/', 'result' , 'view-result']"
+          class="buttonFullWidth"
+          mat-button
+        >
+          Xem kết quả
+        </a>
+        <a
+          [routerLink]="['/', 'result' , 'create-result']"
+          class="buttonFullWidth"
+          mat-button
+        >
+          Ghi nhận kết quả
+        </a>
+      </div>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
           Bảng xếp hạng
         </mat-panel-title>
       </mat-expansion-panel-header>

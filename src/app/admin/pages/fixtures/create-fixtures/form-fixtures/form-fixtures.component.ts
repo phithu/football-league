@@ -1,9 +1,7 @@
 import {
   Component,
   Input,
-  OnChanges,
-  OnInit,
-  SimpleChanges
+  OnInit
 } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { TeamApiService } from '../../../../../../shared/service/team-api';
@@ -13,7 +11,7 @@ import { TeamApiService } from '../../../../../../shared/service/team-api';
   templateUrl: './form-fixtures.component.html',
   styleUrls: ['./form-fixtures.component.scss']
 })
-export class FormFixturesComponent implements OnInit, OnChanges {
+export class FormFixturesComponent implements OnInit {
 
   @Input('group') public form: FormGroup;
   @Input('index') public index: Number;
@@ -71,15 +69,8 @@ export class FormFixturesComponent implements OnInit, OnChanges {
         if (callback) {
           callback(data);
         }
-        // this.form.patchValue({
-        //   `${controlName}`: data.stadium
-        // });
-        // this.form.patchValue('d': data.stadium});
       }
     });
-  }
-
-  public ngOnChanges(simplesChange: SimpleChanges) {
   }
 
   public onChangeHomeTeam(value) {

@@ -10,6 +10,7 @@ import { SideNavModule } from './components/side-nav';
 import { ToolbarAdminModule } from './components/toolbar-admin';
 import { GuardModule } from './module/guard';
 import { AccountModule } from '../../shared/service/account';
+import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 
 @NgModule({
   imports: [
@@ -20,6 +21,7 @@ import { AccountModule } from '../../shared/service/account';
     ToolbarAdminModule,
     GuardModule,
     AccountModule,
+    PerfectScrollbarModule
   ],
   declarations: [
     AdminComponent,

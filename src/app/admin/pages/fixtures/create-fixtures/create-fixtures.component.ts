@@ -81,7 +81,7 @@ export class CreateFixturesComponent implements OnInit {
       week: new FormControl('', Validators.compose([
         Validators.required,
         Validators.pattern(/^\d+$/),
-        RangeValueValidator(1, 18)
+        RangeValueValidator(1, 16)
       ])),
       match: this.formBuilder.array(this.generateForm(number))
     });

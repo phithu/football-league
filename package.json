@@ -24,6 +24,7 @@
     "@angular/platform-browser-dynamic": "^5.0.0",
     "@angular/router": "^5.0.0",
     "@ngx-progressbar/core": "^3.0.1",
+    "angular-imask": "^1.0.0",
     "core-js": "^2.4.1",
     "enhanced-resolve": "3.3.0",
     "md2": "0.0.29",

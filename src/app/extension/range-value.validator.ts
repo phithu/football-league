@@ -6,7 +6,7 @@ export const RangeValueValidator = (minValue, maxValue) => {
     if (!input || !minValue || !maxValue) {
       return null;
     }
-    if (minValue <= input.value && input.value <= maxValue) {
+    if (minValue <= parseInt(input.value) && parseInt(input.value) <= maxValue) {
       return null;
     }
     return {'range': true};

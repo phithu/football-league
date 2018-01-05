@@ -34,6 +34,10 @@ export const AdminRoutes: Routes = [
         loadChildren: './pages/fixtures/fixtures.module#FixturesModule'
       },
       {
+        path: 'result',
+        loadChildren: './pages/result/result.module#ResultModule'
+      },
+      {
         path: '',
         component: HomeAdminComponent,
       }
