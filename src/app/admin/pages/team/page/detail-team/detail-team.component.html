@@ -2,7 +2,9 @@
   <app-info-team
     [valueForm]="valueTeam"
     [showEdit]="true"
+    [showAddPlayer]="valueTeam.player.length < rulePlayer.maxPlayerTeam"
     (onEdit)="editTeam()"
+    (onAddPlayer)="addPlayer()"
   >
   </app-info-team>
   <div *ngIf="valueTeam">

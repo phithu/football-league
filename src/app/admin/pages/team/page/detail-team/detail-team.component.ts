@@ -128,14 +128,15 @@ export class DetailTeamComponent implements OnInit {
       .switchMap(() => this.teamApiService.deletePlayer(idTeam, _id))
       .subscribe((response) => {
         if (response.result) {
-          // close dialog
           dialog.close();
           this.getTeam(idTeam);
-          // push notification
           this.notification.onSuccess(`Cầu thủ ${namePlayer} đã được xóa`, 'Xóa thành công');
         }
       });
   }
 
-
+  public addPlayer() {
+    const idTeam = this.valueTeam.team._id;
+    this.router.navigate(['', 'team', 'add-player', idTeam]);
+  }
 }

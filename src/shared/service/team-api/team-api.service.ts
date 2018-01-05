@@ -51,6 +51,13 @@ export class TeamApiService {
     });
   }
 
+  public insertPlayer(idTeam, dataInsert): Observable<any> {
+    return this.http.post(`${AppConst.domain}/insert-player`, {
+      idTeam,
+      dataInsert
+    });
+  }
+
   public updatePlayer(idTeam, idPlayer, dataUpdate): Observable<any> {
     return this.http.post(`${AppConst.domain}/update-player`, {
       idTeam,

@@ -17,7 +17,17 @@ export const TeamRoutes: Routes = [
       },
       {
         path: 'add-player',
-        component: AddPlayerComponent
+        children: [
+          {
+            path: ':id',
+            component: AddPlayerComponent
+          },
+          {
+            path: '',
+            redirectTo: '/',
+            pathMatch: 'full'
+          }
+        ]
       },
       {
         path: 'view-team',
