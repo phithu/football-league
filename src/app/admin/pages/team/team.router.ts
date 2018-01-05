@@ -5,17 +5,22 @@ import { EditTeamComponent } from './page/edit-team';
 import { EditPlayerComponent } from './page/edit-player';
 import { GetTeamResolve } from './get-team.resolve';
 import { DetailTeamComponent } from './page/detail-team';
+import { AddPlayerComponent } from './page/add-player';
 
 export const TeamRoutes: Routes = [
   {
     path: '',
     children: [
       {
-        path: 'add',
+        path: 'add-team',
         component: AddTeamComponent
       },
       {
-        path: 'view',
+        path: 'add-player',
+        component: AddPlayerComponent
+      },
+      {
+        path: 'view-team',
         component: ViewTeamComponent
       },
       {
@@ -40,7 +45,7 @@ export const TeamRoutes: Routes = [
         component: EditPlayerComponent,
       },
       {
-        path: 'detail',
+        path: 'detail-team',
         children: [
           {
             path: ':id',

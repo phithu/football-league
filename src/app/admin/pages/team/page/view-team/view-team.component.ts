@@ -76,7 +76,7 @@ export class ViewTeamComponent implements OnInit {
   }
 
   public navigateDetail(team) {
-    this.router.navigate(['', 'team', 'detail', team['_id']]);
+    this.router.navigate(['', 'team', 'detail-team', team['_id']]);
   }
 
 }

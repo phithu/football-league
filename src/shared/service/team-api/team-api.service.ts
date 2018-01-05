@@ -83,4 +83,10 @@ export class TeamApiService {
       nameTeam
     });
   }
+
+  public getNumberForeign(idTeam): Observable<any> {
+    return this.http.post(`${AppConst.domain}/get-number-foreign-player`, {
+      idTeam
+    });
+  }
 }

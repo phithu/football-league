@@ -24,6 +24,7 @@ import { ViewTeamComponent } from './page/view-team';
 import { EditTeamComponent } from './page/edit-team';
 import { DetailTeamComponent, } from './page/detail-team';
 import { EditPlayerComponent } from './page/edit-player';
+import { AddPlayerComponent } from './page/add-player';
 import { TeamRoutes } from './team.router';
 import { GetTeamResolve } from './get-team.resolve';
 import { ImagesUploadModule } from '../../../../shared/module/images-upload';
@@ -36,7 +37,7 @@ import { ConfirmDialogModule } from '../../../../shared/module/confirm-dialog';
 import { ButtonSubmitModule } from '../../../../shared/module/button-submit';
 import { LoadingAppModule } from '../../../../shared/module/loading-app';
 import { AvatarModule } from '../../../../shared/module/avatar';
-import { PlayerItemModule } from '../../components/player-item/player-item.module';
+import { PlayerItemModule } from '../../components/player-item';
 
 
 @NgModule({
@@ -73,7 +74,8 @@ import { PlayerItemModule } from '../../components/player-item/player-item.modul
     AddInfoListPlayerComponent,
     EditTeamComponent,
     EditPlayerComponent,
-    DetailTeamComponent
+    DetailTeamComponent,
+    AddPlayerComponent
   ],
   providers: [
     GetTeamResolve,
