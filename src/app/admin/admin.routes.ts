@@ -38,6 +38,10 @@ export const AdminRoutes: Routes = [
         loadChildren: './pages/result/result.module#ResultModule'
       },
       {
+        path: 'search-result',
+        loadChildren: './pages/search-result/search-result.module#SearchResultModule'
+      },
+      {
         path: '',
         component: HomeAdminComponent,
         pathMatch: 'full'

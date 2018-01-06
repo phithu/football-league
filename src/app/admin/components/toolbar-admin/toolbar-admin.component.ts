@@ -49,6 +49,7 @@ export class ToolbarAdminComponent implements OnInit, AfterViewInit {
   public isLoading = false;
   public titleToolbar: string;
   public toggleContainer = true;
+  public closeResultSearch = false;
   public listPlayerSearch: any;
   public showResultSearch = false; // WHETHER SHOW RESULT SEARCH
   @Output('onMenu') onMenu = new EventEmitter();
@@ -118,8 +119,20 @@ export class ToolbarAdminComponent implements OnInit, AfterViewInit {
         } else {
           this.showResultSearch = false;
         }
-        // this.showResultSearch = (result && data.length > 0);
-        // console.log('res', response);
       });
+  }
+
+  public searchItemClick(item) {
+    this.showResultSearch = false;
+    this.inputSearch.nativeElement.value = '';
+    this.toggleSearch();
+    const {_id, player} = item;
+    this.router.navigate(['', 'search-result'], {
+      queryParams: {
+        idTeam: _id,
+        idPlayer: player[0]._id,
+        namePlayer: player[0].namePlayer
+      }
+    });
   }
 }

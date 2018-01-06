@@ -1,11 +1,18 @@
 <mat-card *ngIf="isCallAPI">
   <form (ngSubmit)="onSave(form)" [formGroup]="form">
     <mat-form-field>
-      <input color="warn" formControlName="week" matInput>
-      <mat-placeholder>
-        <mat-icon>sort</mat-icon>
-        <span class="placeholder_title">Vòng đấu</span>
-      </mat-placeholder>
+      <mat-select
+        formControlName="week"
+        placeholder="Chọn vòng đấu"
+      >
+        <mat-option
+          *ngFor="let item of listMatch; let i=index"
+          [value]="item"
+          [disabled]="i < listFixtures.length"
+        >
+          Vòng đấu: {{ item }}
+        </mat-option>
+      </mat-select>
       <mat-error *ngIf="formErrors.week">{{formErrors.week}}</mat-error>
     </mat-form-field>
 
@@ -23,29 +30,8 @@
         </div>
       </div>
     </div>
-    <!--<div class="flex flex_row_end marginVertical10">-->
-    <!--<button-->
-    <!--class="marginHorizontal5 buttonWithIcon"-->
-    <!--color="accent"-->
-    <!--type="button"-->
-    <!--(click)="addForm()"-->
-    <!--mat-raised-button-->
-    <!--&gt;-->
-    <!--<mat-icon>sort</mat-icon>-->
-    <!--<span>Thêm loại bàn thắng</span>-->
-    <!--</button>-->
-    <!--</div>-->
 
     <div class="flex_col_center marginTop15">
-      <!--<button-->
-      <!--class="marginHorizontal5 buttonWithIcon"-->
-      <!--color="primary"-->
-      <!--mat-raised-button-->
-      <!--(click)="onSave()"-->
-      <!--&gt;-->
-      <!--<mat-icon>save</mat-icon>-->
-      <!--<span>Lưa thông tin</span>-->
-      <!--</button>-->
       <app-button-submit
         [type]="'submit'"
         [disabled]="submitted"

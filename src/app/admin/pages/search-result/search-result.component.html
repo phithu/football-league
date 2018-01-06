@@ -1,0 +1,20 @@
+<mat-card  *ngIf="playerInfo">
+ <div class="flex_col flex_row_center">
+   <app-avatar
+     [imagesURL]="playerInfo.player.imagesURL"
+     [typeImages]="'avatar'"
+     [size]="150"
+     [useDefault]="true"
+   >
+   </app-avatar>
+   <div class="info_team">
+     <p class="marginVertical5">Tên cầu thủ: {{playerInfo.player.namePlayer}}</p>
+     <p class="marginVertical5">Câu lạc bộ: {{playerInfo.nameTeam}}</p>
+     <p class="marginVertical5">Ngày sinh: {{playerInfo.player.birthDate | formatTime:'DD/MM/YYYY'}}</p>
+     <p class="marginVertical5">Loại cầu thủ: {{playerInfo.player.typePlayer | typePlayer}}</p>
+     <p class="marginVertical5">Ghi chú: {{playerInfo.player.notes}}</p>
+     <p class="marginVertical5">Số bàn thắng: {{playerInfo.goalNumber}} bàn </p>
+   </div>
+ </div>
+</mat-card>
+<app-loading-app *ngIf="!playerInfo"></app-loading-app>

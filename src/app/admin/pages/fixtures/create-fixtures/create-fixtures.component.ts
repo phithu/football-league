@@ -30,6 +30,8 @@ export class CreateFixturesComponent implements OnInit {
   @ViewChild('notification') notification: NotificationComponent;
 
   public listTeam: Array<any>;
+  public listFixtures: Array<any>;
+  public listMatch: Array<Number>;
   public isCallAPI: boolean;
   public form: FormGroup;
   public submitted = false;
@@ -47,13 +49,13 @@ export class CreateFixturesComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,
               private titleAppService: TitleAppService,
               private teamApiService: TeamApiService,
-              private fixturesAPIService: FixturesApiService) {
+              private fixturesApiService: FixturesApiService) {
   }
 
   public ngOnInit() {
     this.titleAppService.setTitle('Tạo lịch thi đấu');
     this.createForm(4);
-    this.getAllTeam();
+    this.getAllFixtures();
     this.form.valueChanges.subscribe(() => this.validatorForm());
   }
 
@@ -64,6 +66,19 @@ export class CreateFixturesComponent implements OnInit {
         if (result) {
           this.listTeam = data;
           this.isCallAPI = true;
+        }
+      });
+  }
+
+  public getAllFixtures() {
+    this.fixturesApiService.getAllFixtures()
+      .subscribe((response) => {
+        const {result, data} = response;
+        if (result) {
+          this.listFixtures = data;
+          this.listMatch = this.generateListMatch(this.listFixtures.length + 1);
+          this.form.patchValue({week: this.listMatch.length});
+          this.getAllTeam();
         }
       });
   }
@@ -100,26 +115,16 @@ export class CreateFixturesComponent implements OnInit {
     });
   }
 
-  // public addForm() {
-  //   // add player to the list
-  //   const control = <FormArray>this.form.controls['match'];
-  //   control.push(this.initForm());
-  // }
-  //
-  // public removeForm(i: number) {
-  //   // remove player from the list
-  //   const control = <FormArray>this.form.controls['match'];
-  //   control.removeAt(i);
-  // }
-
   public onSave(form) {
     const {valid, value} = form;
     if (valid) {
       this.submitted = true;
-      this.fixturesAPIService.insertFixtures(value)
+      this.fixturesApiService.insertFixtures(value)
         .subscribe((response) => {
-          this.notification.onSuccess('Tạo vòng đấu thành công', 'Thành công');
-          this.submitted = false;
+          if (response.result) {
+            this.notification.onSuccess('Tạo vòng đấu thành công', 'Thành công');
+            this.submitted = false;
+          }
         });
     } else {
       this.validatorForm(true);
@@ -155,6 +160,14 @@ export class CreateFixturesComponent implements OnInit {
         }
       }
     }
+  }
+
+  private generateListMatch(number): Array<Number> {
+    const myArray = [];
+    for (let i = 1; i <= number; i++) {
+      myArray.push(i);
+    }
+    return myArray;
   }
 
 }

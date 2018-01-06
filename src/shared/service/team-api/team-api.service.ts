@@ -96,4 +96,12 @@ export class TeamApiService {
       idTeam
     });
   }
+
+  public getGoalNumberPlayer(idTeam, idPlayer, namePlayer): Observable<any> {
+    return this.http.post(`${AppConst.domain}/get-goal-player`, {
+      idTeam,
+      idPlayer,
+      namePlayer
+    });
+  }
 }
