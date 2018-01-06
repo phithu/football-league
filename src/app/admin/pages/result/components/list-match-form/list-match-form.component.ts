@@ -60,9 +60,9 @@ export class ListMatchFormComponent implements OnChanges, OnInit {
   }
 
   public ngOnChanges(simpleChanges: SimpleChanges) {
-    const {currentValue} = simpleChanges.match;
-    if (currentValue) {
-      this.form.patchValue(currentValue);
+    const {match} = simpleChanges;
+    if (match && match.currentValue) {
+      this.form.patchValue(match.currentValue);
     }
   }
 

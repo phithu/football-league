@@ -2,6 +2,7 @@ import {
   Component,
   OnInit,
   QueryList,
+  ViewChild,
   ViewChildren
 } from '@angular/core';
 import {
@@ -12,6 +13,10 @@ import {
 } from '@angular/forms';
 import { FixturesApiService } from '../../../../../../shared/service/fixtures-api';
 import { ListMatchFormComponent } from '../../components/list-match-form';
+import { TableApiService } from '../../../../../../shared/service/table-api';
+import { ResultApiService } from '../../../../../../shared/service/result-api';
+import { NotificationComponent } from '../../../../../../shared/module/notification';
+import { TitleAppService } from "../../../../../../shared/module/title-app/title-app.service";
 
 @Component({
   selector: 'app-create-result',
@@ -20,7 +25,7 @@ import { ListMatchFormComponent } from '../../components/list-match-form';
 })
 export class CreateResultComponent implements OnInit {
 
-
+  @ViewChild('notification') notification: NotificationComponent;
   @ViewChildren(ListMatchFormComponent) formMatch: QueryList<ListMatchFormComponent>;
   public form: FormGroup;
   public controlConfig = {
@@ -58,18 +63,24 @@ export class CreateResultComponent implements OnInit {
   };
 
   public listFixtures: Array<any>;
+  public listResult: Array<any>;
   public listMatch: Array<any>;
   public selectedOption;
   public isCallAPI: boolean;
+  public disabledSubmitted: boolean;
 
   constructor(private formBuilder: FormBuilder,
-              private fixturesApiService: FixturesApiService) {
+              private titleAppService: TitleAppService,
+              private fixturesApiService: FixturesApiService,
+              private tableApiService: TableApiService,
+              private resultApiService: ResultApiService) {
 
   }
 
   public ngOnInit() {
+    this.titleAppService.setTitle('Ghi nhận kết quả trận đấu');
     this.createForm();
-    this.getAllFixtures();
+    this.getResult();
   }
 
   public createForm() {
@@ -77,6 +88,17 @@ export class CreateResultComponent implements OnInit {
       week: new FormControl('', [Validators.required]),
       listFormMatch: this.formBuilder.array(this.generateFormMatch(4))
     });
+  }
+
+  public getResult() {
+    this.resultApiService.getResult()
+      .subscribe((response) => {
+        const {result, data} = response;
+        if (result) {
+          this.listResult = data;
+          this.getAllFixtures();
+        }
+      })
   }
 
   public getAllFixtures() {
@@ -123,11 +145,27 @@ export class CreateResultComponent implements OnInit {
   public submitCreateResult(form) {
     const {valid, value} = form;
     if (valid) {
-      console.log('value', value);
+      this.disabledSubmitted = true;
+      const {week, listFormMatch} = value;
+      this.resultApiService.insertResult(week, listFormMatch)
+        .subscribe((response) => this.callbackInsert(response));
+      if (week === '1') {
+        this.tableApiService.insertTable(week, listFormMatch).subscribe();
+      } else {
+        this.tableApiService.updateTable(week, listFormMatch).subscribe();
+      }
     } else {
       this.formMatch.forEach(component => {
         component.validatorForm(true);
       });
+    }
+  }
+
+  private callbackInsert(response) {
+    if (response.result) {
+      this.disabledSubmitted = false;
+      this.notification
+        .onSuccess('Kết quả trận đấu đã được ghi', 'Thành công');
     }
   }
 }

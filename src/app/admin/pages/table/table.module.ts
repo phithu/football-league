@@ -6,6 +6,8 @@ import { TableRoutes } from './table.route';
 import { TableViewComponent } from './table-view';
 import { TableEditComponent } from './table-edit';
 import { TableItemComponent } from './table-item';
+import { TableApiModule } from '../../../../shared/service/table-api';
+import { LoadingAppModule } from '../../../../shared/module/loading-app';
 
 
 @NgModule({
@@ -13,6 +15,8 @@ import { TableItemComponent } from './table-item';
     CommonModule,
     RouterModule.forChild(TableRoutes),
     MatCardModule,
+    TableApiModule,
+    LoadingAppModule
   ],
   declarations: [
     TableViewComponent,

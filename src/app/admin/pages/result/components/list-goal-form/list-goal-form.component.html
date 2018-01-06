@@ -12,12 +12,12 @@
   </mat-form-field>
   <mat-error *ngIf="formErrors.namePlayer">{{formErrors.namePlayer}}</mat-error>
 
-  <mat-form-field>
-    <input
-      color="warn"
-      formControlName="teamPlayer"
-      matInput
-    >
+  <mat-form-field *ngIf="listTeamSelect.length > 0">
+    <mat-select formControlName="teamPlayer">
+      <mat-option *ngFor="let item of listTeamSelect" [value]="item">
+        {{ item }}
+      </mat-option>
+    </mat-select>
     <mat-placeholder>
       <mat-icon>location_city</mat-icon>
       <span class="placeholder_title">Đội bóng</span>

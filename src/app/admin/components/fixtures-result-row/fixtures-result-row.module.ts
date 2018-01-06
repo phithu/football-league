@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material';
-import { FixturesRowComponent } from './fixtures-row.component';
 import { SharePipesModule } from '../../../../shared/pipes';
+import { FixturesResultRowComponent } from './fixtures-result-row.component';
 
 @NgModule({
   imports: [
@@ -11,11 +11,11 @@ import { SharePipesModule } from '../../../../shared/pipes';
     SharePipesModule
   ],
   declarations: [
-    FixturesRowComponent
+    FixturesResultRowComponent
   ],
   exports: [
-    FixturesRowComponent
+    FixturesResultRowComponent
   ]
 })
-export class FixturesRowModule {
+export class FixturesResultRowModule {
 }

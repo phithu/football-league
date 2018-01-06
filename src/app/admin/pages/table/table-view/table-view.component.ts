@@ -2,6 +2,7 @@ import {
   Component,
   OnInit
 } from '@angular/core';
+import { TableApiService } from '../../../../../shared/service/table-api';
 
 @Component({
   selector: 'app-table-view',
@@ -10,53 +11,24 @@ import {
 })
 export class TableViewComponent implements OnInit {
 
-  public listTable = [
-    {
-      name: 'Đội bóng A',
-      imagesURL: 'https://i.imgur.com/5hXCbOU.png',
-      point: 13,
-      match: 21,
-      win: 32,
-      draw: 21,
-      lost: 21,
-      goldDifference: 21
-    },
-    {
-      name: 'Đội bóng B',
-      imagesURL: 'https://i.imgur.com/5hXCbOU.png',
-      point: 13,
-      match: 21,
-      win: 32,
-      draw: 21,
-      lost: 21,
-      goldDifference: 21
-    },
-    {
-      name: 'Đội bóng C',
-      imagesURL: 'https://i.imgur.com/5hXCbOU.png',
-      point: 13,
-      match: 21,
-      win: 32,
-      draw: 21,
-      lost: 21,
-      goldDifference: 21
-    },
-    {
-      name: 'Đội bóng D',
-      imagesURL: 'https://i.imgur.com/5hXCbOU.png',
-      point: 13,
-      match: 21,
-      win: 32,
-      draw: 21,
-      lost: 21,
-      goldDifference: 21
-    }
-  ];
+  public listTable: Array<any>;
 
-  constructor() {
+  constructor(private tableApiService: TableApiService) {
   }
 
-  ngOnInit() {
+  public ngOnInit() {
+    this.getTable();
+
+  }
+
+  public getTable() {
+    this.tableApiService.getTable()
+      .subscribe(response => {
+        const {result, data} = response;
+        if (result) {
+          this.listTable = data;
+        }
+      });
   }
 
 }

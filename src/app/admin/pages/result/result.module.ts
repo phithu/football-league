@@ -24,12 +24,16 @@ import { ViewResultComponent } from './pages/view-result';
 import { CreateResultComponent } from './pages/create-result';
 import { ListMatchFormComponent } from './components/list-match-form';
 import { ListGoalFormComponent } from './components/list-goal-form';
+import { FixturesResultRowModule } from '../../components/fixtures-result-row';
 import { FormBaseModule } from '../../../../shared/module/form-base';
 import { LoadingAppModule } from '../../../../shared/module/loading-app';
 import { ButtonSubmitModule } from '../../../../shared/module/button-submit';
 import { FixturesApiModule } from '../../../../shared/service/fixtures-api';
 import { TeamApiModule } from '../../../../shared/service/team-api';
 import { RuleApiModule } from '../../../../shared/service/rule-api';
+import { TableApiModule } from '../../../../shared/service/table-api';
+import { ResultApiModule } from '../../../../shared/service/result-api';
+import { NotificationModule } from '../../../../shared/module/notification';
 
 
 @NgModule({
@@ -52,13 +56,17 @@ import { RuleApiModule } from '../../../../shared/service/rule-api';
     ButtonSubmitModule,
     FixturesApiModule,
     TeamApiModule,
-    RuleApiModule
+    RuleApiModule,
+    TableApiModule,
+    ResultApiModule,
+    NotificationModule,
+    FixturesResultRowModule
   ],
   declarations: [
     ViewResultComponent,
     CreateResultComponent,
     ListMatchFormComponent,
-    ListGoalFormComponent
+    ListGoalFormComponent,
   ]
 })
 export class ResultModule {

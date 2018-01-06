@@ -40,6 +40,7 @@ export const AdminRoutes: Routes = [
       {
         path: '',
         component: HomeAdminComponent,
+        pathMatch: 'full'
       }
     ]
   }

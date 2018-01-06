@@ -11,6 +11,7 @@ import { AuthModule } from '../shared/service/auth';
 import { ProgressBarModule } from '../shared/module/progress-bar';
 import { TitleAppModule } from '../shared/module/title-app';
 
+
 @NgModule({
   declarations: [
     AppComponent,

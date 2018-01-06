@@ -16,6 +16,8 @@ export class ListGoalFormComponent implements OnChanges, OnInit {
 
   @Input('group') public form: FormGroup;
   @Input('rule') public rule: any;
+  @Input('match') public match: Array<any>;
+  public listTeamSelect: Array<any> = [];
   public ruleGoals: any;
   public validatorMessages = {
     namePlayer: {
@@ -44,17 +46,23 @@ export class ListGoalFormComponent implements OnChanges, OnInit {
   }
 
   public ngOnChanges(simpleChanges: SimpleChanges) {
-    const {currentValue} = simpleChanges.rule;
-    if (currentValue) {
-      const {goals} = currentValue;
+    // console.log('simpleChanges', simpleChanges);
+    const {rule, match} = simpleChanges;
+    if (rule.currentValue) {
+      const {goals} = rule.currentValue;
       const {minTimeGoal, maxTimeGoal} = goals;
       this.ruleGoals = goals;
       this.validatorMessages.timeGoal.range = `Thời điểm ghi bàn phải từ ${minTimeGoal} đến ${maxTimeGoal}`;
     }
+    if (match.currentValue) {
+      const {home, away} = match.currentValue;
+      this.listTeamSelect.push(home, away);
+      // console.log('currentValue', match.currentValue);
+    }
   }
 
   public ngOnInit() {
-    this.form.valueChanges.subscribe(() => this.validatorForm());
+    // this.form.valueChanges.subscribe(() => this.validatorForm());
   }
 
   public validatorForm(submitted?: boolean) {

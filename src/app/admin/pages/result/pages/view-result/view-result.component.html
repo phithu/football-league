@@ -1,3 +1,30 @@
-<p>
-  view-result works!
-</p>
+<ng-container *ngIf="isCallAPI">
+  <form>
+    <mat-form-field>
+      <mat-select
+        (change)="onSelectWeek($event.value)"
+        [value]="selectedOption"
+        placeholder="Chọn vòng đấu"
+      >
+        <mat-option
+          *ngFor="let item of listWeek"
+          [value]="item.week"
+        >
+          Vòng đấu: {{ item.week }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
+  <app-fixtures-result-row
+    *ngFor="let item of listResult"
+    [type]="'result'"
+    [homeImg]="item.homeImages"
+    [homeName]="item.home"
+    [awayImg]="item.awayImages"
+    [awayName]="item.away"
+    [soccer]="item.soccer"
+    [listGoal]="item.listGoalForm"
+  >
+  </app-fixtures-result-row>
+</ng-container>
+<app-loading-app *ngIf="!isCallAPI"></app-loading-app>

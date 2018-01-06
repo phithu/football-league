@@ -1,42 +1,48 @@
 <form (ngSubmit)="submitCreateResult(form)" [formGroup]="form">
   <mat-card *ngIf="isCallAPI">
-    <mat-form-field>
-      <mat-select
-        (change)="onSelectWeek($event.value)"
-        [value]="selectedOption"
-        placeholder="Chọn vòng đấu"
-      >
-        <mat-option
-          *ngFor="let item of listFixtures"
-          [value]="item.week"
+    <ng-container *ngIf="listFixtures.length > listResult.length; else canInsert">
+      <mat-form-field>
+        <mat-select
+          (change)="onSelectWeek($event.value)"
+          [value]="selectedOption"
+          placeholder="Chọn vòng đấu"
         >
-          Vòng đấu: {{ item.week }}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-
-    <div formArrayName="listFormMatch"
-    >
-      <div *ngFor="let formItem of form['controls'].listFormMatch['controls']; let i = index">
-        <div class="flex_row_center" [formGroupName]="i">
-          <app-list-match-form
-            class="flex_grow"
-            [match]="listMatch[i]"
-            [group]="form['controls'].listFormMatch.controls[i]"
+          <mat-option
+            *ngFor="let item of listFixtures; let i = index"
+            [disabled]="i !== listResult.length"
+            [value]="item.week"
           >
-          </app-list-match-form>
+            Vòng đấu: {{ item.week }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <div formArrayName="listFormMatch"
+      >
+        <div *ngFor="let formItem of form['controls'].listFormMatch['controls']; let i = index">
+          <div class="flex_row_center" [formGroupName]="i">
+            <app-list-match-form
+              class="flex_grow"
+              [match]="listMatch[i]"
+              [group]="form['controls'].listFormMatch.controls[i]"
+            >
+            </app-list-match-form>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="flex_col_center marginTop15">
-      <app-button-submit
-        [type]="'submit'"
-        [disabled]="submitted"
-        [title]="'Lưu thông tin'">
-      </app-button-submit>
-    </div>
+      <div class="flex_col_center marginTop15">
+        <app-button-submit
+          [type]="'submit'"
+          [disabled]="disabledSubmitted"
+          [title]="'Lưu thông tin'">
+        </app-button-submit>
+      </div>
+    </ng-container>
+    <ng-template #canInsert>
+      <p>Đã ghi nhận tất cả kết quả. Hãy tạo thêm lịch thi đấu và thử lại.</p>
+    </ng-template>
   </mat-card>
 </form>
 <app-loading-app *ngIf="!isCallAPI"></app-loading-app>
-<!--<app-notification #notification></app-notification>-->
+<app-notification #notification></app-notification>
