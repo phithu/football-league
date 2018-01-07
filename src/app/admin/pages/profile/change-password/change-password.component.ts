@@ -9,9 +9,9 @@ import {
   Validators
 } from '@angular/forms';
 
-import { Matcher } from '../../../../extension/matcher.validator';
-import { NotificationComponent } from '../../../../../shared/module/notification';
-import { FormBaseComponent } from '../../../../../shared/module/form-base';
+import { Matcher } from '@extension/matcher.validator';
+import { NotificationComponent } from '@shared/module/notification';
+import { FormBaseComponent } from '@shared/module/form-base';
 
 @Component({
   selector: 'app-change-password',

@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+
 import { ViewFixturesComponent } from './view-fixtures';
 import { CreateFixturesComponent } from './create-fixtures';
 

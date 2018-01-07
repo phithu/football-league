@@ -2,12 +2,13 @@ import {
   Component,
   OnInit
 } from '@angular/core';
-import { ProgressBarService } from '../shared/module/progress-bar';
 import {
   NavigationEnd,
   NavigationStart,
   Router
 } from '@angular/router';
+
+import { ProgressBarService } from '@shared/module/progress-bar';
 
 @Component({
   selector: 'app-root',

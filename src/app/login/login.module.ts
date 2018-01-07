@@ -11,7 +11,8 @@ import {
   ReactiveFormsModule
 } from '@angular/forms';
 
-import { FormBaseModule } from '../../shared/module/form-base';
+import { FormBaseModule } from '@shared/module/form-base';
+
 import { LoginRoutes } from './login.router';
 
 @NgModule({

@@ -4,13 +4,13 @@ import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
+import { AuthModule } from '@shared/service/auth';
+import { ProgressBarModule } from '@shared/module/progress-bar';
+import { TitleAppModule } from '@shared/module/title-app';
+import { JWTInterceptors } from '@extension/jwtinterceptors';
+
 import { AppComponent } from './app.component';
 import { AppRoutes } from './app.router';
-import { JWTInterceptors } from './extension/jwtinterceptors';
-import { AuthModule } from '../shared/service/auth';
-import { ProgressBarModule } from '../shared/module/progress-bar';
-import { TitleAppModule } from '../shared/module/title-app';
-
 
 @NgModule({
   declarations: [

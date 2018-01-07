@@ -7,7 +7,8 @@ import {
   Resolve,
   Router
 } from '@angular/router';
-import { AccountService } from '../../../../shared/service/account';
+
+import { AccountService } from '@shared/service/account';
 
 @Injectable()
 export class ProfileResolve implements Resolve<any> {

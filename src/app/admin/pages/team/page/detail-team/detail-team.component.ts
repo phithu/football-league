@@ -10,14 +10,14 @@ import {
 } from '@angular/router';
 import { MatDialog } from '@angular/material';
 
-import { TitleAppService } from '../../../../../../shared/module/title-app';
-import { TeamApiService } from '../../../../../../shared/service/team-api';
-import { RuleApiService } from '../../../../../../shared/service/rule-api';
+import { TitleAppService } from '@shared/module/title-app';
+import { TeamApiService } from '@shared/service/team-api';
+import { RuleApiService } from '@shared/service/rule-api';
 import {
   ConfirmDialogComponent,
   ConfirmDialogService
-} from '../../../../../../shared/module/confirm-dialog';
-import { NotificationComponent } from '../../../../../../shared/module/notification';
+} from '@shared/module/confirm-dialog';
+import { NotificationComponent } from '@shared/module/notification';
 
 
 @Component({

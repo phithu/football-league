@@ -10,11 +10,11 @@ import {
   Validators
 } from '@angular/forms';
 
-import { TitleAppService } from '../../../../../../shared/module/title-app';
-import { TeamApiService } from '../../../../../../shared/service/team-api';
-import { NotificationComponent } from '../../../../../../shared/module/notification';
-import { RuleApiService } from '../../../../../../shared/service/rule-api';
-import { FormBaseComponent } from '../../../../../../shared/module/form-base';
+import { TitleAppService } from '@shared/module/title-app';
+import { TeamApiService } from '@shared/service/team-api';
+import { NotificationComponent } from '@shared/module/notification';
+import { RuleApiService } from '@shared/service/rule-api';
+import { FormBaseComponent } from '@shared/module/form-base';
 
 
 @Component({

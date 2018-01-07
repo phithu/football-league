@@ -7,13 +7,13 @@ import { MatDialog } from '@angular/material';
 import { Router } from '@angular/router';
 import 'rxjs/add/operator/switchMap';
 
-import { TitleAppService } from '../../../../../../shared/module/title-app';
-import { TeamApiService } from '../../../../../../shared/service/team-api';
+import { TitleAppService } from '@shared/module/title-app';
+import { TeamApiService } from '@shared/service/team-api';
 import {
   ConfirmDialogComponent,
   ConfirmDialogService
-} from '../../../../../../shared/module/confirm-dialog';
-import { NotificationComponent } from '../../../../../../shared/module/notification';
+} from '@shared/module/confirm-dialog';
+import { NotificationComponent } from '@shared/module/notification';
 
 
 @Component({

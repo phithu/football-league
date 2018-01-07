@@ -4,7 +4,7 @@ import {
 } from '@angular/core';
 
 import { ActivatedRoute } from '@angular/router';
-import { TitleAppService } from '../../../../shared/module/title-app';
+import { TitleAppService } from '@shared/module/title-app';
 
 @Component({
   selector: 'app-profile',

@@ -18,16 +18,17 @@ import {
   MdNativeDateModule
 } from 'md2';
 
+import { ButtonSubmitModule } from '@shared/module/button-submit';
+import { FixturesApiModule } from '@shared/service/fixtures-api';
+import { NotificationModule } from '@shared/module/notification';
+import { TeamApiModule } from '@shared/service/team-api';
+import { LoadingAppModule } from '@shared/module/loading-app';
+
 import { FixturesRoutes } from './fixtures.routes';
 import { ViewFixturesComponent } from './view-fixtures';
 import { CreateFixturesComponent } from './create-fixtures';
 import { FormFixturesComponent } from './create-fixtures/form-fixtures';
 import { FixturesResultRowModule } from '../../components/fixtures-result-row';
-import { ButtonSubmitModule } from '../../../../shared/module/button-submit';
-import { FixturesApiModule } from '../../../../shared/service/fixtures-api';
-import { NotificationModule } from '../../../../shared/module/notification';
-import { TeamApiModule } from '../../../../shared/service/team-api';
-import { LoadingAppModule } from '../../../../shared/module/loading-app';
 
 
 @NgModule({

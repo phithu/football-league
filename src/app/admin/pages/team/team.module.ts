@@ -16,6 +16,18 @@ import {
   MatStepperModule,
 } from '@angular/material';
 
+import { ImagesUploadModule } from '@shared/module/images-upload';
+import { NotificationModule } from '@shared/module/notification';
+import { ConfirmDialogModule } from '@shared/module/confirm-dialog';
+import { ButtonSubmitModule } from '@shared/module/button-submit';
+import { LoadingAppModule } from '@shared/module/loading-app';
+import { AvatarModule } from '@shared/module/avatar';
+import { RuleApiModule } from '@shared/service/rule-api';
+import { TeamApiModule } from '@shared/service/team-api';
+
+import { CardItemModule } from '../../components/card-item';
+import { PlayerItemModule } from '../../components/player-item';
+import { InfoTeamModule } from '../../components/info-team';
 import { AddInfoTeamComponent } from './component/add-info-team';
 import { AddInfoPlayerComponent } from './component/add-info-player';
 import { AddInfoListPlayerComponent } from './component/add-info-list-player';
@@ -27,18 +39,6 @@ import { EditPlayerComponent } from './page/edit-player';
 import { AddPlayerComponent } from './page/add-player';
 import { TeamRoutes } from './team.router';
 import { GetTeamResolve } from './get-team.resolve';
-import { ImagesUploadModule } from '../../../../shared/module/images-upload';
-import { NotificationModule } from '../../../../shared/module/notification';
-import { InfoTeamModule } from '../../components/info-team';
-import { RuleApiModule } from '../../../../shared/service/rule-api';
-import { TeamApiModule } from '../../../../shared/service/team-api';
-import { CardItemModule } from '../../components/card-item';
-import { ConfirmDialogModule } from '../../../../shared/module/confirm-dialog';
-import { ButtonSubmitModule } from '../../../../shared/module/button-submit';
-import { LoadingAppModule } from '../../../../shared/module/loading-app';
-import { AvatarModule } from '../../../../shared/module/avatar';
-import { PlayerItemModule } from '../../components/player-item';
-
 
 @NgModule({
   imports: [

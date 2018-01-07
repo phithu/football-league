@@ -19,18 +19,20 @@ import {
   PerfectScrollbarModule
 } from 'ngx-perfect-scrollbar';
 
+import { RuleApiModule } from '@shared/service/rule-api';
+import { NotificationModule } from '@shared/module/notification';
+import { FormBaseModule } from '@shared/module/form-base';
+import { LoadingAppModule } from '@shared/module/loading-app';
+import { WidgetModule } from '@shared/module/widget';
+import { RangeInputModule } from '@shared/module/range-input';
+
 import { RuleRoutes } from './rule.router';
 import { RuleComponent } from './rule.component';
-import { WidgetModule } from '../../../../shared/module/widget';
-import { RangeInputModule } from '../../../../shared/module/range-input';
 import { RulePlayerComponent } from './rule-player';
 import { RulePointComponent } from './rule-point';
 import { RuleGoalComponent } from './rule-goal';
-import { RuleApiModule } from '../../../../shared/service/rule-api';
-import { NotificationModule } from '../../../../shared/module/notification';
-import { FormBaseModule } from '../../../../shared/module/form-base';
 import { RuleGoalControlComponent } from './rule-goal/rule-goal-control';
-import { LoadingAppModule } from '../../../../shared/module/loading-app';
+
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true

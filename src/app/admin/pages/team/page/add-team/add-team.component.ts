@@ -5,10 +5,11 @@ import {
   OnInit,
   ViewChild
 } from '@angular/core';
-import { TitleAppService } from '../../../../../../shared/module/title-app';
-import { NotificationComponent } from '../../../../../../shared/module/notification';
-import { RuleApiService } from '../../../../../../shared/service/rule-api';
-import { TeamApiService } from '../../../../../../shared/service/team-api';
+import { TitleAppService } from '@shared/module/title-app';
+import { NotificationComponent } from '@shared/module/notification';
+import { RuleApiService } from '@shared/service/rule-api';
+import { TeamApiService } from '@shared/service/team-api';
+
 import { AddInfoTeamComponent } from '../../component/add-info-team';
 import { AddInfoListPlayerComponent } from '../../component/add-info-list-player';
 

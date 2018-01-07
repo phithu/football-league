@@ -2,8 +2,9 @@ import {
   Component,
   OnInit
 } from '@angular/core';
-import { TitleAppService } from '../../../../../../shared/module/title-app';
-import { ResultApiService } from '../../../../../../shared/service/result-api';
+
+import { TitleAppService } from '@shared/module/title-app';
+import { ResultApiService } from '@shared/service/result-api';
 
 @Component({
   selector: 'app-view-result',

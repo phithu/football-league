@@ -7,7 +7,7 @@ import {
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
 
-import { AuthService } from '../../../../shared/service/auth';
+import { AuthService } from '@shared/service/auth';
 
 @Injectable()
 export class GuardService implements CanActivate {

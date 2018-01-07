@@ -9,10 +9,11 @@ import {
   FormGroup,
   Validators
 } from '@angular/forms';
-import { ImagesUploadComponent } from '../../../../../shared/module/images-upload';
-import { NotificationComponent } from '../../../../../shared/module/notification';
-import { FormBaseComponent } from '../../../../../shared/module/form-base';
-import { AccountService } from '../../../../../shared/service/account';
+
+import { ImagesUploadComponent } from '@shared/module/images-upload';
+import { NotificationComponent } from '@shared/module/notification';
+import { FormBaseComponent } from '@shared/module/form-base';
+import { AccountService } from '@shared/service/account';
 
 @Component({
   selector: 'app-update-info',

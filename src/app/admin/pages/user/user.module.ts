@@ -13,18 +13,20 @@ import {
   MatRadioModule
 } from '@angular/material';
 
+import { ImagesUploadModule } from '@shared/module/images-upload';
+import { NotificationModule } from '@shared/module/notification';
+import { ConfirmDialogModule } from '@shared/module/confirm-dialog';
+import { ProfileDialogModule } from '@shared/module/profile-dialog';
+import { FormBaseModule } from '@shared/module/form-base';
+import { SharePipesModule } from '@shared/pipes';
+import { ButtonSubmitModule } from '@shared/module/button-submit';
+import { LoadingAppModule } from '@shared/module/loading-app';
+
 import { UserRoutes } from './user.router';
 import { AddUserComponent } from './add-user';
 import { EditUserComponent } from './edit-user';
-import { ImagesUploadModule } from '../../../../shared/module/images-upload';
-import { NotificationModule } from '../../../../shared/module/notification';
 import { CardItemModule } from '../../components/card-item';
-import { ConfirmDialogModule } from '../../../../shared/module/confirm-dialog';
-import { ProfileDialogModule } from '../../../../shared/module/profile-dialog';
-import { FormBaseModule } from '../../../../shared/module/form-base';
-import { SharePipesModule } from '../../../../shared/pipes';
-import { ButtonSubmitModule } from '../../../../shared/module/button-submit';
-import { LoadingAppModule } from '../../../../shared/module/loading-app';
+
 
 @NgModule({
   imports: [

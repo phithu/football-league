@@ -11,10 +11,10 @@ import {
 import { ActivatedRoute } from '@angular/router';
 import * as moment from 'moment';
 
-import { FormBaseComponent } from '../../../../../../shared/module/form-base';
-import { RuleApiService } from '../../../../../../shared/service/rule-api';
-import { TeamApiService } from '../../../../../../shared/service/team-api';
-import { NotificationComponent } from '../../../../../../shared/module/notification';
+import { FormBaseComponent } from '@shared/module/form-base';
+import { RuleApiService } from '@shared/service/rule-api';
+import { TeamApiService } from '@shared/service/team-api';
+import { NotificationComponent } from '@shared/module/notification';
 
 @Component({
   selector: 'app-add-player',

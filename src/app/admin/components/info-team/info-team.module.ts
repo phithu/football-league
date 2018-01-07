@@ -4,15 +4,15 @@ import {
   MatButtonModule,
   MatIconModule
 } from '@angular/material';
-import { AvatarModule } from '../../../../shared/module/avatar/avatar.module';
-import { SharePipesModule } from '../../../../shared/pipes';
+
+import { AvatarModule } from '@shared/module/avatar';
+
 import { InfoTeamComponent } from './info-team.component';
 
 @NgModule({
   imports: [
     CommonModule,
     AvatarModule,
-    // SharePipesModule,
     MatButtonModule,
     MatIconModule
   ],

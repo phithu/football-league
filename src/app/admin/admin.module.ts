@@ -3,14 +3,16 @@ import { CommonModule } from '@angular/common';
 import { AdminComponent } from './admin.component';
 import { RouterModule } from '@angular/router';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
+
+import { AccountModule } from '@shared/service/account';
 
 import { AdminRoutes } from './admin.routes';
 import { HomeAdminComponent } from './pages/home-admin';
 import { SideNavModule } from './components/side-nav';
 import { ToolbarAdminModule } from './components/toolbar-admin';
 import { GuardModule } from './module/guard';
-import { AccountModule } from '../../shared/service/account';
-import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
+
 
 @NgModule({
   imports: [

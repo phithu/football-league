@@ -21,9 +21,9 @@ import 'rxjs/add/observable/fromEvent';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/switchMap';
 
-import { AuthService } from '../../../../shared/service/auth';
-import { TitleAppService } from '../../../../shared/module/title-app';
-import { TeamApiService } from '../../../../shared/service/team-api';
+import { AuthService } from '../../../shared/service/auth';
+import { TitleAppService } from '../../../shared/module/title-app';
+import { TeamApiService } from '../../../shared/service/team-api';
 
 
 @Component({

@@ -2,7 +2,7 @@ import {
   Component,
   OnInit
 } from '@angular/core';
-import { TableApiService } from '../../../../../shared/service/table-api';
+import { TableApiService } from '../../../../shared/service/table-api';
 
 @Component({
   selector: 'app-table-view',
