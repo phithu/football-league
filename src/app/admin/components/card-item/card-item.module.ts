@@ -8,7 +8,7 @@ import {
 
 import { CardItemComponent } from './card-item.component';
 
-import { AvatarModule } from '../../../../shared/module/avatar';
+import { AvatarModule } from '@shared/module/avatar';
 
 @NgModule({
   imports: [

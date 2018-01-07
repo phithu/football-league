@@ -7,7 +7,7 @@ import {
   Resolve,
   Router
 } from '@angular/router';
-import { TeamApiService } from '../../../../shared/service/team-api';
+import { TeamApiService } from '@shared/service/team-api';
 
 
 @Injectable()

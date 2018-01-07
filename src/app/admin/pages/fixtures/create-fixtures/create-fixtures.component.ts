@@ -12,12 +12,14 @@ import {
   Validators
 } from '@angular/forms';
 
+import { TitleAppService } from '@shared/module/title-app';
+import { RangeValueValidator } from '@extension/range-value.validator';
+import { FixturesApiService } from '@shared/service/fixtures-api';
+import { NotificationComponent } from '@shared/module/notification';
+import { TeamApiService } from '@shared/service/team-api';
+
 import { FormFixturesComponent } from './form-fixtures';
-import { TitleAppService } from '../../../../../shared/module/title-app';
-import { RangeValueValidator } from '../../../../extension/range-value.validator';
-import { FixturesApiService } from '../../../../../shared/service/fixtures-api';
-import { NotificationComponent } from '../../../../../shared/module/notification';
-import { TeamApiService } from '../../../../../shared/service/team-api';
+
 
 @Component({
   selector: 'app-create-fixtures',

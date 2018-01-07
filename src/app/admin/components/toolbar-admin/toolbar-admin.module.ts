@@ -8,9 +8,11 @@ import {
   MatProgressSpinnerModule,
   MatToolbarModule
 } from '@angular/material';
+
+import { AvatarModule } from '@shared/module/avatar';
+import { TeamApiModule } from '@shared/service/team-api';
+
 import { ToolbarAdminComponent } from './toolbar-admin.component';
-import { AvatarModule } from '../../../../shared/module/avatar/avatar.module';
-import { TeamApiModule } from '../../../../shared/service/team-api';
 
 
 @NgModule({

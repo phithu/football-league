@@ -2,7 +2,8 @@ import {
   Component,
   OnInit
 } from '@angular/core';
-import { TitleAppService } from '../../../../shared/module/title-app';
+
+import { TitleAppService } from '@shared/module/title-app';
 
 @Component({
   selector: 'app-home-admin',

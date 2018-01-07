@@ -6,15 +6,15 @@ import {
 import { MatDialog } from '@angular/material';
 import 'rxjs/add/operator/switchMap';
 
-import { AccountService } from '../../../../../shared/service/account';
+import { AccountService } from '@shared/service/account';
 import {
   ConfirmDialogComponent,
   ConfirmDialogService
-} from '../../../../../shared/module/confirm-dialog';
-import { NotificationComponent } from '../../../../../shared/module/notification';
-import { AuthService } from '../../../../../shared/service/auth';
-import { ProfileDialogComponent } from '../../../../../shared/module/profile-dialog';
-import { TitleAppService } from '../../../../../shared/module/title-app';
+} from '@shared/module/confirm-dialog';
+import { NotificationComponent } from '@shared/module/notification';
+import { AuthService } from '@shared/service/auth';
+import { ProfileDialogComponent } from '@shared/module/profile-dialog';
+import { TitleAppService } from '@shared/module/title-app';
 
 @Component({
   selector: 'app-edit-user',

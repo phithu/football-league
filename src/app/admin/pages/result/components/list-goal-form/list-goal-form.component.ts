@@ -46,7 +46,6 @@ export class ListGoalFormComponent implements OnChanges, OnInit {
   }
 
   public ngOnChanges(simpleChanges: SimpleChanges) {
-    // console.log('simpleChanges', simpleChanges);
     const {rule, match} = simpleChanges;
     if (rule.currentValue) {
       const {goals} = rule.currentValue;
@@ -57,7 +56,6 @@ export class ListGoalFormComponent implements OnChanges, OnInit {
     if (match.currentValue) {
       const {home, away} = match.currentValue;
       this.listTeamSelect.push(home, away);
-      // console.log('currentValue', match.currentValue);
     }
   }
 

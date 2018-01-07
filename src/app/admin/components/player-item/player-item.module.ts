@@ -4,9 +4,11 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-import { AvatarModule } from '../../../../shared/module/avatar/avatar.module';
+
+import { AvatarModule } from '@shared/module/avatar';
+import { SharePipesModule } from '@shared/pipes';
+
 import { PlayerItemComponent } from './player-item.component';
-import { SharePipesModule } from '../../../../shared/pipes';
 
 @NgModule({
   imports: [

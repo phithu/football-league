@@ -13,10 +13,12 @@ import {
   Validators
 } from '@angular/forms';
 
+import { TeamApiService } from '@shared/service/team-api';
+import { RuleApiService } from '@shared/service/rule-api';
+import { RangeValueValidator } from '@extension/range-value.validator';
+
 import { ListGoalFormComponent } from '../list-goal-form';
-import { TeamApiService } from '../../../../../../shared/service/team-api';
-import { RuleApiService } from '../../../../../../shared/service/rule-api';
-import { RangeValueValidator } from '../../../../../extension/range-value.validator';
+
 
 @Component({
   selector: 'app-list-match-form',

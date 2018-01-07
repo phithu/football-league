@@ -9,8 +9,8 @@ import {
 } from '@angular/forms';
 import { Router } from '@angular/router';
 
-import { FormBaseComponent } from '../../shared/module/form-base';
-import { AuthService } from '../../shared/service/auth';
+import { FormBaseComponent } from '@shared/module/form-base';
+import { AuthService } from '@shared/service/auth';
 
 const MGS_RESPONSE = {
   PASSWORD_INCORRECT: 'Password incorrect',

@@ -4,7 +4,8 @@ import {
   OnInit
 } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { TeamApiService } from '../../../../../../shared/service/team-api';
+
+import { TeamApiService } from '@shared/service/team-api';
 
 @Component({
   selector: 'app-form-fixtures',

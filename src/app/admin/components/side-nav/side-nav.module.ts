@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatExpansionModule } from '@angular/material/expansion';
-import { MatButtonModule } from '@angular/material/button';
+import {
+  MatButtonModule,
+  MatExpansionModule
+} from '@angular/material';
+import { RouterModule } from '@angular/router';
 
 import { SideNavComponent } from './side-nav.component';
-import { RouterModule } from '@angular/router';
 
 
 @NgModule({

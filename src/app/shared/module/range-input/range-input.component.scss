@@ -1,0 +1,25 @@
+@import '../../../../styles/colors';
+
+app-range-input {
+  display: block;
+  padding: 0px 20px;
+  & .noUi-connect {
+    background-color: $primary;
+  }
+  & .noUi-handle {
+    &:focus {
+      outline: 0px;
+    }
+  }
+  & .noUi-tooltip {
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    background: #039be5;
+    color: #fff;
+    text-align: center;
+    font-size: 7pt;
+    line-height: 24px;
+    padding: 0px;
+  }
+}

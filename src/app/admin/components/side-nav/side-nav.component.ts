@@ -2,7 +2,8 @@ import {
   Component,
   OnInit
 } from '@angular/core';
-import { AuthService } from '../../../../shared/service/auth';
+
+import { AuthService } from '@shared/service/auth';
 
 @Component({
   selector: 'app-side-nav',

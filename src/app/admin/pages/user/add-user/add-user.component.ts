@@ -10,13 +10,12 @@ import {
   Validators
 } from '@angular/forms';
 
-import { FormBaseComponent } from '../../../../../shared/module/form-base';
-import { Matcher } from '../../../../extension/matcher.validator';
-import { ImagesUploadComponent } from '../../../../../shared/module/images-upload';
-import { NotificationComponent } from '../../../../../shared/module/notification';
-import { TitleAppService } from '../../../../../shared/module/title-app';
-import { AccountService } from '../../../../../shared/service/account';
-
+import { FormBaseComponent } from '@shared/module/form-base';
+import { ImagesUploadComponent } from '@shared/module/images-upload';
+import { NotificationComponent } from '@shared/module/notification';
+import { TitleAppService } from '@shared/module/title-app';
+import { AccountService } from '@shared/service/account';
+import { Matcher } from '@extension/matcher.validator';
 
 @Component({
   selector: 'app-add-user',

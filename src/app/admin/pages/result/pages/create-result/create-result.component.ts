@@ -11,12 +11,14 @@ import {
   FormGroup,
   Validators
 } from '@angular/forms';
-import { FixturesApiService } from '../../../../../../shared/service/fixtures-api';
+
+import { FixturesApiService } from '@shared/service/fixtures-api';
+import { TableApiService } from '@shared/service/table-api';
+import { ResultApiService } from '@shared/service/result-api';
+import { NotificationComponent } from '@shared/module/notification';
+import { TitleAppService } from '@shared/module/title-app';
+
 import { ListMatchFormComponent } from '../../components/list-match-form';
-import { TableApiService } from '../../../../../../shared/service/table-api';
-import { ResultApiService } from '../../../../../../shared/service/result-api';
-import { NotificationComponent } from '../../../../../../shared/module/notification';
-import { TitleAppService } from "../../../../../../shared/module/title-app/title-app.service";
 
 @Component({
   selector: 'app-create-result',
@@ -98,7 +100,7 @@ export class CreateResultComponent implements OnInit {
           this.listResult = data;
           this.getAllFixtures();
         }
-      })
+      });
   }
 
   public getAllFixtures() {

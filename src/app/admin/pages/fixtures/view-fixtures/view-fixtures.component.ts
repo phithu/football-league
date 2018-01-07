@@ -2,8 +2,9 @@ import {
   Component,
   OnInit
 } from '@angular/core';
-import { TitleAppService } from '../../../../../shared/module/title-app';
-import { FixturesApiService } from '../../../../../shared/service/fixtures-api';
+
+import { TitleAppService } from '@shared/module/title-app';
+import { FixturesApiService } from '@shared/service/fixtures-api';
 
 @Component({
   selector: 'app-view-fixtures',

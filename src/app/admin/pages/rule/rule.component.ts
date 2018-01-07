@@ -4,9 +4,9 @@ import {
   ViewChild,
 } from '@angular/core';
 
-import { TitleAppService } from '../../../../shared/module/title-app';
-import { RuleApiService } from '../../../../shared/service/rule-api';
-import { NotificationComponent } from '../../../../shared/module/notification';
+import { TitleAppService } from '@shared/module/title-app';
+import { RuleApiService } from '@shared/service/rule-api';
+import { NotificationComponent } from '@shared/module/notification';
 
 @Component({
   selector: 'app-rule',

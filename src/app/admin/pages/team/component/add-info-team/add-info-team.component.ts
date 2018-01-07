@@ -10,7 +10,7 @@ import {
   Validators
 } from '@angular/forms';
 
-import { FormBaseComponent } from '../../../../../../shared/module/form-base';
+import { FormBaseComponent } from '@shared/module/form-base';
 
 @Component({
   selector: 'app-add-info-team',

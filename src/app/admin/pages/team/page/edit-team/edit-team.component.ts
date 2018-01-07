@@ -10,10 +10,10 @@ import {
 } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 
-import { FormBaseComponent } from '../../../../../../shared/module/form-base';
-import { TitleAppService } from '../../../../../../shared/module/title-app';
-import { TeamApiService } from '../../../../../../shared/service/team-api';
-import { NotificationComponent } from '../../../../../../shared/module/notification';
+import { FormBaseComponent } from '@shared/module/form-base';
+import { TitleAppService } from '@shared/module/title-app';
+import { TeamApiService } from '@shared/service/team-api';
+import { NotificationComponent } from '@shared/module/notification';
 
 
 @Component({

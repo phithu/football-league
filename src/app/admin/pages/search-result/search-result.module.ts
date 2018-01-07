@@ -3,12 +3,14 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { MatCardModule } from '@angular/material';
 
+import { TeamApiModule } from '@shared/service/team-api';
+import { LoadingAppModule } from '@shared/module/loading-app';
+import { AvatarModule } from '@shared/module/avatar';
+import { SharePipesModule } from '@shared/pipes';
+
 import { SearchResultComponent } from './search-result.component';
 import { SearchResultRoutes } from './search-result.router';
-import { TeamApiModule } from '../../../../shared/service/team-api';
-import { LoadingAppModule } from '../../../../shared/module/loading-app';
-import { AvatarModule } from '../../../../shared/module/avatar';
-import { SharePipesModule } from '../../../../shared/pipes';
+
 
 @NgModule({
   imports: [

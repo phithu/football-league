@@ -3,8 +3,9 @@ import {
   OnInit
 } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { TeamApiService } from '../../../../shared/service/team-api';
-import { TitleAppService } from '../../../../shared/module/title-app';
+
+import { TeamApiService } from '@shared/service/team-api';
+import { TitleAppService } from '@shared/module/title-app';
 
 @Component({
   selector: 'app-search-result',
