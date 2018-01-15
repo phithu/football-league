@@ -11,6 +11,7 @@ import {
   SimpleChanges
 } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+import { ValidateForm } from "@shared/module/form-base";
 
 @Component({
   selector: 'app-add-info-player',
@@ -107,30 +108,10 @@ export class AddInfoPlayerComponent implements DoCheck, OnChanges, OnInit {
   }
 
   public validatorForm(submitted?: boolean) {
-    if (!this.playerForm) {
-      return;
-    }
-    const form = this.playerForm;
-    for (const field in this.formErrors) {
-      if (this.formErrors.hasOwnProperty(field)) {
-        // clear previous error message (if any)
-        this.formErrors[field] = '';
-        const control = form.get(field);
-        if (submitted) {
-          control.markAsTouched();
-          control.markAsDirty();
-        }
-        // self.hasError = false;
-        if (control && control.dirty && !control.valid) {
-          const messages = this.validatorMessages[field];
-          for (const key in control.errors) {
-            if (control.errors.hasOwnProperty(key)) {
-              this.formErrors[field] += messages[key] + ' ';
-              break;
-            }
-          }
-        }
-      }
+    if (submitted) {
+      ValidateForm(this.playerForm, this.formErrors, this.validatorMessages, true);
+    } else {
+      ValidateForm(this.playerForm, this.formErrors, this.validatorMessages);
     }
   }
 }

@@ -1,7 +1,7 @@
 import { FormGroup } from '@angular/forms';
 
-export default function validatorForm(formGroup: FormGroup, formErrors: any, validatorMessages: any, submitted?: boolean, callbackSubmitted?: Function) {
-  if (formGroup) {
+export function ValidateForm(formGroup: FormGroup, formErrors: any, validatorMessages: any, submitted?: boolean, callbackSubmitted?: Function) {
+  if (!formGroup) {
     return;
   }
   for (const field in formErrors) {
@@ -10,6 +10,7 @@ export default function validatorForm(formGroup: FormGroup, formErrors: any, val
       formErrors[field] = '';
       const control = formGroup.get(field);
       if (submitted) {
+        control.markAsTouched();
         control.markAsDirty();
         if (callbackSubmitted) {
           callbackSubmitted();

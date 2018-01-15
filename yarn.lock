@@ -308,6 +308,12 @@ amdefine@>=0.0.4:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/amdefine/-/amdefine-1.0.1.tgz#4a5282ac164729e93619bcfd3ad151f817ce91f5"
 
+angular-imask@^1.0.0:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/angular-imask/-/angular-imask-1.0.1.tgz#04ce484dbea88b1da2735dd594d69544f295d1c8"
+  dependencies:
+    imask latest
+
 ansi-html@0.0.7:
   version "0.0.7"
   resolved "https://registry.yarnpkg.com/ansi-html/-/ansi-html-0.0.7.tgz#813584021962a9e9e6fd039f940d12f56ca7859e"
@@ -2646,6 +2652,10 @@ image-size@~0.5.0:
   version "0.5.5"
   resolved "https://registry.yarnpkg.com/image-size/-/image-size-0.5.5.tgz#09dfd4ab9d20e29eb1c3e80b8990378df9e3cb9c"
 
+imask@latest:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/imask/-/imask-2.2.0.tgz#1a386aa31a67d9a1d3b2ffe60b2c95251797d347"
+
 import-local@^0.1.1:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/import-local/-/import-local-0.1.1.tgz#b1179572aacdc11c6a91009fb430dbcab5f668a8"
@@ -3409,6 +3419,10 @@ math-expression-evaluator@^1.2.14:
   version "1.2.17"
   resolved "https://registry.yarnpkg.com/math-expression-evaluator/-/math-expression-evaluator-1.2.17.tgz#de819fdbcd84dccd8fae59c6aeb79615b9d266ac"
 
+md2@0.0.29:
+  version "0.0.29"
+  resolved "https://registry.yarnpkg.com/md2/-/md2-0.0.29.tgz#65f090299f8b28b7240b276a0c848ba83caf274b"
+
 md5.js@^1.3.4:
   version "1.3.4"
   resolved "https://registry.yarnpkg.com/md5.js/-/md5.js-1.3.4.tgz#e9bdbde94a20a5ac18b04340fc5764d5b09d901d"
@@ -3629,22 +3643,9 @@ ng2-file-upload@^1.3.0:
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/ng2-file-upload/-/ng2-file-upload-1.3.0.tgz#d90f8f568f62383462175f8bdfa0096b131f277a"
 
-ng2-slideable-directive@1.0.13:
-  version "1.0.13"
-  resolved "https://registry.yarnpkg.com/ng2-slideable-directive/-/ng2-slideable-directive-1.0.13.tgz#7edcf987201287dea6570d5a63ed2f34c1cd00ea"
-  dependencies:
-    ng2-styled-directive "1.0.5"
-
-ng2-slider-component@^1.0.9:
-  version "1.0.9"
-  resolved "https://registry.yarnpkg.com/ng2-slider-component/-/ng2-slider-component-1.0.9.tgz#623d78127eaa359c30d8d38270073e542036edf1"
-  dependencies:
-    ng2-slideable-directive "1.0.13"
-    ng2-styled-directive "1.0.5"
-
-ng2-styled-directive@1.0.5:
-  version "1.0.5"
-  resolved "https://registry.yarnpkg.com/ng2-styled-directive/-/ng2-styled-directive-1.0.5.tgz#e215e04f229f144161c85008624a944c0be26d10"
+ng2-nouislider@^1.7.6:
+  version "1.7.7"
+  resolved "https://registry.yarnpkg.com/ng2-nouislider/-/ng2-nouislider-1.7.7.tgz#b841f4b313c8c9c8a763c80f3a59d5aa4c3a70c8"
 
 ngx-perfect-scrollbar@^5.0.5:
   version "5.0.5"
@@ -3793,6 +3794,10 @@ normalize-url@^1.4.0:
     prepend-http "^1.0.0"
     query-string "^4.1.0"
     sort-keys "^1.0.0"
+
+nouislider@^10.1.0:
+  version "10.1.0"
+  resolved "https://registry.yarnpkg.com/nouislider/-/nouislider-10.1.0.tgz#7bdd0411fd62d4584bfe88cb92bb8d06e64c6b47"
 
 npm-run-path@^2.0.0:
   version "2.0.2"

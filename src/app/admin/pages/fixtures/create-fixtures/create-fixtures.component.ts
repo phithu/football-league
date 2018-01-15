@@ -17,9 +17,9 @@ import { RangeValueValidator } from '@extension/range-value.validator';
 import { FixturesApiService } from '@shared/service/fixtures-api';
 import { NotificationComponent } from '@shared/module/notification';
 import { TeamApiService } from '@shared/service/team-api';
+import { ValidateForm } from "@shared/module/form-base";
 
 import { FormFixturesComponent } from './form-fixtures';
-
 
 @Component({
   selector: 'app-create-fixtures',
@@ -137,30 +137,10 @@ export class CreateFixturesComponent implements OnInit {
   }
 
   private validatorForm(submitted?: boolean) {
-    if (!this.form) {
-      return;
-    }
-    const form = this.form;
-    for (const field in this.formErrors) {
-      if (this.formErrors.hasOwnProperty(field)) {
-        // clear previous error message (if any)
-        this.formErrors[field] = '';
-        const control = form.get(field);
-        if (submitted) {
-          control.markAsTouched();
-          control.markAsDirty();
-        }
-        // self.hasError = false;
-        if (control && control.dirty && !control.valid) {
-          const messages = this.validatorMessages[field];
-          for (const key in control.errors) {
-            if (control.errors.hasOwnProperty(key)) {
-              this.formErrors[field] += messages[key] + ' ';
-              break;
-            }
-          }
-        }
-      }
+    if (submitted) {
+      ValidateForm(this.form, this.formErrors, this.validatorMessages, true);
+    } else {
+      ValidateForm(this.form, this.formErrors, this.validatorMessages);
     }
   }
 
