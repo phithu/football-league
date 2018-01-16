@@ -6,6 +6,7 @@ import {
 import { FormGroup } from '@angular/forms';
 
 import { TeamApiService } from '@shared/service/team-api';
+import { ValidateForm } from '@shared/module/form-base';
 
 @Component({
   selector: 'app-form-fixtures',
@@ -92,30 +93,10 @@ export class FormFixturesComponent implements OnInit {
   }
 
   public validatorForm(submitted?: boolean) {
-    if (!this.form) {
-      return;
-    }
-    const form = this.form;
-    for (const field in this.formErrors) {
-      if (this.formErrors.hasOwnProperty(field)) {
-        // clear previous error message (if any)
-        this.formErrors[field] = '';
-        const control = form.get(field);
-        if (submitted) {
-          control.markAsTouched();
-          control.markAsDirty();
-        }
-        // self.hasError = false;
-        if (control && control.dirty && !control.valid) {
-          const messages = this.validatorMessages[field];
-          for (const key in control.errors) {
-            if (control.errors.hasOwnProperty(key)) {
-              this.formErrors[field] += messages[key] + '';
-              break;
-            }
-          }
-        }
-      }
+    if (submitted) {
+      ValidateForm(this.form, this.formErrors, this.validatorMessages, true);
+    } else {
+      ValidateForm(this.form, this.formErrors, this.validatorMessages);
     }
   }
 
